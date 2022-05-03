@@ -26,7 +26,7 @@ type Props = {
     /**
      * The type of the button
      */
-    type: "ghost" | "dashed" | "link" | "text" | "default";
+    type: "primary" | "ghost" | "dashed" | "link" | "text" | "default";
     /**
      * An integer that represents the number of times
      * that this element has been clicked on.
