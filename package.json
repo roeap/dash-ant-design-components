@@ -4,12 +4,13 @@
   "description": "A Dash wrapper around React Ant Design Components",
   "main": "index.ts",
   "scripts": {
-    "build:js::dev": "webpack --mode development",
-    "build:js": "webpack",
+    "build:js::dev": "webpack --mode development --config=webpack/config.dist.js",
+    "build:js": "webpack --mode production --config=webpack/config.dist.js",
     "build:backends": "dash-generate-components ./src/ts/components dash_ant_design_components -p package-info.json --r-prefix 'dadc' --jl-prefix 'dadc' --ignore \\.test\\.",
     "build": "npm run build:js && npm run build:backends",
     "watch": "npm run build:js::dev -- --watch",
-    "test": "jest"
+    "test": "jest",
+    "demo": "webpack serve --mode development --hot --port=8888 --config=webpack/config.demo.js"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",
@@ -32,7 +33,8 @@
     "ts-loader": "^8.2.3",
     "typescript": "^4.6.2",
     "webpack": "^5.50.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.8.1"
   },
   "peerDependencies": {
     "react": "^16.13.0",

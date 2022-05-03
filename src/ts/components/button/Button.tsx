@@ -6,7 +6,7 @@ type Props = {
     /**
      * The children of this component.
      */
-    children: ReactNode;
+    children?: ReactNode;
     /**
      * Set the danger status of button
      */
@@ -35,7 +35,7 @@ type Props = {
     /**
      * Object that holds the loading state object coming from dash-renderer
      */
-    loading_state: DashLoadingState;
+    loading_state?: DashLoadingState;
     /**
      * Pass a URL (relative or absolute) to make the menu entry a link.
      */
@@ -47,7 +47,7 @@ type Props = {
     /**
      * Often used with CSS to style elements with common properties.
      */
-    class_name: string;
+    class_name?: string;
 } & DashComponentProps;
 
 /**
@@ -86,7 +86,7 @@ const Button = (props: Props) => {
                 (loading_state && loading_state.is_loading) || undefined
             }
         >
-            {children}
+            {children || "Button"}
         </AntButton>
     );
 };

@@ -23,6 +23,10 @@ install:
     pip install -r requirements.txt
     npm install
 
+# Run demo server
+demo:
+    npm run demo
+
 # Run component tests
 test:
     npm run test
