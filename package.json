@@ -1,6 +1,6 @@
 {
   "name": "dash_ant_design_components",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Dash wrapper around React Ant Design Components",
   "main": "index.ts",
   "scripts": {

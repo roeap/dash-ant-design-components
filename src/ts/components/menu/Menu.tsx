@@ -154,7 +154,6 @@ type Props = {
 } & DashComponentProps;
 
 /**
- *
  * A versatile menu for navigation.
  */
 const Menu = (props: Props) => {

@@ -7,5 +7,6 @@ import Sidebar from "./components/layout/Sidebar";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
 import Menu from "./components/menu/Menu";
+import Checkbox from "./components/checkbox/Checkbox";
 
-export { Button, Layout, Header, Sidebar, Content, Footer, Menu };
+export { Button, Layout, Header, Sidebar, Content, Footer, Menu, Checkbox };
