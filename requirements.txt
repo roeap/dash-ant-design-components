@@ -1,0 +1,7 @@
+git+https://github.com/plotly/dash@dev#egg=dash[dev]
+wheel
+build
+black
+flake8
+bandit
+isort
