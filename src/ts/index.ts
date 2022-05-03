@@ -6,5 +6,6 @@ import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
+import Menu from "./components/menu/Menu";
 
-export { Button, Layout, Header, Sidebar, Content, Footer };
+export { Button, Layout, Header, Sidebar, Content, Footer, Menu };

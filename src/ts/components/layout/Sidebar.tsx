@@ -36,7 +36,7 @@ type Props = {
     /**
      * Color theme of the sidebar
      */
-    theme: "light" | "dark";
+    theme?: "light" | "dark";
     /**
      * 	Width of the sidebar
      */
@@ -53,6 +53,7 @@ const Sidebar = (props: Props) => {
         class_name,
         reverse_arrow,
         collapsed_width,
+        setProps,
         ...otherProps
     } = props;
     return (
@@ -71,10 +72,9 @@ const Sidebar = (props: Props) => {
 Sidebar.defaultProps = {
     collapsed_width: 80,
     collapsible: false,
-    theme: "dark",
     collapsed: false,
     reverse_arrow: false,
-    width: 200
+    width: 200,
 };
 
 export default Sidebar;
