@@ -34,6 +34,9 @@ type Props = {
     class_name?: string;
 } & DashComponentProps;
 
+/**
+ * A collection of Checkboxes.
+ */
 const CheckboxGroup = (props: Props) => {
     const { class_name, setProps, ...otherProps } = props;
 

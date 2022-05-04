@@ -82,6 +82,9 @@ type Props = {
     debounce: boolean;
 } & DashComponentProps;
 
+/**
+ * TextArea component.
+ */
 const TextArea = (props: Props) => {
     const {
         value,
