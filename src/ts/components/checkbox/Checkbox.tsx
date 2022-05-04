@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback } from "react";
-import { DashComponentProps, DashLoadingState } from "../../props";
+import { DashComponentProps } from "../../props";
 import { Checkbox as AntCheckbox, CheckboxProps } from "antd";
 
 type Props = {

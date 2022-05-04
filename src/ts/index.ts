@@ -8,5 +8,16 @@ import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
 import Menu from "./components/menu/Menu";
 import Checkbox from "./components/checkbox/Checkbox";
+import Input from "./components/input/Input";
 
-export { Button, Layout, Header, Sidebar, Content, Footer, Menu, Checkbox };
+export {
+    Button,
+    Layout,
+    Header,
+    Sidebar,
+    Content,
+    Footer,
+    Menu,
+    Checkbox,
+    Input,
+};
