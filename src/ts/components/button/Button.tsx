@@ -48,6 +48,12 @@ type Props = {
      * Often used with CSS to style elements with common properties.
      */
     class_name?: string;
+    /**
+     * A unique identifier for the component, used to improve
+     * performance by React.js while rendering components
+     * See https://reactjs.org/docs/lists-and-keys.html for more info
+     */
+    key?: string;
 } & DashComponentProps;
 
 /**
@@ -66,7 +72,7 @@ const Button = (props: Props) => {
         ...otherProps
     } = props;
 
-    const incrementClicks = () => {
+    const handleClick = () => {
         if (!disabled && setProps) {
             setProps({
                 n_clicks: n_clicks + 1,
@@ -78,7 +84,7 @@ const Button = (props: Props) => {
         <AntButton
             id={id}
             className={class_name}
-            onClick={incrementClicks}
+            onClick={handleClick}
             href={disabled ? undefined : href}
             loading={loading_state && loading_state.is_loading}
             {...otherProps}
