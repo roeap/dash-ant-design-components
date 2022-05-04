@@ -1,12 +1,6 @@
-import React, {
-    ReactNode,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import React, { ReactNode, useEffect, useRef } from "react";
 import { DashComponentProps, DashLoadingState } from "../../props";
-import { Input as AntInput, InputProps } from "antd";
+import { Input as AntInput } from "antd";
 import { isNil, omit } from "ramda";
 import isNumeric from "fast-isnumeric";
 
@@ -31,6 +25,11 @@ type Props = {
      */
     allow_clear?: boolean;
     /**
+     * This attribute indicates whether the value of the control can be
+     * automatically completed by the browser.
+     */
+    autocomplete?: "on" | "off";
+    /**
      * Whether has border style
      */
     bordered?: boolean;
@@ -39,11 +38,25 @@ type Props = {
      */
     disabled?: boolean;
     /**
+     * The maximum (numeric or date-time) value for this item, which must not be
+     * less than its minimum (min attribute) value.
+     */
+    max?: string | number;
+    /**
+     * The minimum (numeric or date-time) value for this item, which must not be
+     * greater than its maximum (max attribute) value.
+     */
+    min?: string | number;
+    /**
      * The max length
      */
     max_length?: number;
     /**
-     * Whether show text count
+     * Indicates whether the element can be edited.
+     */
+    readonly?: boolean;
+    /**
+     * Whether show character count
      */
     show_count?: boolean;
     /**
@@ -94,6 +107,10 @@ type Props = {
      * Defines CSS styles which will override styles previously set.
      */
     style?: object;
+    /**
+     * A hint to the user of what can be entered in the control.
+     */
+    placeholder?: string;
     /**
      * Often used with CSS to style elements with common properties.
      */
@@ -224,16 +241,7 @@ const Input = (props: Props) => {
             onChange={onChange}
             onBlur={onBlur}
             onKeyPress={onKeyPress}
-            {...omit(
-                [
-                    "n_blur_timestamp",
-                    "n_submit_timestamp",
-                    "persistence",
-                    "persistence_type",
-                    "persisted_props",
-                ],
-                otherProps
-            )}
+            {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}
             data-dash-is-loading={
                 (loading_state && loading_state.is_loading) || undefined
             }

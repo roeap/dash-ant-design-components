@@ -48,12 +48,6 @@ type Props = {
      * Often used with CSS to style elements with common properties.
      */
     class_name?: string;
-    /**
-     * A unique identifier for the component, used to improve
-     * performance by React.js while rendering components
-     * See https://reactjs.org/docs/lists-and-keys.html for more info
-     */
-    key?: string;
 } & DashComponentProps;
 
 /**

@@ -9,6 +9,7 @@ import Footer from "./components/layout/Footer";
 import Menu from "./components/menu/Menu";
 import Checkbox from "./components/checkbox/Checkbox";
 import Input from "./components/input/Input";
+import TextArea from "./components/input/TextArea";
 
 export {
     Button,
@@ -20,4 +21,5 @@ export {
     Menu,
     Checkbox,
     Input,
+    TextArea,
 };
