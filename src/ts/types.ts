@@ -144,3 +144,12 @@ export type MenuDivider = {
 };
 
 export type ItemType = MenuItem | MenuItemGroup | SubMenu | MenuDivider;
+
+export type BreadcrumbRoute = {
+    path: string;
+    breadcrumbName: string;
+    children: Array<{
+        path: string;
+        breadcrumbName: string;
+    }>;
+};
