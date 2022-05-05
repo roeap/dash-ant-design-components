@@ -15,6 +15,7 @@ import { Button } from "../src/ts";
 
 const { Header, Content, Footer, Sider } = Layout;
 
+// eslint-disable-next-line
 const StateWrapper = ({ tag: Tag, ...otherProps }) => {
     // helper to mimic setProps functionality
     const [state, setState] = useState(otherProps);
@@ -65,8 +66,12 @@ const Demo = () => (
         <Layout style={{ marginLeft: 200 }}>
             <Header style={{ padding: 0 }} />
             <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-                <Button id="button-primary" type="primary">Primary</Button>
-                <Button id="button-dashed" type="dashed">Dashed</Button>
+                <Button id="button-primary" type="primary">
+                    Primary
+                </Button>
+                <Button id="button-dashed" type="dashed">
+                    Dashed
+                </Button>
             </Content>
             <Footer style={{ textAlign: "center" }}>
                 Dash Ant Design Components

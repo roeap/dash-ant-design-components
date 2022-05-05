@@ -29,7 +29,7 @@ describe("Textarea", () => {
 
             expect(textarea).toHaveValue("abc");
             expect(mockSetProps.mock.calls).toHaveLength(4);
-
+            // eslint-disable-next-line
             const [call0, call1, call2, call3] = mockSetProps.mock.calls;
             expect(call1).toEqual([{ value: "a" }]);
             expect(call2).toEqual([{ value: "ab" }]);

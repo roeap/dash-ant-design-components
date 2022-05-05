@@ -25,7 +25,22 @@ export type DashComponentProps = {
     /**
      * Update props to trigger callbacks.
      */
+    // eslint-disable-next-line
     setProps?: (props: Record<string, any>) => void;
+};
+
+/**
+ * Components that can be styles from Dash via `styles` or `class_name` props.
+ */
+export type StyledComponentProps = {
+    /**
+     * Defines CSS styles which will override styles previously set.
+     */
+    style?: object;
+    /**
+     * Often used with CSS to style elements with common properties.
+     */
+    class_name?: string;
 };
 
 /**

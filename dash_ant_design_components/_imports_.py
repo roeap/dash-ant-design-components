@@ -2,6 +2,7 @@ from .Button import Button
 from .Checkbox import Checkbox
 from .CheckboxGroup import CheckboxGroup
 from .Content import Content
+from .DatePicker import DatePicker
 from .DropdownButton import DropdownButton
 from .DropdownMenu import DropdownMenu
 from .Footer import Footer
@@ -16,6 +17,7 @@ __all__ = [
     "Button",
     "Checkbox",
     "CheckboxGroup",
+    "DatePicker",
     "DropdownButton",
     "DropdownMenu",
     "Input",

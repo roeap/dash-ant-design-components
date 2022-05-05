@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { DashComponentProps, DashLoadingState } from "../../types";
+import {
+    DashComponentProps,
+    DashLoadingState,
+    StyledComponentProps,
+} from "../../types";
 import { omit } from "ramda";
 import { Input } from "antd";
 
@@ -39,17 +43,9 @@ type Props = {
      */
     rows?: number;
     /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
      * A hint to the user of what can be entered in the control.
      */
     placeholder?: string;
-    /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
     /**
      * Object that holds the loading state object coming from dash-renderer
      */
@@ -80,7 +76,8 @@ type Props = {
      * If it's false, it will sent the value back on every change.
      */
     debounce: boolean;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 /**
  * TextArea component.
@@ -93,6 +90,7 @@ const TextArea = (props: Props) => {
         n_blur,
         n_clicks,
         n_submit,
+        class_name,
         setProps,
         ...otherProps
     } = props;
@@ -102,6 +100,8 @@ const TextArea = (props: Props) => {
         if (value !== valueState) {
             setValueState(value || "");
         }
+        // ignore b/c we may not add valueState to have debounce work
+        // eslint-disable-next-line
     }, [value]);
 
     const onChange = (e) => {
@@ -119,7 +119,7 @@ const TextArea = (props: Props) => {
                 n_blur_timestamp: Date.now(),
             };
             if (debounce) {
-                // @ts-ignore
+                // @ts-expect-error the value fields does in fact make sense
                 payload.value = value;
             }
             setProps(payload);
@@ -133,7 +133,7 @@ const TextArea = (props: Props) => {
                 n_submit_timestamp: Date.now(),
             };
             if (debounce) {
-                // @ts-ignore
+                // @ts-expect-error the value fields does in fact make sense
                 payload.value = value;
             }
             setProps(payload);
@@ -151,6 +151,7 @@ const TextArea = (props: Props) => {
     return (
         <AntTextArea
             value={valueState}
+            className={class_name}
             onChange={onChange}
             onBlur={onBlur}
             onKeyPress={onKeyPress}
