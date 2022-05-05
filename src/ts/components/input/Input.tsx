@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useRef } from "react";
-import { DashComponentProps, DashLoadingState } from "../../props";
+import { DashComponentProps, DashLoadingState } from "../../types";
 import { Input as AntInput } from "antd";
 import { isNil, omit } from "ramda";
 import isNumeric from "fast-isnumeric";

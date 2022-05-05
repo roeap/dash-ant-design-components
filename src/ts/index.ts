@@ -11,6 +11,8 @@ import Checkbox from "./components/checkbox/Checkbox";
 import CheckboxGroup from "./components/checkbox/CheckboxGroup";
 import Input from "./components/input/Input";
 import TextArea from "./components/input/TextArea";
+import DropdownMenu from "./components/dropdown/DropdownMenu";
+import DropdownButton from "./components/dropdown/DropdownButton";
 
 export {
     Button,
@@ -24,4 +26,6 @@ export {
     Layout,
     Sidebar,
     Menu,
+    DropdownButton,
+    DropdownMenu,
 };

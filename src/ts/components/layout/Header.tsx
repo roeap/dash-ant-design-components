@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps } from "../../props";
+import { DashComponentProps } from "../../types";
 import { Layout } from "antd";
 
 const { Header: AntHeader } = Layout;

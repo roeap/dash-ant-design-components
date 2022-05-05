@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { DashComponentProps } from "../../props";
+import { DashComponentProps } from "../../types";
 import { Checkbox } from "antd";
 
 const { Group } = Checkbox;

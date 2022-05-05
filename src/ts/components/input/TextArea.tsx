@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DashComponentProps, DashLoadingState } from "../../props";
+import { DashComponentProps, DashLoadingState } from "../../types";
 import { omit } from "ramda";
 import { Input } from "antd";
 
