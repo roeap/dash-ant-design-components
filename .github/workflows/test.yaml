@@ -39,7 +39,7 @@ jobs:
         id: cached-node-modules
         uses: actions/cache@v2
         with:
-          path: .venv
+          path: node_modules
           key: venv-${{ runner.os }}-${{ steps.setup-node.outputs.node-version }}-${{ hashFiles('yarn.lock') }}
 
       - name: Install Poetry
