@@ -8,9 +8,9 @@ const packagejson = require("../package.json");
 
 const dashLibraryName = packagejson.name.replace(/-/g, "_");
 var publicHost = process.env.DEMO_PUBLIC_HOST || undefined;
-var buildPath = path.join(directories.ROOT,  "demo-lib");
+var buildPath = path.join(directories.ROOT, "demo-lib");
 
-module.exports = function (env, argv) {
+module.exports = function (_env, argv) {
     const mode = (argv && argv.mode) || "development";
     const entry = { bundle: [path.join(directories.ROOT, "demo/index.tsx")] };
 

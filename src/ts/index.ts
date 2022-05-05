@@ -15,7 +15,12 @@ import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownButton from "./components/dropdown/DropdownButton";
 import DatePicker from "./components/datepicker/DatePicker";
 import TimePicker from "./components/datepicker/TimePicker";
-import RangePicker from "./components/datepicker/RangePicker";
+import DateRangePicker from "./components/datepicker/DateRangePicker";
+import TimeRangePicker from "./components/datepicker/TimeRangePicker";
+import Divider from "./components/divider/Divider";
+import Tag from "./components/tag/Tag";
+import CheckableTag from "./components/tag/CheckableTag";
+import PageHeader from "./components/pageheader/PageHeader";
 
 export {
     Button,
@@ -33,5 +38,10 @@ export {
     DropdownMenu,
     DatePicker,
     TimePicker,
-    RangePicker,
+    DateRangePicker,
+    TimeRangePicker,
+    Divider,
+    CheckableTag,
+    Tag,
+    PageHeader,
 };

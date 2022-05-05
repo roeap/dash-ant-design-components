@@ -1,6 +1,6 @@
 import React from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
-import { TimePicker as AntTimePicker, DatePickerProps } from "antd";
+import { DatePicker as AntDatePicker, DatePickerProps } from "antd";
 import moment from "moment";
 
 type Props = {
@@ -17,37 +17,21 @@ type Props = {
      */
     disabled?: boolean;
     /**
-     * Time format - e.g. HH:mm:ss
-     */
-    format?: string;
-    /**
-     * Interval between hours in picker
-     */
-    hour_step?: number;
-    /**
-     * Interval between minutes in picker
-     */
-    minute_step?: number;
-    /**
      * The open state of picker
      */
     open?: boolean;
-    /**
-     * 	Set picker type
-     */
-    picker?: "date" | "week" | "month" | "quarter" | "year";
-    /**
-     * The placeholder of date input
-     */
-    placeholder?: string;
+    // /**
+    //  * The placeholder of date input
+    //  */
+    // placeholder?: [string, string];
     /**
      * The position where the selection box pops up
      */
     placement?: "bottomLeft" | "bottomRight" | "topLeft" | "topRight";
     /**
-     * Interval between seconds in picker
+     * Whether to provide an additional time selection
      */
-    second_step?: number;
+    show_time?: boolean;
     /**
      * 	Whether to show 'Now' button on panel when show_time is set
      */
@@ -62,23 +46,26 @@ type Props = {
      */
     status?: "error" | "warning";
     /**
-     * The selected time
+     * The selected start date / datetime
      */
-    value?: string;
+    start?: string;
+    /**
+     * The selected end date / datetime
+     */
+    end?: string;
 } & DashComponentProps &
     StyledComponentProps;
 
 /**
  * Select Date or DateTime
  */
-const TimePicker = (props: Props) => {
+const DateRangePicker = (props: Props) => {
     const {
         allow_clear,
         disabled,
-        value,
-        hour_step,
-        minute_step,
-        second_step,
+        start,
+        end,
+        show_time,
         show_now,
         setProps,
         ...otherProps
@@ -90,27 +77,27 @@ const TimePicker = (props: Props) => {
         }
     };
 
-    const handleChange: DatePickerProps["onChange"] = (_value, dateString) => {
+    const handleChange = (_dates, dateStrings: [string, string]) => {
         if (!disabled && setProps) {
-            setProps({ value: dateString });
+            const [startStr, endStr] = dateStrings;
+            setProps({ start: startStr, end: endStr });
         }
     };
 
     return (
-        <AntTimePicker
+        <AntDatePicker.RangePicker
             allowClear={allow_clear}
-            value={moment(value)}
-            hourStep={hour_step}
-            minuteStep={minute_step}
-            secondStep={second_step}
+            value={[moment(start), moment(end)]}
+            showTime={show_time}
             showNow={show_now}
             onChange={handleChange}
             onOpenChange={handleOpenChange}
             {...otherProps}
         />
     );
+    return <div />;
 };
 
-TimePicker.defaultProps = {};
+DateRangePicker.defaultProps = {};
 
-export default TimePicker;
+export default DateRangePicker;

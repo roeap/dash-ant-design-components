@@ -14,7 +14,7 @@ var environment = JSON.stringify(NODE_ENV);
 const dashLibraryName = packagejson.name.replace(/-/g, "_");
 var buildPath = path.join(directories.ROOT, dashLibraryName);
 
-module.exports = function (env, argv) {
+module.exports = function (_env, argv) {
     const mode = (argv && argv.mode) || "production";
     const entry = { main: [path.join(directories.SRC, "ts/index.ts")] };
     const output = {
