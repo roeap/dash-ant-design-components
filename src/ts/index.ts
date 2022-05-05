@@ -18,6 +18,8 @@ import TimePicker from "./components/datepicker/TimePicker";
 import DateRangePicker from "./components/datepicker/DateRangePicker";
 import TimeRangePicker from "./components/datepicker/TimeRangePicker";
 import Divider from "./components/divider/Divider";
+import Tag from "./components/tag/Tag";
+import CheckableTag from "./components/tag/CheckableTag";
 
 export {
     Button,
@@ -38,4 +40,6 @@ export {
     DateRangePicker,
     TimeRangePicker,
     Divider,
+    CheckableTag,
+    Tag,
 };
