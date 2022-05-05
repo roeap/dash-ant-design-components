@@ -3,7 +3,7 @@
 Ant Design components for Plotly Dash.
 
 > The `dash-ant-design-components` are build in pure TypeScript. Generating dash components
-> from typeSCript is currently only supported on the dev branch of plotly Dash.
+> from typeSCript is currently only supported on the dev branch of Plotly Dash.
 
 ## Install
 
@@ -17,61 +17,23 @@ just build
 
 ## Development
 
+We use [just](https://github.com/casey/just) as command runner, if you prefer not to install
+just, have a look at the `justfile` for detailed commands.
+
+To manage python dependencies, we utilize [poetry](python-poetry.org/).
+
 ### Getting Started
 
-1. Create a new python environment:
+Install python and node dependencies.
 
-   ```shell
-   python -m venv venv
-   . venv/bin/activate
-   ```
-
-   _Note: venv\Scripts\activate for windows_
-
-2. Install python dependencies:
-   ```shell
-   pip install -r requirements.txt
-   ```
-3. Install npm packages:
-   1. Optional: use [nvm](https://github.com/nvm-sh/nvm) to manage node version:
-      ```shell
-      nvm install
-      nvm use
-      ```
-   2. Install:
-      ```shell
-      npm install
-      ```
-4. Build:
-   ```shell
-   npm run build
-   ```
-
-### Component Code
-
-### Publish
-
-If publish on npm:
-
-```shell
-npm build
-npm publish
+```sh
+just install
 ```
 
-### Justfile
+Build the Dash packages.
 
-Alternatively, use the provided [just](https://github.com/casey/just) commands:
+```sh
+just build
+```
 
-1. Create a Python environment from previous step 1 and install:
-   ```shell
-   just install
-   ```
-2. Build
-   ```shell
-   just build
-   ```
-3. Publish
-   ```shell
-   just publish
-   ```
-4. See all commands with `just -l`
+See all commands with `just -l`

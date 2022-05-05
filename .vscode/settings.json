@@ -1,4 +1,11 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.ignoreWords": ["Sider", "antd", "isnumeric", "isort", "packagejson"]
+  "cSpell.ignoreWords": [
+    "Plotly",
+    "Sider",
+    "antd",
+    "isnumeric",
+    "isort",
+    "packagejson"
+  ]
 }
