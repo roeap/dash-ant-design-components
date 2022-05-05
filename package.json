@@ -7,10 +7,12 @@
     "build:js::dev": "webpack --mode development --config=webpack/config.dist.js",
     "build:js": "webpack --mode production --config=webpack/config.dist.js",
     "build:backends": "dash-generate-components ./src/ts/components dash_ant_design_components -p package-info.json --r-prefix 'dadc' --jl-prefix 'dadc' --ignore \\.test\\.",
-    "build": "npm run build:js && npm run build:backends",
-    "watch": "npm run build:js::dev -- --watch",
+    "build": "yarn build:js && yarn build:backends",
+    "watch": "yarn build:js::dev -- --watch",
     "test": "jest",
-    "demo": "webpack serve --mode development --hot --port=8888 --config=webpack/config.demo.js"
+    "demo": "webpack serve --mode development --hot --port=8888 --config=webpack/config.demo.js",
+    "format": "prettier 'src/' --write",
+    "lint": "prettier 'src/' --list-different"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.13.0",

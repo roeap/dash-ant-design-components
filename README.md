@@ -1,21 +1,31 @@
 # Dash Ant Design Components
 
-A Dash wrapper around React Ant Design Components
+Ant Design components for Plotly Dash.
+
+> The `dash-ant-design-components` are build in pure TypeScript. Generating dash components
+> from typeSCript is currently only supported on the dev branch of plotly Dash.
 
 ## Install
 
+The `dash-ant-design-components` are at a very early stage and not yet published to pip.
+To install, clone this repository, and run the build scripts. Then use the generated wheel
+to install in your python environment.
+
 ```shell
-pip install dash_ant_design_components
+just build
 ```
 
 ## Development
+
 ### Getting Started
 
 1. Create a new python environment:
+
    ```shell
    python -m venv venv
    . venv/bin/activate
    ```
+
    _Note: venv\Scripts\activate for windows_
 
 2. Install python dependencies:
@@ -42,6 +52,7 @@ pip install dash_ant_design_components
 ### Publish
 
 If publish on npm:
+
 ```shell
 npm build
 npm publish
