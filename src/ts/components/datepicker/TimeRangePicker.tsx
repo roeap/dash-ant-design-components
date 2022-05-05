@@ -1,9 +1,9 @@
 import React from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
-import { DatePicker, DatePickerProps } from "antd";
+import { TimePicker, DatePickerProps } from "antd";
 import moment from "moment";
 
-const { RangePicker: AntRangePicker } = DatePicker;
+const { RangePicker: AntRangePicker } = TimePicker;
 
 type Props = {
     /**
@@ -31,10 +31,6 @@ type Props = {
      */
     placement?: "bottomLeft" | "bottomRight" | "topLeft" | "topRight";
     /**
-     * Whether to provide an additional time selection
-     */
-    show_time?: boolean;
-    /**
      * 	Whether to show 'Now' button on panel when show_time is set
      */
     show_now?: boolean;
@@ -61,13 +57,12 @@ type Props = {
 /**
  * Select Date or DateTime
  */
-const RangePicker = (props: Props) => {
+const DateRangePicker = (props: Props) => {
     const {
         allow_clear,
         disabled,
         start,
         end,
-        show_time,
         show_now,
         setProps,
         ...otherProps
@@ -93,7 +88,6 @@ const RangePicker = (props: Props) => {
         <AntRangePicker
             allowClear={allow_clear}
             value={[moment(start), moment(end)]}
-            showTime={show_time}
             showNow={show_now}
             onChange={handleChange}
             onOpenChange={handleOpenChange}
@@ -102,6 +96,6 @@ const RangePicker = (props: Props) => {
     );
 };
 
-RangePicker.defaultProps = {};
+DateRangePicker.defaultProps = {};
 
-export default RangePicker;
+export default DateRangePicker;

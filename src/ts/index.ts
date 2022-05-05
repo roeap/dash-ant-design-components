@@ -15,7 +15,8 @@ import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownButton from "./components/dropdown/DropdownButton";
 import DatePicker from "./components/datepicker/DatePicker";
 import TimePicker from "./components/datepicker/TimePicker";
-import RangePicker from "./components/datepicker/RangePicker";
+import DateRangePicker from "./components/datepicker/DateRangePicker";
+import TimeRangePicker from "./components/datepicker/TimeRangePicker";
 
 export {
     Button,
@@ -33,5 +34,6 @@ export {
     DropdownMenu,
     DatePicker,
     TimePicker,
-    RangePicker,
+    DateRangePicker,
+    TimeRangePicker,
 };
