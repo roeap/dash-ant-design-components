@@ -17,6 +17,7 @@ import DatePicker from "./components/datepicker/DatePicker";
 import TimePicker from "./components/datepicker/TimePicker";
 import DateRangePicker from "./components/datepicker/DateRangePicker";
 import TimeRangePicker from "./components/datepicker/TimeRangePicker";
+import Divider from "./components/divider/Divider";
 
 export {
     Button,
@@ -36,4 +37,5 @@ export {
     TimePicker,
     DateRangePicker,
     TimeRangePicker,
+    Divider,
 };
