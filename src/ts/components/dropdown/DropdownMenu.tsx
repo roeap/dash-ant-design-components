@@ -45,7 +45,7 @@ type Props = {
  * A Dropdown component
  */
 const DropdownMenu = (props: Props) => {
-    const { id, children, items, ...otherProps } = props;
+    const { children, items, ...otherProps } = props;
 
     const overlay = <AntMenu items={items} />;
 

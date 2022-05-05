@@ -1,9 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Demo from './Demo';
+import Demo from "./Demo";
 
-const rootInstance = ReactDOM.render(
-    <Demo />,
-    document.getElementById('react-demo-entry-point')
-);
+ReactDOM.render(<Demo />, document.getElementById("react-demo-entry-point"));

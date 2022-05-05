@@ -176,7 +176,7 @@ const Input = (props: Props) => {
                     value !== null && value !== undefined ? value : "";
             }
         }
-    }, [value]);
+    }, [value, type]);
 
     const onEvent = (payload: PayloadType = {}) => {
         if (type === "number") {

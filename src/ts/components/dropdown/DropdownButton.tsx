@@ -39,7 +39,6 @@ type Props = {
  */
 const DropdownButton = (props: Props) => {
     const {
-        id,
         children,
         items,
         class_name,
@@ -62,6 +61,7 @@ const DropdownButton = (props: Props) => {
 
     return (
         <AntDropdownButton
+            className={class_name}
             overlay={overlay}
             disabled={disabled}
             onClick={handleClick}

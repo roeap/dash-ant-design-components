@@ -100,7 +100,7 @@ const TextArea = (props: Props) => {
         if (value !== valueState) {
             setValueState(value || "");
         }
-    }, [value]);
+    }, [value, valueState]);
 
     const onChange = (e) => {
         const newValue = e.target.value;
@@ -117,7 +117,7 @@ const TextArea = (props: Props) => {
                 n_blur_timestamp: Date.now(),
             };
             if (debounce) {
-                // @ts-ignore
+                // @ts-expect-error the value fields does in fact make sense
                 payload.value = value;
             }
             setProps(payload);
@@ -131,7 +131,7 @@ const TextArea = (props: Props) => {
                 n_submit_timestamp: Date.now(),
             };
             if (debounce) {
-                // @ts-ignore
+                // @ts-expect-error the value fields does in fact make sense
                 payload.value = value;
             }
             setProps(payload);

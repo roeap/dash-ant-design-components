@@ -46,7 +46,6 @@ const Sidebar = (props: Props) => {
         class_name,
         reverse_arrow,
         collapsed_width,
-        setProps,
         ...otherProps
     } = props;
     return (

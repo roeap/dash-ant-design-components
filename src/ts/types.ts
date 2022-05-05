@@ -25,6 +25,7 @@ export type DashComponentProps = {
     /**
      * Update props to trigger callbacks.
      */
+    // eslint-disable-next-line
     setProps?: (props: Record<string, any>) => void;
 };
 
