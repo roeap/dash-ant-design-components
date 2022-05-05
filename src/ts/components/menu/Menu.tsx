@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback } from "react";
-import { DashComponentProps } from "../../props";
+import { DashComponentProps } from "../../types";
 import { Menu as AntMenu, MenuProps } from "antd";
 
 type MenuItem = {

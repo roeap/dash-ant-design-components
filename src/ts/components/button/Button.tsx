@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps, DashLoadingState } from "../../props";
+import { DashComponentProps, DashLoadingState } from "../../types";
 import { Button as AntButton } from "antd";
 
 type Props = {

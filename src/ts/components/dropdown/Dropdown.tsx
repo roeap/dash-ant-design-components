@@ -1,16 +1,20 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps, DashLoadingState } from "../../props";
+import { DashComponentProps, DashLoadingState } from "../../types";
 import { Dropdown as AntDropdown } from "antd";
 
 type Props = {
     /**
+     * The children of this component.
+     */
+    children?: ReactNode;
+    /**
      * Set the danger status of button
      */
-    danger: boolean;
+    danger?: boolean;
     /**
      * Disabled state of button
      */
-    disabled: boolean;
+    disabled?: boolean;
     /**
      * Pass a URL (relative or absolute) to make the menu entry a link.
      */
@@ -42,14 +46,12 @@ type Props = {
  * A Dropdown component
  */
 const Dropdown = (props: Props) => {
-    const { id, href, disabled, class_name, ...otherProps } = props;
+    const { id, href, disabled, class_name, children, ...otherProps } = props;
 
-    return <div />;
+    return <Dropdown>{children}</Dropdown>;
 };
 
 Dropdown.defaultProps = {
-    danger: false,
-    disabled: false,
     shape: "default",
     size: "middle",
     type: "default",
