@@ -1,5 +1,9 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps, DashLoadingState } from "../../types";
+import {
+    DashComponentProps,
+    DashLoadingState,
+    StyledComponentProps,
+} from "../../types";
 import { Button as AntButton } from "antd";
 
 type Props = {
@@ -40,15 +44,8 @@ type Props = {
      * Pass a URL (relative or absolute) to make the menu entry a link.
      */
     href?: string;
-    /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 /**
  * Component description

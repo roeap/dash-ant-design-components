@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps } from "../../types";
+import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Layout } from "antd";
 
 const { Sider } = Layout;
@@ -9,14 +9,6 @@ type Props = {
      * The children of this component.
      */
     children?: ReactNode;
-    /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
     /**
      * Whether the sidebar is collapsed
      */
@@ -41,7 +33,8 @@ type Props = {
      * 	Width of the sidebar
      */
     width: number | string;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 /**
  * Handling the overall layout of a page.

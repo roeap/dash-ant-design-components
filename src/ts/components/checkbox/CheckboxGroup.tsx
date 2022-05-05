@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { DashComponentProps } from "../../types";
+import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Checkbox } from "antd";
 
 const { Group } = Checkbox;
@@ -24,15 +24,8 @@ type Props = {
      * Disables all checkboxes within the group
      */
     disabled?: boolean;
-    /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 /**
  * A collection of Checkboxes.

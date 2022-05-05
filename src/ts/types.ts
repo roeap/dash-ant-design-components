@@ -29,6 +29,20 @@ export type DashComponentProps = {
 };
 
 /**
+ * Components that can be styles from Dash via `styles` or `class_name` props.
+ */
+export type StyledComponentProps = {
+    /**
+     * Defines CSS styles which will override styles previously set.
+     */
+    style?: object;
+    /**
+     * Often used with CSS to style elements with common properties.
+     */
+    class_name?: string;
+};
+
+/**
  * Object that holds the loading state object coming from dash-renderer
  */
 export type DashLoadingState = {

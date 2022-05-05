@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps } from "../../types";
+import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Layout as AntLayout } from "antd";
 
 type Props = {
@@ -8,19 +8,12 @@ type Props = {
      */
     children?: ReactNode;
     /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
-    /**
      * Whether a Sidebar is contained in children. Does not necessarily have to be specified,
      * but useful in ssr avoid style flickering.
      */
     has_sidebar?: boolean;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 /**
  * Handling the overall layout of a page.
