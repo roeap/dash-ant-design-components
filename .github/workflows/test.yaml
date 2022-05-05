@@ -49,11 +49,11 @@ jobs:
           virtualenvs-in-project: true
           installer-parallel: true
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
 
-      - name: Install dependencies
+      - name: Install Node dependencies
         if: steps.cached-node-modules.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
