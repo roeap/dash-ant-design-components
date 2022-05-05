@@ -100,7 +100,9 @@ const TextArea = (props: Props) => {
         if (value !== valueState) {
             setValueState(value || "");
         }
-    }, [value, valueState]);
+        // ignore b/c we may not add valueState to have debounce work
+        // eslint-disable-next-line
+    }, [value]);
 
     const onChange = (e) => {
         const newValue = e.target.value;
