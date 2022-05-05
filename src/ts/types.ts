@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 /**
  * Every Dash components are given these props.
  * Use with your own props:
@@ -43,3 +45,87 @@ export type DashLoadingState = {
      */
     component_name: string;
 };
+
+export type MenuItem = {
+    /**
+     * Display the danger style
+     */
+    danger?: boolean;
+    /**
+     * Whether menu item is disabled
+     */
+    disabled?: boolean;
+    /**
+     * The icon of the menu item
+     */
+    icon?: ReactNode;
+    /**
+     * Unique ID of the menu item
+     */
+    key: string;
+    /**
+     * Menu label
+     */
+    label: ReactNode;
+    /**
+     * Set display title for collapsed item
+     */
+    title?: string;
+};
+
+export type MenuItemGroup = {
+    type: "group";
+    /**
+     * Sub-menu items
+     */
+    children: MenuItem[];
+    /**
+     * The title of the group
+     */
+    label: ReactNode;
+};
+
+export type SubMenu = {
+    /**
+     * Sub-menus or sub-menu items
+     */
+    children: ItemType[];
+    /**
+     * Whether menu item is disabled
+     */
+    disabled?: boolean;
+    /**
+     * The icon of the menu item
+     */
+    icon?: ReactNode;
+    /**
+     * Unique ID of the menu item
+     */
+    key: string;
+    /**
+     * Menu label
+     */
+    label: ReactNode;
+    /**
+     * Set display title for collapsed item
+     */
+    title?: string;
+    /**
+     * Color theme of the SubMenu (inherits from Menu by default)
+     */
+    theme?: "light" | "dark";
+    /**
+     * Sub-menu class name, not working when mode="inline"
+     */
+    popupClassName?: string;
+    /**
+     * Sub-menu offset, not working when mode="inline"
+     */
+    popupOffset?: [number, number];
+};
+
+export type MenuDivider = {
+    type: "divider";
+};
+
+export type ItemType = MenuItem | MenuItemGroup | SubMenu | MenuDivider;
