@@ -1,7 +1,9 @@
 import React from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
-import { DatePicker as AntDatePicker, DatePickerProps } from "antd";
+import { DatePicker, DatePickerProps } from "antd";
 import moment from "moment";
+
+const { RangePicker: AntRangePicker } = DatePicker;
 
 type Props = {
     /**
@@ -21,13 +23,9 @@ type Props = {
      */
     open?: boolean;
     /**
-     * 	Set picker type
-     */
-    picker?: "date" | "week" | "month" | "quarter" | "year";
-    /**
      * The placeholder of date input
      */
-    placeholder?: string;
+    placeholder?: [string, string];
     /**
      * The position where the selection box pops up
      */
@@ -50,21 +48,25 @@ type Props = {
      */
     status?: "error" | "warning";
     /**
-     * The selected date / datetime
+     * The selected start date / datetime
      */
-    value?: string;
+    start?: string;
+    /**
+     * The selected start date / datetime
+     */
+    end?: string;
 } & DashComponentProps &
     StyledComponentProps;
 
 /**
  * Select Date or DateTime
  */
-const DatePicker = (props: Props) => {
+const RangePicker = (props: Props) => {
     const {
         allow_clear,
         disabled,
-        picker,
-        value,
+        start,
+        end,
         show_time,
         show_now,
         setProps,
@@ -77,17 +79,20 @@ const DatePicker = (props: Props) => {
         }
     };
 
-    const handleChange: DatePickerProps["onChange"] = (_value, dateString) => {
+    const handleChange = (
+        _dates: [moment.Moment, moment.Moment],
+        dateStrings: [string, string]
+    ) => {
         if (!disabled && setProps) {
-            setProps({ value: dateString });
+            const [start, end] = dateStrings;
+            setProps({ start, end });
         }
     };
 
     return (
-        <AntDatePicker
+        <AntRangePicker
             allowClear={allow_clear}
-            value={moment(value)}
-            picker={picker}
+            value={[moment(start), moment(end)]}
             showTime={show_time}
             showNow={show_now}
             onChange={handleChange}
@@ -97,6 +102,6 @@ const DatePicker = (props: Props) => {
     );
 };
 
-DatePicker.defaultProps = {};
+RangePicker.defaultProps = {};
 
-export default DatePicker;
+export default RangePicker;

@@ -1,6 +1,6 @@
 import React from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
-import { DatePicker as AntDatePicker, DatePickerProps } from "antd";
+import { TimePicker as AntTimePicker, DatePickerProps } from "antd";
 import moment from "moment";
 
 type Props = {
@@ -50,7 +50,7 @@ type Props = {
      */
     status?: "error" | "warning";
     /**
-     * The selected date / datetime
+     * The selected time
      */
     value?: string;
 } & DashComponentProps &
@@ -59,17 +59,9 @@ type Props = {
 /**
  * Select Date or DateTime
  */
-const DatePicker = (props: Props) => {
-    const {
-        allow_clear,
-        disabled,
-        picker,
-        value,
-        show_time,
-        show_now,
-        setProps,
-        ...otherProps
-    } = props;
+const TimePicker = (props: Props) => {
+    const { allow_clear, disabled, value, show_now, setProps, ...otherProps } =
+        props;
 
     const handleOpenChange: DatePickerProps["onOpenChange"] = (open) => {
         if (!disabled && setProps) {
@@ -84,11 +76,9 @@ const DatePicker = (props: Props) => {
     };
 
     return (
-        <AntDatePicker
+        <AntTimePicker
             allowClear={allow_clear}
             value={moment(value)}
-            picker={picker}
-            showTime={show_time}
             showNow={show_now}
             onChange={handleChange}
             onOpenChange={handleOpenChange}
@@ -97,6 +87,6 @@ const DatePicker = (props: Props) => {
     );
 };
 
-DatePicker.defaultProps = {};
+TimePicker.defaultProps = {};
 
-export default DatePicker;
+export default TimePicker;
