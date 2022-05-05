@@ -84,8 +84,8 @@ const RangePicker = (props: Props) => {
         dateStrings: [string, string]
     ) => {
         if (!disabled && setProps) {
-            const [start, end] = dateStrings;
-            setProps({ start, end });
+            const [startStr, endStr] = dateStrings;
+            setProps({ start: startStr, end: endStr });
         }
     };
 
