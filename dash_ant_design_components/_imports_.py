@@ -15,8 +15,13 @@ from .Input import Input
 from .Layout import Layout
 from .Menu import Menu
 from .PageHeader import PageHeader
+from .PageHeaderFooter import PageHeaderFooter
 from .PageHeaderOperation import PageHeaderOperation
 from .Sidebar import Sidebar
+from .Step import Step
+from .Steps import Steps
+from .TabPane import TabPane
+from .Tabs import Tabs
 from .Tag import Tag
 from .TextArea import TextArea
 from .TimePicker import TimePicker
@@ -43,7 +48,12 @@ __all__ = [
     "Sidebar",
     "Menu",
     "PageHeader",
+    "PageHeaderFooter",
     "PageHeaderOperation",
+    "Step",
+    "Steps",
+    "TabPane",
+    "Tabs",
     "CheckableTag",
     "Tag",
 ]
