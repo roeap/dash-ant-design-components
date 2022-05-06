@@ -10,8 +10,8 @@ import {
     UploadOutlined,
     VideoCameraOutlined,
 } from "@ant-design/icons";
-import "antd/dist/antd.css";
 import { Button } from "../src/ts";
+import "../styles/app.less";
 
 const { Header, Content, Footer, Sider } = Layout;
 
