@@ -18,6 +18,8 @@ from .PageHeader import PageHeader
 from .PageHeaderFooter import PageHeaderFooter
 from .PageHeaderOperation import PageHeaderOperation
 from .Sidebar import Sidebar
+from .Step import Step
+from .Steps import Steps
 from .TabPane import TabPane
 from .Tabs import Tabs
 from .Tag import Tag
@@ -48,6 +50,8 @@ __all__ = [
     "PageHeader",
     "PageHeaderFooter",
     "PageHeaderOperation",
+    "Step",
+    "Steps",
     "TabPane",
     "Tabs",
     "CheckableTag",

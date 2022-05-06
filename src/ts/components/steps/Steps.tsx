@@ -1,7 +1,6 @@
 import React, { ReactNode, useMemo } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Steps as AntSteps } from "antd";
-import { omit } from "ramda";
 import { Props as StepProps } from "./Step";
 import * as icons from "@ant-design/icons";
 import {

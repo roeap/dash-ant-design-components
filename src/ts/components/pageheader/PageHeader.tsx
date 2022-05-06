@@ -8,10 +8,6 @@ import { parseChildrenToArray, getComponentType } from "../../utilities";
 import { PageHeader as AntPageHeader } from "antd";
 import { omit } from "ramda";
 
-// TODO handle footer tab bar
-// TODO handle breadcrumbs
-// TODO Add avatar props
-
 const FILTERED_COMPONENTS = ["Tag", "PageHeaderOperation", "PageHeaderFooter"];
 
 type Props = {
