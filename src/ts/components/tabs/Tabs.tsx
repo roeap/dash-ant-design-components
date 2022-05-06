@@ -1,7 +1,15 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Tabs as AntTabs } from "antd";
 import * as icons from "@ant-design/icons";
+import {
+    parseChildrenToArray,
+    getComponentType,
+    getComponentProps,
+} from "../../utilities";
+import { Props as TabPaneProps } from "./TabPane";
+
+const { TabPane: AntTabPane } = AntTabs;
 
 type Props = {
     /**
@@ -84,6 +92,30 @@ const Tabs = (props: Props) => {
         }
     };
 
+    const tabItems = useMemo(
+        () =>
+            parseChildrenToArray(children)
+                .filter((c) => getComponentType(c) === "TabPane")
+                .map((c) => {
+                    const props = getComponentProps(c) as TabPaneProps;
+                    return (
+                        <AntTabPane
+                            className={props.class_name}
+                            style={props.style}
+                            key={props.key}
+                            tab={props.label}
+                            forceRender={props.force_render}
+                            closeIcon={
+                                props.close_icon && icons[props.close_icon]
+                            }
+                        >
+                            {c}
+                        </AntTabPane>
+                    );
+                }),
+        [children]
+    );
+
     return (
         <AntTabs
             className={class_name}
@@ -98,7 +130,7 @@ const Tabs = (props: Props) => {
             onChange={handleChange}
             {...otherProps}
         >
-            {children}
+            {tabItems}
         </AntTabs>
     );
 };

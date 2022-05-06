@@ -12,7 +12,7 @@ import { omit } from "ramda";
 // TODO handle breadcrumbs
 // TODO Add avatar props
 
-const FILTERED_COMPONENTS = ["Tag", "PageHeaderOperation"];
+const FILTERED_COMPONENTS = ["Tag", "PageHeaderOperation", "PageHeaderFooter"];
 
 type Props = {
     /**
@@ -78,6 +78,14 @@ const PageHeader = (props: Props) => {
         [children]
     );
 
+    const footer = useMemo(
+        () =>
+            parseChildrenToArray(children).filter(
+                (c) => getComponentType(c) === "PageHeaderFooter"
+            ),
+        [children]
+    );
+
     const filteredChildren = useMemo(
         () =>
             parseChildrenToArray(children).filter(
@@ -93,6 +101,7 @@ const PageHeader = (props: Props) => {
             // @ts-expect-error we are sure those are in fact Tags
             tags={tagItems}
             extra={operations}
+            footer={footer}
             breadcrumb={
                 breadcrumb_routes ? { routes: breadcrumb_routes } : undefined
             }

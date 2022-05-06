@@ -22,7 +22,10 @@ import Tag from "./components/tag/Tag";
 import CheckableTag from "./components/tag/CheckableTag";
 import PageHeader from "./components/pageheader/PageHeader";
 import PageHeaderOperation from "./components/pageheader/PageHeaderOperation";
+import PageHeaderFooter from "./components/pageheader/PageHeaderFooter";
 import Icon from "./components/icon/Icon";
+import Tabs from "./components/tabs/Tabs";
+import TabPane from "./components/tabs/TabPane";
 
 export {
     Button,
@@ -47,5 +50,8 @@ export {
     Tag,
     PageHeader,
     PageHeaderOperation,
+    PageHeaderFooter,
     Icon,
+    Tabs,
+    TabPane,
 };

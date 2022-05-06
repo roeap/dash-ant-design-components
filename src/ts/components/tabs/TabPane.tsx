@@ -1,12 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, Fragment } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
-import { Tabs } from "antd";
-import * as icons from "@ant-design/icons";
-import { omit } from "ramda";
 
-const { TabPane: AntTabsPane } = Tabs;
-
-type Props = {
+export type Props = {
     /**
      * The children of this component.
      */
@@ -22,11 +17,11 @@ type Props = {
     /**
      * TabPane's key
      */
-    key?: string;
+    tab_key: string;
     /**
      * Show text in TabPane's head
      */
-    tab?: string;
+    label: string;
 } & DashComponentProps &
     StyledComponentProps;
 
@@ -34,15 +29,8 @@ type Props = {
  * TabPane
  */
 const TabPane = (props: Props) => {
-    const { class_name, close_icon, force_render, ...otherProps } = props;
-    return (
-        <AntTabsPane
-            className={class_name}
-            closeIcon={close_icon && icons[close_icon]}
-            forceRender={force_render}
-            {...omit(["setProps"], otherProps)}
-        />
-    );
+    const { children } = props;
+    return <Fragment>{children}</Fragment>;
 };
 
 TabPane.defaultProps = {};
