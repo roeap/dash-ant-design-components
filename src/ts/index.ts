@@ -29,6 +29,9 @@ import Tabs from "./components/tabs/Tabs";
 import TabPane from "./components/tabs/TabPane";
 import Steps from "./components/steps/Steps";
 import Step from "./components/steps/Step";
+import Radio from "./components/radio/Radio";
+import RadioGroup from "./components/radio/RadioGroup";
+import RadioButton from "./components/radio/RadioButton";
 
 export {
     Button,
@@ -60,4 +63,7 @@ export {
     TabPane,
     Steps,
     Step,
+    Radio,
+    RadioGroup,
+    RadioButton,
 };
