@@ -3,6 +3,8 @@ import { DashComponentProps, StyledComponentProps } from "../../types";
 import { DatePicker as AntDatePicker, DatePickerProps } from "antd";
 import moment from "moment";
 
+const { RangePicker: AntRangePicker } = AntDatePicker;
+
 type Props = {
     /**
      * If allow to remove input content with clear icon
@@ -20,10 +22,6 @@ type Props = {
      * The open state of picker
      */
     open?: boolean;
-    // /**
-    //  * The placeholder of date input
-    //  */
-    // placeholder?: [string, string];
     /**
      * The position where the selection box pops up
      */
@@ -85,7 +83,7 @@ const DateRangePicker = (props: Props) => {
     };
 
     return (
-        <AntDatePicker.RangePicker
+        <AntRangePicker
             allowClear={allow_clear}
             value={[moment(start), moment(end)]}
             showTime={show_time}
@@ -95,7 +93,6 @@ const DateRangePicker = (props: Props) => {
             {...otherProps}
         />
     );
-    return <div />;
 };
 
 DateRangePicker.defaultProps = {};

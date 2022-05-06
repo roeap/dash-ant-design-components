@@ -20,7 +20,6 @@ function isUndefined(obj?: unknown): obj is null | undefined {
 }
 
 export function getComponentType(component: ReactNode): string {
-    let componentType;
     if (!component || isUndefined(component)) return "";
     if (typeof component === "string") return "string";
     if (typeof component === "number") return "number";
@@ -36,20 +35,16 @@ export function getComponentType(component: ReactNode): string {
         component.props._dashprivate_layout.props
     ) {
         // props are coming from Dash
-        componentType = component.props._dashprivate_layout.type;
-    } else {
-        // else props are coming from React
-        // eslint-disable-next-line
-        // @ts-ignore
-        componentType = component.type.name;
+        return component.props._dashprivate_layout.type;
     }
-    return componentType;
+    // else props are coming from React
+    // @ts-expect-error ts does not know what we know
+    return component.type.name;
 }
 
 export function getComponentProps(
     component: ReactNode
 ): Record<string, unknown> {
-    let componentProps;
     if (!component || isUndefined(component)) return {};
     if (typeof component === "string") return {};
     if (typeof component === "number") return {};
@@ -65,12 +60,8 @@ export function getComponentProps(
         component.props._dashprivate_layout.props
     ) {
         // props are coming from Dash
-        componentProps = component.props._dashprivate_layout.props;
-    } else {
-        // else props are coming from React
-        // eslint-disable-next-line
-        // @ts-ignore
-        componentProps = component.props;
+        return component.props._dashprivate_layout.props;
     }
-    return componentProps;
+    // else props are coming from React
+    return component.props;
 }

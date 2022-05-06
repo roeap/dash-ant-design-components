@@ -4,17 +4,15 @@ import {
     StyledComponentProps,
     BreadcrumbRoute,
 } from "../../types";
-import {
-    parseChildrenToArray,
-    getComponentType,
-    getComponentProps,
-} from "../../utilities";
-import { PageHeader as AntPageHeader, Tag as AntTag } from "antd";
+import { parseChildrenToArray, getComponentType } from "../../utilities";
+import { PageHeader as AntPageHeader } from "antd";
 import { omit } from "ramda";
 
 // TODO handle footer tab bar
 // TODO handle breadcrumbs
 // TODO Add avatar props
+
+const FILTERED_COMPONENTS = ["Tag", "PageHeaderOperation"];
 
 type Props = {
     /**
@@ -28,7 +26,7 @@ type Props = {
     /**
      * Routes for breadcrumbs to be displayed in page header
      */
-    breadcrumb_routes: BreadcrumbRoute[];
+    breadcrumb_routes?: BreadcrumbRoute[];
     /**
      * Operating area, at the end of the line of the title line
      */
@@ -44,7 +42,7 @@ type Props = {
     /**
      * Custom subtitle text
      */
-    subTitle?: ReactNode;
+    sub_title?: ReactNode;
     /**
      * Custom title text
      */
@@ -56,33 +54,51 @@ type Props = {
  * A header with common actions and design elements built in.
  */
 const PageHeader = (props: Props) => {
-    const { class_name, breadcrumb_routes, children, ...otherProps } = props;
+    const {
+        children,
+        class_name,
+        breadcrumb_routes,
+        sub_title,
+        ...otherProps
+    } = props;
 
     const tagItems = useMemo(
         () =>
-            parseChildrenToArray(children)
-                .filter((c) => getComponentType(c) === "Tag")
-                .map((c, index) => {
-                    const props = getComponentProps(c);
-                    return (
-                        <AntTag
-                            key={(props.key as string) || `key-${index}`}
-                            closable={props.closable as boolean}
-                            color={props.color as string}
-                        />
-                    );
-                }),
+            parseChildrenToArray(children).filter(
+                (c) => getComponentType(c) === "Tag"
+            ),
+        [children]
+    );
+
+    const operations = useMemo(
+        () =>
+            parseChildrenToArray(children).filter(
+                (c) => getComponentType(c) === "PageHeaderOperation"
+            ),
+        [children]
+    );
+
+    const filteredChildren = useMemo(
+        () =>
+            parseChildrenToArray(children).filter(
+                (c) => !FILTERED_COMPONENTS.includes(getComponentType(c))
+            ),
         [children]
     );
 
     return (
         <AntPageHeader
             className={class_name}
+            subTitle={sub_title}
+            // @ts-expect-error we are sure those are in fact Tags
             tags={tagItems}
-            breadcrumb={{ routes: breadcrumb_routes }}
+            extra={operations}
+            breadcrumb={
+                breadcrumb_routes ? { routes: breadcrumb_routes } : undefined
+            }
             {...omit(["setProps"], otherProps)}
         >
-            {children}
+            {filteredChildren}
         </AntPageHeader>
     );
 };
