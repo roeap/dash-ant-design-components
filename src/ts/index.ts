@@ -1,5 +1,3 @@
-import "antd/dist/antd.css";
-
 import Button from "./components/button/Button";
 import Layout from "./components/layout/Layout";
 import Header from "./components/layout/Header";
@@ -32,6 +30,7 @@ import Step from "./components/steps/Step";
 import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup";
 import RadioButton from "./components/radio/RadioButton";
+import "../../styles/app.less";
 
 export {
     Button,
