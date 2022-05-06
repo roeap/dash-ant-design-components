@@ -17,6 +17,8 @@ from .Menu import Menu
 from .PageHeader import PageHeader
 from .PageHeaderOperation import PageHeaderOperation
 from .Sidebar import Sidebar
+from .Tabs import Tabs
+from .TabsPane import TabsPane
 from .Tag import Tag
 from .TextArea import TextArea
 from .TimePicker import TimePicker
@@ -44,6 +46,8 @@ __all__ = [
     "Menu",
     "PageHeader",
     "PageHeaderOperation",
+    "Tabs",
+    "TabsPane",
     "CheckableTag",
     "Tag",
 ]

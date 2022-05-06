@@ -59,10 +59,14 @@ type Props = {
 } & DashComponentProps &
     StyledComponentProps;
 
+/**
+ * Tabs
+ */
 const Tabs = (props: Props) => {
     const {
         children,
         value,
+        class_name,
         add_icon,
         hide_add,
         more_icon,
@@ -82,6 +86,7 @@ const Tabs = (props: Props) => {
 
     return (
         <AntTabs
+            className={class_name}
             activeKey={value}
             addIcon={add_icon && icons[add_icon]}
             hideAdd={hide_add}
