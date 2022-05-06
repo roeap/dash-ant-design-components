@@ -77,18 +77,18 @@ const Steps = (props: Props) => {
             parseChildrenToArray(children)
                 .filter((c) => getComponentType(c) === "TabPane")
                 .map((c) => {
-                    const props = getComponentProps(c) as StepProps;
+                    const stepProps = getComponentProps(c) as StepProps;
                     return (
                         <AntStep
-                            className={props.class_name}
-                            style={props.style}
-                            key={props.key}
-                            description={props.description}
-                            disabled={props.disabled}
-                            status={props.status}
-                            subTitle={props.sub_title}
-                            title={props.title}
-                            icon={props.icon && icons[props.icon]}
+                            className={stepProps.class_name}
+                            style={stepProps.style}
+                            key={stepProps.key}
+                            description={stepProps.description}
+                            disabled={stepProps.disabled}
+                            status={stepProps.status}
+                            subTitle={stepProps.sub_title}
+                            title={stepProps.title}
+                            icon={stepProps.icon && icons[stepProps.icon]}
                         >
                             {c}
                         </AntStep>

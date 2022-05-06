@@ -97,16 +97,17 @@ const Tabs = (props: Props) => {
             parseChildrenToArray(children)
                 .filter((c) => getComponentType(c) === "TabPane")
                 .map((c) => {
-                    const props = getComponentProps(c) as TabPaneProps;
+                    const tabProps = getComponentProps(c) as TabPaneProps;
                     return (
                         <AntTabPane
-                            className={props.class_name}
-                            style={props.style}
-                            key={props.key}
-                            tab={props.label}
-                            forceRender={props.force_render}
+                            className={tabProps.class_name}
+                            style={tabProps.style}
+                            key={tabProps.key}
+                            tab={tabProps.label}
+                            forceRender={tabProps.force_render}
                             closeIcon={
-                                props.close_icon && icons[props.close_icon]
+                                tabProps.close_icon &&
+                                icons[tabProps.close_icon]
                             }
                         >
                             {c}
