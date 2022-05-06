@@ -10,6 +10,7 @@ import Menu from "./components/menu/Menu";
 import Checkbox from "./components/checkbox/Checkbox";
 import CheckboxGroup from "./components/checkbox/CheckboxGroup";
 import Input from "./components/input/Input";
+import InputNumber from "./components/input/InputNumber";
 import TextArea from "./components/input/TextArea";
 import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownButton from "./components/dropdown/DropdownButton";
@@ -34,6 +35,7 @@ export {
     Checkbox,
     CheckboxGroup,
     Input,
+    InputNumber,
     TextArea,
     Content,
     Footer,

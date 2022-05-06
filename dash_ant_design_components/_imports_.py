@@ -12,6 +12,7 @@ from .Footer import Footer
 from .Header import Header
 from .Icon import Icon
 from .Input import Input
+from .InputNumber import InputNumber
 from .Layout import Layout
 from .Menu import Menu
 from .PageHeader import PageHeader
@@ -40,6 +41,7 @@ __all__ = [
     "DropdownMenu",
     "Icon",
     "Input",
+    "InputNumber",
     "TextArea",
     "Content",
     "Footer",
