@@ -8,6 +8,7 @@ import Menu from "./components/menu/Menu";
 import Checkbox from "./components/checkbox/Checkbox";
 import CheckboxGroup from "./components/checkbox/CheckboxGroup";
 import Input from "./components/input/Input";
+import InputNumber from "./components/input/InputNumber";
 import TextArea from "./components/input/TextArea";
 import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownButton from "./components/dropdown/DropdownButton";
@@ -26,6 +27,9 @@ import Tabs from "./components/tabs/Tabs";
 import TabPane from "./components/tabs/TabPane";
 import Steps from "./components/steps/Steps";
 import Step from "./components/steps/Step";
+import Radio from "./components/radio/Radio";
+import RadioGroup from "./components/radio/RadioGroup";
+import RadioButton from "./components/radio/RadioButton";
 import "../../styles/app.less";
 
 export {
@@ -33,6 +37,7 @@ export {
     Checkbox,
     CheckboxGroup,
     Input,
+    InputNumber,
     TextArea,
     Content,
     Footer,
@@ -57,4 +62,7 @@ export {
     TabPane,
     Steps,
     Step,
+    Radio,
+    RadioGroup,
+    RadioButton,
 };
