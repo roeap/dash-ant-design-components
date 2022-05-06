@@ -1,5 +1,9 @@
 import React, { ReactNode, useCallback } from "react";
-import { DashComponentProps, ItemType } from "../../types";
+import {
+    DashComponentProps,
+    ItemType,
+    StyledComponentProps,
+} from "../../types";
 import { Menu as AntMenu, MenuProps } from "antd";
 
 type Props = {
@@ -59,15 +63,8 @@ type Props = {
      * Color theme of the menu
      */
     theme?: "light" | "dark";
-    /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 /**
  * A versatile menu for navigation.

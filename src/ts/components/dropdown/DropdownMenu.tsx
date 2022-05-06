@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { DashComponentProps, ItemType } from "../../types";
 import { Dropdown as AntDropdown, Menu as AntMenu } from "antd";
+import { omit } from "ramda";
 
 type Props = {
     /**
@@ -45,12 +46,12 @@ type Props = {
  * A Dropdown component
  */
 const DropdownMenu = (props: Props) => {
-    const { id, children, items, ...otherProps } = props;
+    const { children, items, ...otherProps } = props;
 
     const overlay = <AntMenu items={items} />;
 
     return (
-        <AntDropdown overlay={overlay} {...otherProps}>
+        <AntDropdown overlay={overlay} {...omit(["setProps"], otherProps)}>
             {children}
         </AntDropdown>
     );

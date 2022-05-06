@@ -1,5 +1,10 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps, ItemType, DashLoadingState } from "../../types";
+import {
+    DashComponentProps,
+    ItemType,
+    DashLoadingState,
+    StyledComponentProps,
+} from "../../types";
 import { Dropdown as AntDropdown, Menu as AntMenu } from "antd";
 
 const { Button: AntDropdownButton } = AntDropdown;
@@ -26,22 +31,14 @@ type Props = {
      * that this element has been clicked on.
      */
     n_clicks: number;
-    /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 /**
  * A button with an integrated dropdown menu
  */
 const DropdownButton = (props: Props) => {
     const {
-        id,
         children,
         items,
         class_name,
@@ -64,6 +61,7 @@ const DropdownButton = (props: Props) => {
 
     return (
         <AntDropdownButton
+            className={class_name}
             overlay={overlay}
             disabled={disabled}
             onClick={handleClick}

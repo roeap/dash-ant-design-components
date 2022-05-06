@@ -1,2 +1,0 @@
-recursive-include dash_ant_design_components/** *.js *.css *.json *.html
-prune tests

@@ -1,5 +1,9 @@
 import React, { ReactNode, useEffect, useRef } from "react";
-import { DashComponentProps, DashLoadingState } from "../../types";
+import {
+    DashComponentProps,
+    DashLoadingState,
+    StyledComponentProps,
+} from "../../types";
 import { Input as AntInput } from "antd";
 import { isNil, omit } from "ramda";
 import isNumeric from "fast-isnumeric";
@@ -104,22 +108,15 @@ type Props = {
      */
     status?: "error" | "warning";
     /**
-     * Defines CSS styles which will override styles previously set.
-     */
-    style?: object;
-    /**
      * A hint to the user of what can be entered in the control.
      */
     placeholder?: string;
     /**
-     * Often used with CSS to style elements with common properties.
-     */
-    class_name?: string;
-    /**
      * Object that holds the loading state object coming from dash-renderer
      */
     loading_state?: DashLoadingState;
-} & DashComponentProps;
+} & DashComponentProps &
+    StyledComponentProps;
 
 type PayloadType = {
     value?: number | string;
@@ -179,7 +176,7 @@ const Input = (props: Props) => {
                     value !== null && value !== undefined ? value : "";
             }
         }
-    }, [value]);
+    }, [value, type]);
 
     const onEvent = (payload: PayloadType = {}) => {
         if (type === "number") {
