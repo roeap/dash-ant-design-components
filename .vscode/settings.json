@@ -4,10 +4,13 @@
     "Plotly",
     "Sider",
     "antd",
+    "codecov",
     "dashprivate",
     "isnumeric",
     "isort",
     "packagejson",
-    "pageheader"
+    "pageheader",
+    "venv",
+    "virtualenvs"
   ]
 }
