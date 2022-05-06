@@ -4,6 +4,7 @@
     "Plotly",
     "Sider",
     "antd",
+    "dashprivate",
     "isnumeric",
     "isort",
     "packagejson"

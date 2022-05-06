@@ -5,6 +5,10 @@ import { omit } from "ramda";
 
 type Props = {
     /**
+     * The children of this component.
+     */
+    children?: ReactNode;
+    /**
      * Whether the Tag can be closed
      */
     closable?: boolean;
@@ -31,13 +35,15 @@ type Props = {
  * Tag for categorizing or markup.
  */
 const Tag = (props: Props) => {
-    const { class_name, close_icon, ...otherProps } = props;
+    const { children, class_name, close_icon, ...otherProps } = props;
     return (
         <AntTag
             className={class_name}
             closeIcon={close_icon}
             {...omit(["setProps"], otherProps)}
-        />
+        >
+            {children}
+        </AntTag>
     );
 };
 

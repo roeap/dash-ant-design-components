@@ -14,6 +14,7 @@ from .Input import Input
 from .Layout import Layout
 from .Menu import Menu
 from .PageHeader import PageHeader
+from .PageHeaderOperation import PageHeaderOperation
 from .Sidebar import Sidebar
 from .Tag import Tag
 from .TextArea import TextArea
@@ -40,6 +41,7 @@ __all__ = [
     "Sidebar",
     "Menu",
     "PageHeader",
+    "PageHeaderOperation",
     "CheckableTag",
     "Tag",
 ]
