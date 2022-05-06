@@ -22,10 +22,6 @@ type Props = {
      * The open state of picker
      */
     open?: boolean;
-    // /**
-    //  * The placeholder of date input
-    //  */
-    // placeholder?: [string, string];
     /**
      * The position where the selection box pops up
      */
