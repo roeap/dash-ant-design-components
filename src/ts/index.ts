@@ -26,6 +26,8 @@ import PageHeaderFooter from "./components/pageheader/PageHeaderFooter";
 import Icon from "./components/icon/Icon";
 import Tabs from "./components/tabs/Tabs";
 import TabPane from "./components/tabs/TabPane";
+import Steps from "./components/steps/Steps";
+import Step from "./components/steps/Step";
 
 export {
     Button,
@@ -54,4 +56,6 @@ export {
     Icon,
     Tabs,
     TabPane,
+    Steps,
+    Step,
 };
