@@ -1,5 +1,3 @@
-import "antd/dist/antd.css";
-
 import Button from "./components/button/Button";
 import Layout from "./components/layout/Layout";
 import Header from "./components/layout/Header";
@@ -13,6 +11,7 @@ import Input from "./components/input/Input";
 import TextArea from "./components/input/TextArea";
 import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownButton from "./components/dropdown/DropdownButton";
+import "../../styles/app.less";
 
 export {
     Button,

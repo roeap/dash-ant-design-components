@@ -1,5 +1,6 @@
 "use strict";
 
+const theme = require("./theme");
 var directories = require("./directories");
 
 module.exports = {
@@ -21,13 +22,22 @@ module.exports = {
             exclude: /node_modules/,
         },
         {
-            test: /\.css$/,
+            test: /\.css$/i,
+            use: ["style-loader", "css-loader"],
+        },
+        {
+            test: /\.less$/i,
             use: [
+                "style-loader",
+                "css-loader",
                 {
-                    loader: "style-loader",
-                },
-                {
-                    loader: "css-loader",
+                    loader: "less-loader",
+                    options: {
+                        lessOptions: {
+                            modifyVars: theme,
+                            javascriptEnabled: true,
+                        },
+                    },
                 },
             ],
         },

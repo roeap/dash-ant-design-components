@@ -10,8 +10,8 @@ import {
     UploadOutlined,
     VideoCameraOutlined,
 } from "@ant-design/icons";
-import "antd/dist/antd.css";
 import { Button } from "../src/ts";
+import "../styles/app.less";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -65,8 +65,12 @@ const Demo = () => (
         <Layout style={{ marginLeft: 200 }}>
             <Header style={{ padding: 0 }} />
             <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-                <Button id="button-primary" type="primary">Primary</Button>
-                <Button id="button-dashed" type="dashed">Dashed</Button>
+                <Button id="button-primary" type="primary">
+                    Primary
+                </Button>
+                <Button id="button-dashed" type="dashed">
+                    Dashed
+                </Button>
             </Content>
             <Footer style={{ textAlign: "center" }}>
                 Dash Ant Design Components
