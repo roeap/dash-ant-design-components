@@ -10,6 +10,7 @@ from .DropdownButton import DropdownButton
 from .DropdownMenu import DropdownMenu
 from .Footer import Footer
 from .Header import Header
+from .Icon import Icon
 from .Input import Input
 from .Layout import Layout
 from .Menu import Menu
@@ -32,6 +33,7 @@ __all__ = [
     "Divider",
     "DropdownButton",
     "DropdownMenu",
+    "Icon",
     "Input",
     "TextArea",
     "Content",
