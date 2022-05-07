@@ -32,6 +32,7 @@ import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup";
 import RadioButton from "./components/radio/RadioButton";
 import Dropdown from "./components/select/Select";
+import Space from "./components/space/Space";
 
 import "../../styles/app.less";
 
@@ -70,4 +71,5 @@ export {
     RadioGroup,
     RadioButton,
     Dropdown,
+    Space,
 };

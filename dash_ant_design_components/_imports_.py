@@ -24,6 +24,7 @@ from .RadioButton import RadioButton
 from .RadioGroup import RadioGroup
 from .Select import Select
 from .Sidebar import Sidebar
+from .Space import Space
 from .Step import Step
 from .Steps import Steps
 from .TabPane import TabPane
@@ -62,6 +63,7 @@ __all__ = [
     "RadioButton",
     "RadioGroup",
     "Select",
+    "Space",
     "Step",
     "Steps",
     "TabPane",
