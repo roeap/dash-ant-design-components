@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Tag as AntTag } from "antd";
+import * as icons from "@ant-design/icons";
 import { omit } from "ramda";
 
 type Props = {
@@ -15,7 +16,7 @@ type Props = {
     /**
      * Custom close icon
      */
-    close_icon?: ReactNode;
+    close_icon?: string;
     /**
      * Color of the Tag
      */
@@ -23,7 +24,7 @@ type Props = {
     /**
      * Set the icon of tag
      */
-    icon?: ReactNode;
+    icon?: string;
     /**
      * Whether the Tag is closed or not
      */
@@ -39,7 +40,8 @@ const Tag = (props: Props) => {
     return (
         <AntTag
             className={class_name}
-            closeIcon={close_icon}
+            closeIcon={close_icon && icons[close_icon]}
+            // icon={icon ? icons[icon] : undefined}
             {...omit(["setProps"], otherProps)}
         >
             {children}

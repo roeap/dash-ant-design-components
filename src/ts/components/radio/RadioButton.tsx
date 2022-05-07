@@ -23,13 +23,18 @@ type Props = {
  * RadioButton
  */
 const RadioButton = (props: Props) => {
-    const { children, class_name, setProps, ...otherProps } = props;
+    const { children, checked, class_name, setProps, ...otherProps } = props;
 
-    const handleChange: RadioProps["onChange"] = (e) =>
-        setProps({ checked: e.target.checked });
+    const handleClick: RadioProps["onClick"] = () =>
+        setProps({ checked: !checked });
 
     return (
-        <Button className={class_name} onChange={handleChange} {...otherProps}>
+        <Button
+            className={class_name}
+            checked={checked}
+            onClick={handleClick}
+            {...otherProps}
+        >
             {children}
         </Button>
     );

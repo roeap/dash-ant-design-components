@@ -52,7 +52,7 @@ type Props = {
     StyledComponentProps;
 
 /**
- * Component description
+ * A basic Button component
  */
 const Button = (props: Props) => {
     const {
@@ -81,6 +81,7 @@ const Button = (props: Props) => {
             className={class_name}
             onClick={handleClick}
             href={disabled ? undefined : href}
+            disabled={disabled}
             loading={loading_state && loading_state.is_loading}
             {...otherProps}
             data-dash-is-loading={
