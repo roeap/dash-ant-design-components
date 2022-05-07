@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Layout } from "antd";
+import { omit } from "ramda";
 
 const { Sider } = Layout;
 
@@ -41,7 +42,6 @@ type Props = {
  */
 const Sidebar = (props: Props) => {
     const {
-        id,
         children,
         class_name,
         reverse_arrow,
@@ -50,11 +50,10 @@ const Sidebar = (props: Props) => {
     } = props;
     return (
         <Sider
-            id={id}
             className={class_name}
             collapsedWidth={collapsed_width}
             reverseArrow={reverse_arrow}
-            {...otherProps}
+            {...omit(["setProps"], otherProps)}
         >
             {children}
         </Sider>

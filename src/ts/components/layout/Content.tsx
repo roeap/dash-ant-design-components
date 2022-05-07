@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Layout } from "antd";
+import { omit } from "ramda";
 
 const { Content: AntContent } = Layout;
 
@@ -16,9 +17,9 @@ type Props = {
  * Handling the overall layout of a page.
  */
 const Content = (props: Props) => {
-    const { id, children, style, class_name } = props;
+    const { children, class_name, ...otherProps } = props;
     return (
-        <AntContent id={id} style={style} className={class_name}>
+        <AntContent className={class_name} {...omit(["setProps"], otherProps)}>
             {children}
         </AntContent>
     );

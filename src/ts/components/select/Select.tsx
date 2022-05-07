@@ -297,4 +297,11 @@ const Dropdown = (props: Props) => {
     );
 };
 
+Dropdown.defaultProps = {
+    n_blur: 0,
+    n_blur_timestamp: -1,
+    n_submit: 0,
+    n_submit_timestamp: -1,
+};
+
 export default Dropdown;
