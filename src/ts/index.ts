@@ -5,6 +5,7 @@ import Sidebar from "./components/layout/Sidebar";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
 import Menu from "./components/menu/Menu";
+import MenuItem from "./components/menu/MenuItem";
 import Checkbox from "./components/checkbox/Checkbox";
 import CheckboxGroup from "./components/checkbox/CheckboxGroup";
 import Input from "./components/input/Input";
@@ -47,6 +48,7 @@ export {
     Layout,
     Sidebar,
     Menu,
+    MenuItem,
     DropdownButton,
     DropdownMenu,
     DatePicker,

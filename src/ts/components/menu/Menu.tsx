@@ -8,6 +8,10 @@ import { Menu as AntMenu, MenuProps } from "antd";
 
 type Props = {
     /**
+     * The children of this component.
+     */
+    children?: ReactNode;
+    /**
      * custom expand icon of submenu
      */
     expand_icon?: ReactNode;
@@ -26,15 +30,15 @@ type Props = {
     /**
      * Menu item content
      */
-    items: ItemType[];
+    items?: ItemType[];
     /**
      * Type of menu
      */
-    mode: "vertical" | "horizontal" | "inline";
+    mode?: "vertical" | "horizontal" | "inline";
     /**
      * Allows selection of multiple items
      */
-    multiple: boolean;
+    multiple?: boolean;
     /**
      * Array with the keys of currently opened sub-menus
      */
@@ -71,8 +75,8 @@ type Props = {
  */
 const Menu = (props: Props) => {
     const {
-        id,
         class_name,
+        children,
         expand_icon,
         force_sub_menu_render,
         inline_collapsed,
@@ -117,7 +121,6 @@ const Menu = (props: Props) => {
 
     return (
         <AntMenu
-            id={id}
             className={class_name}
             expandIcon={expand_icon}
             forceSubMenuRender={force_sub_menu_render}
@@ -132,14 +135,13 @@ const Menu = (props: Props) => {
             onDeselect={onDeselect}
             onOpenChange={onOpenChange}
             {...otherProps}
-        />
+        >
+            {children}
+        </AntMenu>
     );
 };
 
 Menu.defaultProps = {
-    mode: "vertical",
-    multiple: false,
-    open_keys: [],
     selectable: true,
     selected_keys: [],
 };

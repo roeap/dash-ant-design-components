@@ -28,6 +28,10 @@ type Props = {
      */
     size: "large" | "middle" | "small";
     /**
+     * Same as target attribute of a, works when href is specified
+     */
+    target?: string;
+    /**
      * The type of the button
      */
     type: "primary" | "ghost" | "dashed" | "link" | "text" | "default";

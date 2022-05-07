@@ -15,6 +15,7 @@ from .Input import Input
 from .InputNumber import InputNumber
 from .Layout import Layout
 from .Menu import Menu
+from .MenuItem import MenuItem
 from .PageHeader import PageHeader
 from .PageHeaderFooter import PageHeaderFooter
 from .PageHeaderOperation import PageHeaderOperation
@@ -53,6 +54,7 @@ __all__ = [
     "Layout",
     "Sidebar",
     "Menu",
+    "MenuItem",
     "PageHeader",
     "PageHeaderFooter",
     "PageHeaderOperation",
