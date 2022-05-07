@@ -4,7 +4,7 @@ import {
     DashLoadingState,
     StyledComponentProps,
 } from "../../types";
-import { Input as AntInput } from "antd";
+import { Input as AntInput, InputProps } from "antd";
 import { isNil, omit } from "ramda";
 import isNumeric from "fast-isnumeric";
 
@@ -149,7 +149,7 @@ const Input = (props: Props) => {
     } = props;
     const inputRef = useRef(null);
 
-    const onChange = () => {
+    const handleChange: InputProps["onChange"] = () => {
         if (!debounce) {
             onEvent();
         }
@@ -197,7 +197,7 @@ const Input = (props: Props) => {
         }
     };
 
-    const onBlur = () => {
+    const handleBlur: InputProps["onBlur"] = () => {
         if (setProps) {
             const payload = {
                 n_blur: n_blur + 1,
@@ -211,7 +211,7 @@ const Input = (props: Props) => {
         }
     };
 
-    const onKeyPress = (e) => {
+    const handleKeyPress: InputProps["onKeyPress"] = (e) => {
         if (setProps && e.key === "Enter") {
             const payload = {
                 n_submit: n_submit + 1,
@@ -235,9 +235,9 @@ const Input = (props: Props) => {
             maxLength={max_length}
             showCount={show_count}
             className={class_name}
-            onChange={onChange}
-            onBlur={onBlur}
-            onKeyPress={onKeyPress}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onKeyPress={handleKeyPress}
             {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}
             data-dash-is-loading={
                 (loading_state && loading_state.is_loading) || undefined

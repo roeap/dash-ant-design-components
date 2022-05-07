@@ -30,6 +30,8 @@ import Step from "./components/steps/Step";
 import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup";
 import RadioButton from "./components/radio/RadioButton";
+import Dropdown from "./components/select/Select";
+
 import "../../styles/app.less";
 
 export {
@@ -65,4 +67,5 @@ export {
     Radio,
     RadioGroup,
     RadioButton,
+    Dropdown,
 };

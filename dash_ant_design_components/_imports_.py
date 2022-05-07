@@ -21,6 +21,7 @@ from .PageHeaderOperation import PageHeaderOperation
 from .Radio import Radio
 from .RadioButton import RadioButton
 from .RadioGroup import RadioGroup
+from .Select import Select
 from .Sidebar import Sidebar
 from .Step import Step
 from .Steps import Steps
@@ -58,6 +59,7 @@ __all__ = [
     "Radio",
     "RadioButton",
     "RadioGroup",
+    "Select",
     "Step",
     "Steps",
     "TabPane",
