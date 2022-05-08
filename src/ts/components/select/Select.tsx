@@ -123,12 +123,7 @@ type Props = {
     /**
      * The position where the selection box pops up
      */
-    placement?:
-        | "bottomLeft"
-        | "bottomRight"
-        | "topLeft"
-        | "topRight"
-        | "bottomLeft";
+    placement?: "bottomLeft" | "bottomRight" | "topLeft" | "topRight";
     /**
      * The custom remove icon
      */
@@ -239,9 +234,9 @@ const Select = (props: Props) => {
     };
 
     const handleDropdownVisibleChange: SelectProps["onDropdownVisibleChange"] =
-        (open) => {
+        (openProp) => {
             if (setProps) {
-                setProps({ open });
+                setProps({ open: openProp });
             }
         };
 
