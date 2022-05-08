@@ -1,4 +1,4 @@
-import React, { useCallback, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Tag } from "antd";
 import { CheckableTagProps } from "antd/lib/tag";
