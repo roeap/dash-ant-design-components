@@ -1,7 +1,7 @@
 import React from "react";
 import { Select, SelectProps } from "antd";
 import { LabeledValue } from "antd/lib/select";
-import * as icons from "@ant-design/icons";
+import Icon from "../icon/Icon";
 import { omit } from "ramda";
 import {
     DashComponentProps,
@@ -265,7 +265,7 @@ const Dropdown = (props: Props) => {
             allowClear={allow_clear}
             autoClearSearchValue={auto_clear_search_value}
             className={class_name}
-            clearIcon={clear_icon && icons[clear_icon]}
+            clearIcon={clear_icon && Icon({ icon_name: clear_icon })}
             defaultActiveFirstOption={default_active_first_option}
             dropdownClassName={dropdown_class_name}
             dropdownMatchSelectWidth={dropdown_match_select_width}
@@ -278,14 +278,15 @@ const Dropdown = (props: Props) => {
             maxTagCount={max_tag_count}
             maxTagTextLength={max_tag_text_length}
             menuItemSelectedIcon={
-                menu_item_selected_icon && icons[menu_item_selected_icon]
+                menu_item_selected_icon &&
+                Icon({ icon_name: menu_item_selected_icon })
             }
             optionFilterProp={option_filter_prop}
             optionLabelProp={option_label_prop}
-            removeIcon={remove_icon && icons[remove_icon]}
+            removeIcon={remove_icon && Icon({ icon_name: remove_icon })}
             showArrow={show_arrow}
             showSearch={show_search}
-            suffixIcon={suffix_icon && icons[suffix_icon]}
+            suffixIcon={suffix_icon && Icon({ icon_name: suffix_icon })}
             tokenSeparators={token_separators}
             open={open}
             onBlur={handleBlur}

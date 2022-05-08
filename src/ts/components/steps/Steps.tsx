@@ -2,7 +2,7 @@ import React, { ReactNode, useMemo } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Steps as AntSteps } from "antd";
 import { Props as StepProps } from "./Step";
-import * as icons from "@ant-design/icons";
+import Icon from "../icon/Icon";
 import {
     parseChildrenToArray,
     getComponentType,
@@ -88,7 +88,10 @@ const Steps = (props: Props) => {
                             status={stepProps.status}
                             subTitle={stepProps.sub_title}
                             title={stepProps.title}
-                            icon={stepProps.icon && icons[stepProps.icon]}
+                            icon={
+                                stepProps.icon &&
+                                Icon({ icon_name: stepProps.icon })
+                            }
                         >
                             {c}
                         </AntStep>

@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Tabs as AntTabs } from "antd";
-import * as icons from "@ant-design/icons";
+import Icon from "../icon/Icon";
 import {
     parseChildrenToArray,
     getComponentType,
@@ -107,7 +107,7 @@ const Tabs = (props: Props) => {
                             forceRender={tabProps.force_render}
                             closeIcon={
                                 tabProps.close_icon &&
-                                icons[tabProps.close_icon]
+                                Icon({ icon_name: tabProps.close_icon })
                             }
                         >
                             {c}
@@ -121,9 +121,9 @@ const Tabs = (props: Props) => {
         <AntTabs
             className={class_name}
             activeKey={value}
-            addIcon={add_icon && icons[add_icon]}
+            addIcon={add_icon && Icon({ icon_name: add_icon })}
             hideAdd={hide_add}
-            moreIcon={more_icon && icons[more_icon]}
+            moreIcon={more_icon && Icon({ icon_name: more_icon })}
             tabBarGutter={tab_bar_gutter}
             tabBarStyle={tab_bar_style}
             tabPosition={tab_position}
