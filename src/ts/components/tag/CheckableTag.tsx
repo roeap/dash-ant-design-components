@@ -18,19 +18,18 @@ type Props = {
     StyledComponentProps;
 
 /**
- * CheckableTag works like Checkbox, click it to toggle checked state.
+ * CheckableTag works like a Checkbox, click it to toggle checked state.
  */
 const CheckableTag = (props: Props) => {
-    const { children, class_name, setProps, ...otherProps } = props;
+    const { children, class_name, checked, setProps, ...otherProps } = props;
 
-    const handleClick: CheckableTagProps["onClick"] = useCallback(
-        (checked) => setProps({ checked }),
-        [setProps]
-    );
+    const handleClick: CheckableTagProps["onClick"] = () =>
+        setProps({ checked: !checked });
 
     return (
         <AntCheckableTag
             className={class_name}
+            checked={checked}
             onClick={handleClick}
             {...otherProps}
         >
