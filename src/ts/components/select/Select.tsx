@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, SelectProps } from "antd";
+import { Select as AntSelect, SelectProps } from "antd";
 import { LabeledValue } from "antd/lib/select";
 import Icon from "../icon/Icon";
 import { omit } from "ramda";
@@ -197,7 +197,7 @@ type Props = {
 /**
  * A dropdown component
  */
-const Dropdown = (props: Props) => {
+const Select = (props: Props) => {
     const {
         allow_clear,
         auto_clear_search_value,
@@ -261,7 +261,7 @@ const Dropdown = (props: Props) => {
     };
 
     return (
-        <Select
+        <AntSelect
             allowClear={allow_clear}
             autoClearSearchValue={auto_clear_search_value}
             className={class_name}
@@ -298,11 +298,11 @@ const Dropdown = (props: Props) => {
     );
 };
 
-Dropdown.defaultProps = {
+Select.defaultProps = {
     n_blur: 0,
     n_blur_timestamp: -1,
     n_submit: 0,
     n_submit_timestamp: -1,
 };
 
-export default Dropdown;
+export default Select;
