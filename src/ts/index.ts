@@ -5,6 +5,7 @@ import Sidebar from "./components/layout/Sidebar";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
 import Menu from "./components/menu/Menu";
+import MenuItem from "./components/menu/MenuItem";
 import Checkbox from "./components/checkbox/Checkbox";
 import CheckboxGroup from "./components/checkbox/CheckboxGroup";
 import Input from "./components/input/Input";
@@ -30,12 +31,23 @@ import Step from "./components/steps/Step";
 import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup";
 import RadioButton from "./components/radio/RadioButton";
+import Select from "./components/select/Select";
+import Space from "./components/space/Space";
+
 import "../../styles/app.less";
 
 export {
     Button,
     Checkbox,
     CheckboxGroup,
+    DatePicker,
+    DateRangePicker,
+    TimePicker,
+    TimeRangePicker,
+    Divider,
+    DropdownButton,
+    DropdownMenu,
+    Icon,
     Input,
     InputNumber,
     TextArea,
@@ -45,24 +57,19 @@ export {
     Layout,
     Sidebar,
     Menu,
-    DropdownButton,
-    DropdownMenu,
-    DatePicker,
-    TimePicker,
-    DateRangePicker,
-    TimeRangePicker,
-    Divider,
+    MenuItem,
+    PageHeader,
+    PageHeaderFooter,
+    PageHeaderOperation,
+    Radio,
+    RadioButton,
+    RadioGroup,
+    Select,
+    Space,
+    Step,
+    Steps,
+    TabPane,
+    Tabs,
     CheckableTag,
     Tag,
-    PageHeader,
-    PageHeaderOperation,
-    PageHeaderFooter,
-    Icon,
-    Tabs,
-    TabPane,
-    Steps,
-    Step,
-    Radio,
-    RadioGroup,
-    RadioButton,
 };

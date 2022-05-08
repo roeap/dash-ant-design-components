@@ -22,15 +22,16 @@ type Props = {
  * Radio
  */
 const Radio = (props: Props) => {
-    const { children, class_name, setProps, ...otherProps } = props;
+    const { children, checked, class_name, setProps, ...otherProps } = props;
 
-    const handleChange: RadioProps["onChange"] = (e) =>
-        setProps({ checked: e.target.checked });
+    const handleClick: RadioProps["onClick"] = () =>
+        setProps({ checked: !checked });
 
     return (
         <AntRadio
             className={class_name}
-            onChange={handleChange}
+            checked={checked}
+            onClick={handleClick}
             {...otherProps}
         >
             {children}

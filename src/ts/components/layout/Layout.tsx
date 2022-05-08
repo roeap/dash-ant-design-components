@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Layout as AntLayout } from "antd";
+import { omit } from "ramda";
 
 type Props = {
     /**
@@ -19,13 +20,12 @@ type Props = {
  * Handling the overall layout of a page.
  */
 const Layout = (props: Props) => {
-    const { id, children, style, class_name, has_sidebar } = props;
+    const { children, class_name, has_sidebar, ...otherProps } = props;
     return (
         <AntLayout
-            id={id}
-            style={style}
             className={class_name}
             hasSider={has_sidebar}
+            {...omit(["setProps"], otherProps)}
         >
             {children}
         </AntLayout>

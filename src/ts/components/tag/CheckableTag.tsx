@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Tag } from "antd";
 import { CheckableTagProps } from "antd/lib/tag";
@@ -7,6 +7,10 @@ const { CheckableTag: AntCheckableTag } = Tag;
 
 type Props = {
     /**
+     * The children of this component.
+     */
+    children?: ReactNode;
+    /**
      * Checked status of Tag
      */
     checked: boolean;
@@ -14,22 +18,23 @@ type Props = {
     StyledComponentProps;
 
 /**
- * CheckableTag works like Checkbox, click it to toggle checked state.
+ * CheckableTag works like a Checkbox, click it to toggle checked state.
  */
 const CheckableTag = (props: Props) => {
-    const { class_name, setProps, ...otherProps } = props;
+    const { children, class_name, checked, setProps, ...otherProps } = props;
 
-    const handleChange: CheckableTagProps["onChange"] = useCallback(
-        (checked) => setProps({ checked }),
-        [setProps]
-    );
+    const handleClick: CheckableTagProps["onClick"] = () =>
+        setProps({ checked: !checked });
 
     return (
         <AntCheckableTag
             className={class_name}
-            onChange={handleChange}
+            checked={checked}
+            onClick={handleClick}
             {...otherProps}
-        />
+        >
+            {children}
+        </AntCheckableTag>
     );
 };
 

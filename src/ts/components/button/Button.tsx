@@ -28,6 +28,10 @@ type Props = {
      */
     size: "large" | "middle" | "small";
     /**
+     * Same as target attribute of a, works when href is specified
+     */
+    target?: string;
+    /**
      * The type of the button
      */
     type: "primary" | "ghost" | "dashed" | "link" | "text" | "default";
@@ -48,7 +52,7 @@ type Props = {
     StyledComponentProps;
 
 /**
- * Component description
+ * A basic Button component
  */
 const Button = (props: Props) => {
     const {
@@ -77,6 +81,7 @@ const Button = (props: Props) => {
             className={class_name}
             onClick={handleClick}
             href={disabled ? undefined : href}
+            disabled={disabled}
             loading={loading_state && loading_state.is_loading}
             {...otherProps}
             data-dash-is-loading={

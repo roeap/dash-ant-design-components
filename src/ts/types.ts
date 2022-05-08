@@ -73,7 +73,7 @@ export type MenuItem = {
     /**
      * The icon of the menu item
      */
-    icon?: ReactNode;
+    icon?: string;
     /**
      * Unique ID of the menu item
      */
@@ -81,7 +81,7 @@ export type MenuItem = {
     /**
      * Menu label
      */
-    label: ReactNode;
+    label: string;
     /**
      * Set display title for collapsed item
      */
@@ -112,7 +112,7 @@ export type SubMenu = {
     /**
      * The icon of the menu item
      */
-    icon?: ReactNode;
+    icon?: string;
     /**
      * Unique ID of the menu item
      */
@@ -120,7 +120,7 @@ export type SubMenu = {
     /**
      * Menu label
      */
-    label: ReactNode;
+    label: string;
     /**
      * Set display title for collapsed item
      */

@@ -5,8 +5,36 @@ import {
     StyledComponentProps,
 } from "../../types";
 import { Menu as AntMenu, MenuProps } from "antd";
+import Icon from "../icon/Icon";
+
+/*
+ * event polyfill for IE
+ * https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent
+ */
+function CustomEvent(event, params) {
+    // eslint-disable-next-line no-param-reassign
+    params = params || {
+        bubbles: false,
+        cancelable: false,
+        // eslint-disable-next-line no-undefined
+        detail: undefined,
+    };
+    const evt = document.createEvent("CustomEvent");
+    evt.initCustomEvent(
+        event,
+        params.bubbles,
+        params.cancelable,
+        params.detail
+    );
+    return evt;
+}
+CustomEvent.prototype = window.Event.prototype;
 
 type Props = {
+    /**
+     * The children of this component.
+     */
+    children?: ReactNode;
     /**
      * custom expand icon of submenu
      */
@@ -26,15 +54,15 @@ type Props = {
     /**
      * Menu item content
      */
-    items: ItemType[];
+    items?: ItemType[];
     /**
      * Type of menu
      */
-    mode: "vertical" | "horizontal" | "inline";
+    mode?: "vertical" | "horizontal" | "inline";
     /**
      * Allows selection of multiple items
      */
-    multiple: boolean;
+    multiple?: boolean;
     /**
      * Array with the keys of currently opened sub-menus
      */
@@ -71,8 +99,8 @@ type Props = {
  */
 const Menu = (props: Props) => {
     const {
-        id,
         class_name,
+        children,
         expand_icon,
         force_sub_menu_render,
         inline_collapsed,
@@ -83,19 +111,43 @@ const Menu = (props: Props) => {
         sub_menu_close_delay,
         sub_menu_open_delay,
         multiple,
+        items,
         setProps,
         ...otherProps
     } = props;
 
+    const mappedItems = items.map((it) => {
+        if ("icon" in it) {
+            return {
+                ...it,
+                icon: it.icon && Icon({ icon_name: it.icon }),
+            };
+        }
+        return it;
+    });
+
     const onSelect: MenuProps["onSelect"] = useCallback(
-        ({ key, selectedKeys }) => {
+        (e) => {
             if (multiple) {
-                setProps({ selected_keys: [...selectedKeys, key] });
+                setProps({ selected_keys: [...e.selectedKeys, e.key] });
             } else {
-                setProps({ selected_keys: [key] });
+                // @ts-expect-error if key does not exist, we get undefined, also fine
+                const curr = items.filter((it) => it.key === e.key);
+                if (curr.length > 0) {
+                    // @ts-expect-error maybe it does
+                    const path = curr[0].path;
+                    if (typeof path !== "undefined") {
+                        window.history.pushState({}, "", path);
+                        window.dispatchEvent(
+                            CustomEvent("_dashprivate_pushstate", {})
+                        );
+                        window.scrollTo(0, 0);
+                    }
+                }
+                setProps({ selected_keys: [e.key] });
             }
         },
-        [multiple, setProps]
+        [multiple, items, setProps]
     );
 
     const onDeselect: MenuProps["onDeselect"] = useCallback(
@@ -117,8 +169,8 @@ const Menu = (props: Props) => {
 
     return (
         <AntMenu
-            id={id}
             className={class_name}
+            items={mappedItems}
             expandIcon={expand_icon}
             forceSubMenuRender={force_sub_menu_render}
             inlineCollapsed={inline_collapsed}
@@ -132,14 +184,13 @@ const Menu = (props: Props) => {
             onDeselect={onDeselect}
             onOpenChange={onOpenChange}
             {...otherProps}
-        />
+        >
+            {children}
+        </AntMenu>
     );
 };
 
 Menu.defaultProps = {
-    mode: "vertical",
-    multiple: false,
-    open_keys: [],
     selectable: true,
     selected_keys: [],
 };
