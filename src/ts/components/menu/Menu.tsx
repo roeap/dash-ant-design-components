@@ -5,6 +5,7 @@ import {
     StyledComponentProps,
 } from "../../types";
 import { Menu as AntMenu, MenuProps } from "antd";
+import Icon from "../icon/Icon";
 
 /*
  * event polyfill for IE
@@ -115,6 +116,16 @@ const Menu = (props: Props) => {
         ...otherProps
     } = props;
 
+    const mappedItems = items.map((it) => {
+        if ("icon" in it) {
+            return {
+                ...it,
+                icon: it.icon && Icon({ icon_name: it.icon }),
+            };
+        }
+        return it;
+    });
+
     const onSelect: MenuProps["onSelect"] = useCallback(
         (e) => {
             if (multiple) {
@@ -159,7 +170,7 @@ const Menu = (props: Props) => {
     return (
         <AntMenu
             className={class_name}
-            items={items}
+            items={mappedItems}
             expandIcon={expand_icon}
             forceSubMenuRender={force_sub_menu_render}
             inlineCollapsed={inline_collapsed}
