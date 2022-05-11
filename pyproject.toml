@@ -11,9 +11,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-dash = { git = "https://github.com/plotly/dash", branch = "dev", extras = [
-    "dev",
-] }
+dash = "^2.4"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
