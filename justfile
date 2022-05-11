@@ -2,9 +2,9 @@ set dotenv-load := false
 
 # Generate components and build the bundle
 build:
-    yarn build
-    black .
-    isort .
+    poetry run yarn build
+    poetry run black .
+    poetry run isort .
 
 # Build the webpack bundle
 build-js:
