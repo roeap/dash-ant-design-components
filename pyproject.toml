@@ -3,8 +3,8 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "dash-ant-design-components"
-version = "0.1.0"
+name = "dash-antd-components"
+version = "0.0.1"
 description = "Ant Design components for Plotly Dash"
 authors = ["Robert Pack <robstar.pack@gmail.com>"]
 license = "MIT"
