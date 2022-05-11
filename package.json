@@ -1,12 +1,12 @@
 {
-  "name": "dash_ant_design_components",
+  "name": "dash_antd_components",
   "version": "0.1.0",
   "description": "A Dash wrapper around React Ant Design Components",
   "main": "index.ts",
   "scripts": {
     "build:js::dev": "webpack --mode development --config=webpack/config.dist.js",
     "build:js": "webpack --mode production --config=webpack/config.dist.js",
-    "build:backends": "dash-generate-components ./src/ts/components dash_ant_design_components -p package-info.json --r-prefix 'dadc' --jl-prefix 'dadc' --ignore \\.test\\.",
+    "build:backends": "dash-generate-components ./src/ts/components dash_antd_components -p package-info.json --r-prefix 'dadc' --jl-prefix 'dadc' --ignore \\.test\\.",
     "build": "yarn build:js && yarn build:backends",
     "watch": "yarn build:js::dev -- --watch",
     "test": "jest",

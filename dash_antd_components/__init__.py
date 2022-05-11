@@ -36,12 +36,12 @@ _js_dist = []
 _js_dist.extend(
     [
         {
-            "relative_package_path": "dash_ant_design_components.min.js",
+            "relative_package_path": "dash_antd_components.min.js",
             "external_url": "https://unpkg.com/{0}@{2}/{1}/{1}.js".format(package_name, __name__, __version__),
             "namespace": package_name,
         },
         {
-            "relative_package_path": "dash_ant_design_components.js.map",
+            "relative_package_path": "dash_antd_components.js.map",
             "external_url": "https://unpkg.com/{0}@{2}/{1}/{1}.js.map".format(package_name, __name__, __version__),
             "namespace": package_name,
             "dynamic": True,
