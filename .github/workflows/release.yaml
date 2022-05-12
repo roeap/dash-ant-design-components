@@ -1,4 +1,4 @@
-name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+name: Publish Python 🐍 distributions 📦 to PyPI
 
 on:
   push:
@@ -75,10 +75,10 @@ jobs:
       - name: Run tests
         run: just test
 
-      - name: Run tests
+      - name: Build package
         run: just package
 
-      - name: Publish distribution 📦 to Test PyPI
+      - name: Publish distribution 📦 to PyPI
         run: |
           pip install twine
           twine upload dist/*
