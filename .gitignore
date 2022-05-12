@@ -295,6 +295,6 @@ src/jl
 Project.toml
 
 # Python build artifacts
-dash_antdesign_components/*
-!dash_antdesign_components/__init__.py
-!dash_antdesign_components/_imports_.py
+dash_antd/*
+!dash_antd/__init__.py
+!dash_antd/_imports_.py
