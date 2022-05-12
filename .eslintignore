@@ -1,5 +1,5 @@
 dist/*
-dash_antd_components/*
+dash_antdesign_components/*
 webpack/*
 inst/*
 deps/*
