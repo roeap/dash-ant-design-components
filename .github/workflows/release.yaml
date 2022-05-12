@@ -1,10 +1,27 @@
 name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
-on: push
+on:
+  push:
+    tags: ["v*"]
 
 jobs:
+  validate-release-tag:
+    name: Validate git tag
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: compare git tag with cargo metadata
+        run: |
+          PUSHED_TAG=${GITHUB_REF##*/}
+          CURR_VER=$( grep version pyproject.toml | head -n 1 | awk '{print $3}' | tr -d '"' )
+          if [[ "${PUSHED_TAG}" != "v${CURR_VER}" ]]; then
+            echo "pyproject metadata has version set to ${CURR_VER}, but got pushed tag ${PUSHED_TAG}."
+            exit 1
+          fi
+
   build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+    name: Build and publish Python 🐍 distributions 📦 to PyPI
+    needs: validate-release-tag
     runs-on: ubuntu-latest
 
     steps:
@@ -67,5 +84,5 @@ jobs:
           twine upload dist/*
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
-          TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+          # TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
