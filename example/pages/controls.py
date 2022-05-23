@@ -45,7 +45,7 @@ input_number_content = [
     dadc.Space(
         style={"marginBottom": 25},
         children=[
-            dadc.InputNumber(),
+            dadc.InputNumber(value=10, step=10),
             dadc.InputNumber(addon_after="m"),
             dadc.InputNumber(addon_after="m", status="warning"),
             dadc.InputNumber(addon_after="m", status="error"),

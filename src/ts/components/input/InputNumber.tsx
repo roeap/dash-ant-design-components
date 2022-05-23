@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { InputNumber as AntInputNumber } from "antd";
+import { InputNumber as AntInputNumber, InputNumberProps } from "antd";
 import {
     DashComponentProps,
     DashLoadingState,
@@ -128,41 +128,30 @@ const InputNumber = (props: Props) => {
     } = props;
     const inputRef = useRef(null);
 
-    const onChange = () => {
-        if (!debounce) {
-            onEvent();
-        }
-    };
-
     useEffect(() => {
-        const inputValue = inputRef.current.input.value;
-        const inputValueAsNumber = inputRef.current.input.checkValidity()
+        const inputValue = inputRef.current.value;
+        const inputValueAsNumber = inputRef.current.checkValidity()
             ? convert(inputValue)
             : NaN;
         const valueAsNumber = convert(value);
-
         if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
-            inputRef.current.input.value = isNil(valueAsNumber)
+            inputRef.current.value = isNil(valueAsNumber)
                 ? valueAsNumber
                 : value;
         }
     }, [value]);
 
-    const onEvent = (payload: PayloadType = {}) => {
-        const inputValue = inputRef.current.input.value;
-        const inputValueAsNumber = inputRef.current.input.checkValidity()
-            ? convert(inputValue)
-            : NaN;
-        const valueAsNumber = convert(value);
-
-        if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
-            setProps({ ...payload, value: inputValueAsNumber });
-        } else if (Object.keys(payload).length) {
-            setProps(payload);
+    const onStep: InputNumberProps["onStep"] = (newValue) => {
+        const valueAsNumber = convert(newValue);
+        inputRef.current.value = isNil(valueAsNumber)
+            ? valueAsNumber
+            : newValue;
+        if (!debounce) {
+            onEvent();
         }
     };
 
-    const onBlur = () => {
+    const onBlur: InputNumberProps["onBlur"] = () => {
         if (setProps) {
             const payload = {
                 n_blur: n_blur + 1,
@@ -176,29 +165,45 @@ const InputNumber = (props: Props) => {
         }
     };
 
-    const onKeyPress = (e) => {
-        if (setProps && e.key === "Enter") {
-            const payload = {
-                n_submit: n_submit + 1,
-                n_submit_timestamp: Date.now(),
-            };
-            if (debounce) {
-                onEvent(payload);
-            } else {
-                setProps(payload);
-            }
+    const onKeyPress: InputNumberProps["onPressEnter"] = () => {
+        const payload = {
+            n_submit: n_submit + 1,
+            n_submit_timestamp: Date.now(),
+        };
+        if (debounce) {
+            onEvent(payload);
+        } else {
+            setProps(payload);
         }
     };
+
+    const onEvent = (payload: PayloadType = {}) => {
+        const inputValue = inputRef.current.value;
+        const inputValueAsNumber = inputRef.current.checkValidity()
+            ? convert(inputValue)
+            : NaN;
+        const valueAsNumber = convert(value);
+
+        if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
+            setProps({ ...payload, value: inputValueAsNumber });
+        } else if (Object.keys(payload).length) {
+            setProps(payload);
+        }
+    };
+
     return (
         <AntInputNumber
             ref={inputRef}
             addonAfter={addon_after}
             addonBefore={addon_before}
             className={class_name}
-            onChange={onChange}
+            onStep={onStep}
             onBlur={onBlur}
-            onKeyPress={onKeyPress}
-            {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}
+            onPressEnter={onKeyPress}
+            {...omit(
+                ["n_blur_timestamp", "n_submit_timestamp", "value"],
+                otherProps
+            )}
             data-dash-is-loading={
                 (loading_state && loading_state.is_loading) || undefined
             }
@@ -212,6 +217,8 @@ InputNumber.defaultProps = {
     n_submit: 0,
     n_submit_timestamp: -1,
     debounce: false,
+    value: 0,
+    step: 1,
 };
 
 export default InputNumber;
