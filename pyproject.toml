@@ -14,7 +14,6 @@ include = [
     "dash_antd/package-info.json",
     "dash_antd/dash_antd.min.js",
     "dash_antd/dash_antd.min.js.LICENSE.txt",
-
 ]
 
 [tool.poetry.dependencies]
