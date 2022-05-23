@@ -32,6 +32,10 @@ lint:
 demo:
     yarn demo
 
+# run the example dash app
+run:
+    python -m example
+
 # forat all source files
 format:
     yarn format
