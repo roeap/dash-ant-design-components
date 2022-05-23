@@ -1,5 +1,15 @@
 # Dash Ant Design Components
 
+<p align="center">
+<a href="https://github.com/roeap/dash-ant-design-components/actions"><img alt="Actions Status" src="https://github.com/roeap/dash-ant-design-components/actions/workflows/test.yaml/badge.svg"></a>
+<a href="https://codecov.io/gh/roeap/dash-ant-design-components">
+  <img src="https://codecov.io/gh/roeap/dash-ant-design-components/branch/main/graph/badge.svg?token=DNVIU3FXL5"/>
+</a>
+<a href="https://github.com/psf/black/blob/main/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
+<a href="https://pypi.org/project/black/"><img alt="PyPI" src="https://img.shields.io/pypi/v/black"></a>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+</p>
+
 Ant Design components for Plotly Dash.
 
 > The `dash-ant-design-components` are build in pure TypeScript. Generating dash components
@@ -37,3 +47,11 @@ just build
 ```
 
 See all commands with `just -l`
+
+### Example app
+
+An example app is contained in the `example` folder. To run it execute:
+
+```sh
+just run
+```
