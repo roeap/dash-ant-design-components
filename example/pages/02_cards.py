@@ -1,14 +1,16 @@
 import dash
-from dash import html
 
 import dash_antd as dadc
 
 dash.register_page(path="/cards", title="Cards", icon="ControlOutlined")  # type: ignore
 
 
-layout = html.Div(
+layout = dadc.Row(
     [
-        dadc.Card(dadc.Button("Hello World"), hoverable=True, title="Card Title"),
-        dadc.Card(dadc.Button("Hello World"), hoverable=True, title="Card Title"),
+        dadc.Col(dadc.Card(dadc.Button("Hello World"), title="Basic Card"), span=12, style={"padding": 6}),
+        dadc.Col(
+            dadc.Card(dadc.Button("Hello World"), hoverable=True, title="Hoverable Card"), span=12, style={"padding": 6}
+        ),
     ],
+    style={"height": "100%"},
 )
