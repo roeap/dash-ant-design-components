@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "dash-antd"
-version = "0.0.3"
+version = "0.0.4"
 description = "Ant Design components for Plotly Dash"
 authors = ["Robert Pack <robstar.pack@gmail.com>"]
 license = "MIT"
@@ -14,7 +14,6 @@ include = [
     "dash_antd/package-info.json",
     "dash_antd/dash_antd.min.js",
     "dash_antd/dash_antd.min.js.LICENSE.txt",
-
 ]
 
 [tool.poetry.dependencies]
