@@ -70,6 +70,14 @@ const Card = (props: Props) => {
         [children]
     );
 
+    const filteredChildren = useMemo(
+        () =>
+            parseChildrenToArray(children).filter(
+                (c) => getComponentType(c) !== "CardAction"
+            ),
+        [children]
+    );
+
     const onTabChange: CardProps["onTabChange"] = (key) => {
         setProps({ active_tab_key: key });
     };
@@ -88,7 +96,7 @@ const Card = (props: Props) => {
                 (loading_state && loading_state.is_loading) || undefined
             }
         >
-            {children}
+            {filteredChildren}
         </AntCard>
     );
 };
