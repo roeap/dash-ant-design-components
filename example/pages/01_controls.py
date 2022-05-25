@@ -224,6 +224,20 @@ checkable_tag_content = [
     ),
 ]
 
+alert_content = [
+    dadc.Tag("Experimental", color="orange"),
+    dadc.Space(
+        style={"marginBottom": 25},
+        children=[
+            dadc.Alert(message="info"),
+            dadc.Alert(message="warning", type="warning"),
+            dadc.Alert(message="error", type="error"),
+            dadc.Alert(message="success", type="success"),
+            dadc.Alert(message="closable", type="success", closable=True),
+        ],
+    ),
+]
+
 
 def get_component_props(folder, name):
     metadata = get_component_metadata(f"src/ts/components/{folder}/{name}.tsx")
@@ -250,5 +264,6 @@ layout = dadc.Space(
         dadc.PageHeader(switch_content, **get_component_props("switch", "Switch")),
         dadc.PageHeader(tag_content, **get_component_props("tag", "Tag")),
         dadc.PageHeader(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
+        dadc.PageHeader(alert_content, **get_component_props("alert", "Alert")),
     ],
 )

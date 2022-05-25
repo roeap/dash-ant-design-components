@@ -1,3 +1,4 @@
+import Alert from "./components/alert/Alert";
 import Button from "./components/button/Button";
 import Layout from "./components/layout/Layout";
 import Header from "./components/layout/Header";
@@ -44,6 +45,7 @@ import Switch from "./components/switch/Switch";
 import "../../styles/app.less";
 
 export {
+    Alert,
     Button,
     Card,
     CardAction,

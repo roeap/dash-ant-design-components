@@ -1,3 +1,4 @@
+from .Alert import Alert
 from .Button import Button
 from .Card import Card
 from .CardAction import CardAction
@@ -42,6 +43,7 @@ from .TimePicker import TimePicker
 from .TimeRangePicker import TimeRangePicker
 
 __all__ = [
+    "Alert",
     "Button",
     "Card",
     "CardAction",
