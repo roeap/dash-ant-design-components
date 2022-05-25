@@ -1,6 +1,7 @@
 from .Button import Button
 from .Card import Card
 from .CardAction import CardAction
+from .CardExtra import CardExtra
 from .CheckableTag import CheckableTag
 from .Checkbox import Checkbox
 from .CheckboxGroup import CheckboxGroup
@@ -44,6 +45,7 @@ __all__ = [
     "Button",
     "Card",
     "CardAction",
+    "CardExtra",
     "Checkbox",
     "CheckboxGroup",
     "DatePicker",

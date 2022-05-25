@@ -47,6 +47,8 @@ type Props = {
 } & DashComponentProps &
     StyledComponentProps;
 
+const omittedClasses = ["CardAction", "CardExtra"];
+
 /**
  * Simple rectangular container.
  */
@@ -70,10 +72,18 @@ const Card = (props: Props) => {
         [children]
     );
 
+    const extraItems = useMemo(
+        () =>
+            parseChildrenToArray(children).filter(
+                (c) => getComponentType(c) === "CardExtra"
+            ),
+        [children]
+    );
+
     const filteredChildren = useMemo(
         () =>
             parseChildrenToArray(children).filter(
-                (c) => getComponentType(c) !== "CardAction"
+                (c) => !omittedClasses.includes(getComponentType(c))
             ),
         [children]
     );
@@ -88,6 +98,7 @@ const Card = (props: Props) => {
             activeTabKey={active_tab_key}
             bodyStyle={body_style}
             className={class_name}
+            extra={extraItems}
             headStyle={head_style}
             loading={(loading_state && loading_state.is_loading) || undefined}
             onTabChange={onTabChange}

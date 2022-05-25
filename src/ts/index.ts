@@ -8,6 +8,7 @@ import Row from "./components/layout/Row";
 import Col from "./components/layout/Col";
 import Card from "./components/card/Card";
 import CardAction from "./components/card/CardAction";
+import CardExtra from "./components/card/CardExtra";
 import Menu from "./components/menu/Menu";
 import MenuItem from "./components/menu/MenuItem";
 import Checkbox from "./components/checkbox/Checkbox";
@@ -46,6 +47,7 @@ export {
     Button,
     Card,
     CardAction,
+    CardExtra,
     Checkbox,
     CheckboxGroup,
     DatePicker,
