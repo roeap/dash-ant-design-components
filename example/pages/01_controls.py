@@ -3,7 +3,7 @@ import dash
 import dash_antd as dadc
 from example.metadata import get_component_metadata
 
-dash.register_page(path="/", title="Basic Controls", icon="ControlOutlined")  # type: ignore
+dash.register_page(path="/", title="Controls", icon="ControlOutlined")  # type: ignore
 
 
 button_content = [

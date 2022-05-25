@@ -4,6 +4,11 @@ import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
+import Row from "./components/layout/Row";
+import Col from "./components/layout/Col";
+import Card from "./components/card/Card";
+import CardAction from "./components/card/CardAction";
+import CardExtra from "./components/card/CardExtra";
 import Menu from "./components/menu/Menu";
 import MenuItem from "./components/menu/MenuItem";
 import Checkbox from "./components/checkbox/Checkbox";
@@ -40,6 +45,9 @@ import "../../styles/app.less";
 
 export {
     Button,
+    Card,
+    CardAction,
+    CardExtra,
     Checkbox,
     CheckboxGroup,
     DatePicker,
@@ -76,4 +84,6 @@ export {
     Tabs,
     CheckableTag,
     Tag,
+    Row,
+    Col,
 };

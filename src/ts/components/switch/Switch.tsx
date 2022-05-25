@@ -18,7 +18,7 @@ type Props = {
     /**
      * The size of the Switch
      */
-    switch?: "default" | "small";
+    size?: "default" | "small";
     /**
      * Object that holds the loading state object coming from dash-renderer
      */
