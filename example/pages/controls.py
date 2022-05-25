@@ -177,6 +177,29 @@ radio_group_content = [
     ),
 ]
 
+slider_content = [
+    dadc.Tag("Experimental", color="orange"),
+    dadc.Space(
+        style={"marginBottom": 25},
+        children=[
+            dadc.Slider(style={"width": 100}),
+            dadc.Slider(range=True, style={"width": 100}),
+            dadc.Slider(style={"width": 100}),
+        ],
+    ),
+]
+
+switch_content = [
+    dadc.Tag("Experimental", color="orange"),
+    dadc.Space(
+        style={"marginBottom": 25},
+        children=[
+            dadc.Switch(checked=True),
+            dadc.Switch(checked=False),
+        ],
+    ),
+]
+
 tag_content = [
     dadc.Tag("Experimental", color="orange"),
     dadc.Space(
@@ -223,6 +246,8 @@ layout = dadc.Space(
         dadc.PageHeader(radio_content, **get_component_props("radio", "Radio")),
         dadc.PageHeader(radio_button_content, **get_component_props("radio", "RadioButton")),
         dadc.PageHeader(radio_group_content, **get_component_props("radio", "RadioGroup")),
+        dadc.PageHeader(slider_content, **get_component_props("slider", "Slider")),
+        dadc.PageHeader(switch_content, **get_component_props("switch", "Switch")),
         dadc.PageHeader(tag_content, **get_component_props("tag", "Tag")),
         dadc.PageHeader(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
     ],

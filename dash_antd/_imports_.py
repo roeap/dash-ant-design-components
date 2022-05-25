@@ -24,9 +24,11 @@ from .RadioButton import RadioButton
 from .RadioGroup import RadioGroup
 from .Select import Select
 from .Sidebar import Sidebar
+from .Slider import Slider
 from .Space import Space
 from .Step import Step
 from .Steps import Steps
+from .Switch import Switch
 from .TabPane import TabPane
 from .Tabs import Tabs
 from .Tag import Tag
@@ -63,9 +65,11 @@ __all__ = [
     "RadioButton",
     "RadioGroup",
     "Select",
+    "Slider",
     "Space",
     "Step",
     "Steps",
+    "Switch",
     "TabPane",
     "Tabs",
     "CheckableTag",
