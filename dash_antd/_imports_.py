@@ -28,6 +28,7 @@ from .Radio import Radio
 from .RadioButton import RadioButton
 from .RadioGroup import RadioGroup
 from .Row import Row
+from .Segmented import Segmented
 from .Select import Select
 from .Sidebar import Sidebar
 from .Slider import Slider
@@ -39,6 +40,8 @@ from .TabPane import TabPane
 from .Tabs import Tabs
 from .Tag import Tag
 from .TextArea import TextArea
+from .Timeline import Timeline
+from .TimelineItem import TimelineItem
 from .TimePicker import TimePicker
 from .TimeRangePicker import TimeRangePicker
 
@@ -76,6 +79,7 @@ __all__ = [
     "Radio",
     "RadioButton",
     "RadioGroup",
+    "Segmented",
     "Select",
     "Slider",
     "Space",
@@ -86,4 +90,6 @@ __all__ = [
     "Tabs",
     "CheckableTag",
     "Tag",
+    "Timeline",
+    "TimelineItem",
 ]
