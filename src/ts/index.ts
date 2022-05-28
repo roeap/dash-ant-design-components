@@ -41,6 +41,7 @@ import Select from "./components/select/Select";
 import Space from "./components/space/Space";
 import Slider from "./components/slider/Slider";
 import Switch from "./components/switch/Switch";
+import Segmented from "./components/segmented/Segmented";
 
 import "../../styles/app.less";
 
@@ -88,4 +89,5 @@ export {
     Tag,
     Row,
     Col,
+    Segmented,
 };

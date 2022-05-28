@@ -56,7 +56,6 @@ type Props = {
  */
 const Button = (props: Props) => {
     const {
-        id,
         disabled,
         children,
         setProps,
@@ -77,7 +76,6 @@ const Button = (props: Props) => {
 
     return (
         <AntButton
-            id={id}
             className={class_name}
             onClick={handleClick}
             href={disabled ? undefined : href}
