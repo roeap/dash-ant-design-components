@@ -35,6 +35,9 @@ type Props = {
 } & DashComponentProps &
     StyledComponentProps;
 
+/**
+ * Segmented component
+ */
 const Segmented = (props: Props) => {
     const { setProps, class_name, ...otherProps } = props;
 
