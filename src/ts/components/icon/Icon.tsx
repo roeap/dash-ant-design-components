@@ -5,7 +5,7 @@ import { omit } from "ramda";
 
 type Props = {
     /**
-     * Name fo the icon https://ant.design/components/icon/
+     * Name for the icon https://ant.design/components/icon/
      */
     icon_name: string;
 } & StyledComponentProps &
