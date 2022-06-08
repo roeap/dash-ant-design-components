@@ -1,6 +1,5 @@
 "use strict";
 
-const theme = require("./theme");
 var directories = require("./directories");
 
 module.exports = {
