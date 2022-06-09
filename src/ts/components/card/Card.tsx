@@ -5,7 +5,12 @@ import {
     DashLoadingState,
 } from "../../types";
 import { Card as AntCard, CardProps } from "antd";
-import { parseChildrenToArray, getComponentType } from "../../utilities";
+import {
+    parseChildrenToArray,
+    getComponentType,
+    isStringWithCharacters,
+} from "../../utilities";
+import "./card.less";
 
 type Props = {
     /**
@@ -47,7 +52,7 @@ type Props = {
 } & DashComponentProps &
     StyledComponentProps;
 
-const omittedClasses = ["CardAction", "CardExtra"];
+const omittedClasses = ["CardAction", "CardExtra", "CardTitle"];
 
 /**
  * Simple rectangular container.
@@ -60,6 +65,7 @@ const Card = (props: Props) => {
         class_name,
         head_style,
         loading_state,
+        title,
         setProps,
         ...otherProps
     } = props;
@@ -97,8 +103,11 @@ const Card = (props: Props) => {
             actions={actionItems}
             activeTabKey={active_tab_key}
             bodyStyle={body_style}
-            className={class_name}
+            className={`${class_name || ""} ${
+                !isStringWithCharacters(title) ? "hide-title" : ""
+            }`}
             extra={extraItems}
+            title={title}
             headStyle={head_style}
             loading={(loading_state && loading_state.is_loading) || undefined}
             onTabChange={onTabChange}
