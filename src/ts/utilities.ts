@@ -5,6 +5,14 @@ function isNodeArray<T>(node: T | T[]): node is T[] {
     return Array.isArray(node);
 }
 
+function isString(string: string) {
+    return typeof string === "string";
+}
+
+export function isStringWithCharacters(string: string) {
+    return isString(string) && string.length > 0;
+}
+
 export function parseChildrenToArray<T>(children?: T | T[]): T[] {
     if (children) {
         if (!isNodeArray(children)) {
