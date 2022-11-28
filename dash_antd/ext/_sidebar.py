@@ -22,7 +22,7 @@ def get_nav_item(page):
     return {"label": page["title"], "key": page["path"], "path": page["path"]}
 
 
-def generate_sidebar_layout(primary_color: Optional[str] = None) -> ant.ConfigProvider:
+def generate_sidebar_layout(primary_color: Optional[str] = None, use_dark_theme: bool = False) -> ant.ConfigProvider:
     nav_items = [get_nav_item(page) for page in dash.page_registry.values()]
 
     token = {}
@@ -31,7 +31,7 @@ def generate_sidebar_layout(primary_color: Optional[str] = None) -> ant.ConfigPr
 
     return ant.ConfigProvider(
         id="app-config",
-        use_dark_theme=True,
+        use_dark_theme=use_dark_theme,
         token=token,
         children=ant.Layout(
             has_sidebar=True,
