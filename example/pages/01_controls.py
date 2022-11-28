@@ -3,7 +3,7 @@ import dash
 import dash_antd as dadc
 from example.metadata import get_component_metadata
 
-dash.register_page(__name__, title="Controls", icon="ControlOutlined")
+dash.register_page(__name__, title="Controls", icon="ControlOutlined", path="/")
 
 
 button_content = [

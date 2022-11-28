@@ -33,6 +33,9 @@ lint:
     poetry run black --check .
     poetry run ruff .
 
+fix:
+    poetry run ruff --fix .
+
 # Run demo server
 demo:
     yarn demo

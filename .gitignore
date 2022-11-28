@@ -299,3 +299,5 @@ dash_antd/*
 !dash_antd/__init__.py
 !dash_antd/_imports_.py
 !.vscode/cspell.json
+!dash_antd/ext
+!dash_antd/py.typed

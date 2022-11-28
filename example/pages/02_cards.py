@@ -45,4 +45,12 @@ layout = [
         gutter=[6, 6],
         style={"height": "100%"},
     ),
+    dadc.Row(
+        [
+            dadc.Col(dadc.Card(dadc.Button("Hello World")), span=12),
+            dadc.Col(dadc.Card(dadc.Button("Hello World"), hoverable=True), span=12),
+        ],
+        gutter=[6, 6],
+        style={"height": "100%"},
+    ),
 ]
