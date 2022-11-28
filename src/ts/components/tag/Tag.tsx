@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Tag as AntTag } from "antd";
-import Icon from "../icon/Icon";
 import { omit } from "ramda";
 
 type Props = {
@@ -16,7 +15,7 @@ type Props = {
     /**
      * Custom close icon
      */
-    close_icon?: string;
+    close_icon?: ReactNode;
     /**
      * Color of the Tag
      */
@@ -24,7 +23,7 @@ type Props = {
     /**
      * Set the icon of tag
      */
-    icon?: string;
+    icon?: ReactNode;
     /**
      * Whether the Tag is closed or not
      */
@@ -36,12 +35,11 @@ type Props = {
  * Tag for categorizing or markup.
  */
 const Tag = (props: Props) => {
-    const { children, class_name, close_icon, icon, ...otherProps } = props;
+    const { children, class_name, close_icon, ...otherProps } = props;
     return (
         <AntTag
             className={class_name}
-            closeIcon={close_icon && Icon({ icon_name: close_icon })}
-            icon={icon && Icon({ icon_name: icon })}
+            closeIcon={close_icon}
             {...omit(["setProps"], otherProps)}
         >
             {children}

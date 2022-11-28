@@ -24,7 +24,7 @@ type Props = {
     /**
      * Custom close icon
      */
-    close_icon?: string;
+    close_icon?: ReactNode;
     /**
      * Additional content of Alert
      */
@@ -32,7 +32,7 @@ type Props = {
     /**
      * Custom icon, effective when showIcon is true
      */
-    icon?: string;
+    icon?: ReactNode;
     /**
      * Content of Alert
      */
@@ -58,7 +58,6 @@ const Alert = (props: Props) => {
         close_icon,
         class_name,
         show_icon,
-        icon,
         ...otherProps
     } = props;
 
@@ -67,8 +66,7 @@ const Alert = (props: Props) => {
             action={children}
             className={class_name}
             closeText={close_text}
-            closeIcon={close_icon && Icon({ icon_name: close_icon })}
-            icon={icon && Icon({ icon_name: icon })}
+            closeIcon={close_icon}
             showIcon={show_icon}
             {...omit(["setProps"], otherProps)}
         />

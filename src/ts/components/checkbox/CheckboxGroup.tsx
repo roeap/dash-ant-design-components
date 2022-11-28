@@ -15,7 +15,7 @@ type Props = {
     /**
      * Currently selected values
      */
-    value: string[];
+    value?: string[];
     /**
      * All options within the CheckboxGroup
      */

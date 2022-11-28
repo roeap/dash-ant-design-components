@@ -19,7 +19,7 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-dash = "^2.5"
+dash = "^2.7"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.10.0"

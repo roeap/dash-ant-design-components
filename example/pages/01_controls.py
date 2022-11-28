@@ -216,7 +216,9 @@ alert_content = [
             dadc.Alert(message="warning", type="warning"),
             dadc.Alert(message="error", type="error"),
             dadc.Alert(message="success", type="success"),
-            dadc.Alert(message="closable", type="success", closable=True),
+            dadc.Alert(
+                message="closable", type="success", closable=True, icon=dadc.Icon("ForwardOutlined"), show_icon=True
+            ),
         ],
     ),
 ]
@@ -268,7 +270,7 @@ layout = dadc.Space(
         dadc.Card(switch_content, **get_component_props("", "Switch")),
         dadc.Card(tag_content, **get_component_props("tag", "Tag")),
         dadc.Card(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
-        dadc.Card(alert_content, **get_component_props("alert", "Alert")),
+        dadc.Card(alert_content, **get_component_props("", "Alert")),
         dadc.Card(config_provider_content, **get_component_props("", "ConfigProvider")),
         dadc.Card(segmented_content, **get_component_props("", "Segmented")),
     ],
