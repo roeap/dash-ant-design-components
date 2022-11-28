@@ -1,12 +1,11 @@
 from .Alert import Alert
 from .Button import Button
 from .Card import Card
-from .CardAction import CardAction
-from .CardExtra import CardExtra
 from .CheckableTag import CheckableTag
 from .Checkbox import Checkbox
 from .CheckboxGroup import CheckboxGroup
 from .Col import Col
+from .ConfigProvider import ConfigProvider
 from .Content import Content
 from .DatePicker import DatePicker
 from .DateRangePicker import DateRangePicker
@@ -45,8 +44,6 @@ __all__ = [
     "Alert",
     "Button",
     "Card",
-    "CardAction",
-    "CardExtra",
     "Checkbox",
     "CheckboxGroup",
     "DatePicker",
@@ -75,7 +72,6 @@ __all__ = [
     "Segmented",
     "Select",
     "Slider",
-    "Space",
     "Steps",
     "Switch",
     "TabPane",
@@ -84,4 +80,6 @@ __all__ = [
     "Tag",
     "Timeline",
     "TimelineItem",
+    "ConfigProvider",
+    "Space",
 ]

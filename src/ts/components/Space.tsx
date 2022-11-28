@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { DashComponentProps, StyledComponentProps } from "../../types";
+import { DashComponentProps, StyledComponentProps } from "../types";
 import { Space as AntSpace } from "antd";
 import { omit } from "ramda";
 

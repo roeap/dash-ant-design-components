@@ -1,17 +1,18 @@
 import Alert from "./components/alert/Alert";
 import Button from "./components/button/Button";
+import Card from "./components/card/Card";
+import Checkbox from "./components/checkbox/Checkbox";
+import CheckboxGroup from "./components/checkbox/CheckboxGroup";
+import Col from "./components/layout/Col";
+import ConfigProvider from "./components/ConfigProvider";
 import Layout from "./components/layout/Layout";
 import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
 import Content from "./components/layout/Content";
 import Footer from "./components/layout/Footer";
 import Row from "./components/layout/Row";
-import Col from "./components/layout/Col";
-import Card from "./components/card/Card";
 import Menu from "./components/menu/Menu";
 import MenuItem from "./components/menu/MenuItem";
-import Checkbox from "./components/checkbox/Checkbox";
-import CheckboxGroup from "./components/checkbox/CheckboxGroup";
 import Input from "./components/input/Input";
 import InputNumber from "./components/input/InputNumber";
 import TextArea from "./components/input/TextArea";
@@ -32,7 +33,7 @@ import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup";
 import RadioButton from "./components/radio/RadioButton";
 import Select from "./components/select/Select";
-import Space from "./components/space/Space";
+import Space from "./components/Space";
 import Slider from "./components/slider/Slider";
 import Switch from "./components/switch/Switch";
 import Segmented from "./components/segmented/Segmented";
@@ -45,6 +46,8 @@ export {
     Card,
     Checkbox,
     CheckboxGroup,
+    Col,
+    ConfigProvider,
     DatePicker,
     DateRangePicker,
     TimePicker,
@@ -76,7 +79,6 @@ export {
     CheckableTag,
     Tag,
     Row,
-    Col,
     Segmented,
     Timeline,
     TimelineItem,

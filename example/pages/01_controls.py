@@ -221,9 +221,21 @@ alert_content = [
     ),
 ]
 
+config_provider_content = [
+    dadc.Space(
+        style={"marginBottom": 25},
+        children=[
+            dadc.ConfigProvider([dadc.Button("Primary", type="primary"), dadc.Input()], use_dark_theme=True),
+            dadc.ConfigProvider([dadc.Button("Primary", type="primary"), dadc.Input()], use_compact=True),
+            dadc.ConfigProvider([dadc.Button("Primary", type="primary"), dadc.Input()]),
+        ],
+    ),
+]
 
-def get_component_props(folder, name):
-    metadata = get_component_metadata(f"src/ts/components/{folder}/{name}.tsx")
+
+def get_component_props(folder: str, name):
+    path = f"src/ts/components/{folder}/{name}.tsx" if folder else f"src/ts/components/{name}.tsx"
+    metadata = get_component_metadata(path)
     return {"title": metadata["displayName"], "extra": dadc.Tag("Experimental", color="orange")}
 
 
@@ -248,5 +260,6 @@ layout = dadc.Space(
         dadc.Card(tag_content, **get_component_props("tag", "Tag")),
         dadc.Card(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
         dadc.Card(alert_content, **get_component_props("alert", "Alert")),
+        dadc.Card(config_provider_content, **get_component_props("", "ConfigProvider")),
     ],
 )

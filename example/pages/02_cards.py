@@ -10,7 +10,7 @@ actions = [
     dadc.Icon("StepBackwardOutlined", key="action-3"),
 ]
 
-extras = [dadc.Button("Hello Extra")]
+extra = dadc.Button("Hello Extra")
 
 
 layout = [
@@ -36,7 +36,7 @@ layout = [
                 dadc.Card(
                     [dadc.Button("Hello World")],
                     actions=actions,
-                    extra=extras[0],
+                    extra=extra,
                     title="Card With Actions and extras",
                 ),
                 span=12,
