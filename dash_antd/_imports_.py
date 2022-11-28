@@ -69,7 +69,6 @@ __all__ = [
     "Radio",
     "RadioButton",
     "RadioGroup",
-    "Segmented",
     "Select",
     "Slider",
     "Steps",
@@ -81,5 +80,6 @@ __all__ = [
     "Timeline",
     "TimelineItem",
     "ConfigProvider",
+    "Segmented",
     "Space",
 ]

@@ -232,6 +232,15 @@ config_provider_content = [
     ),
 ]
 
+segmented_content = [
+    dadc.Space(
+        style={"marginBottom": 25},
+        children=[
+            dadc.Segmented(options=["one", "two", "three"]),
+        ],
+    ),
+]
+
 
 def get_component_props(folder: str, name):
     path = f"src/ts/components/{folder}/{name}.tsx" if folder else f"src/ts/components/{name}.tsx"
@@ -261,5 +270,6 @@ layout = dadc.Space(
         dadc.Card(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
         dadc.Card(alert_content, **get_component_props("alert", "Alert")),
         dadc.Card(config_provider_content, **get_component_props("", "ConfigProvider")),
+        dadc.Card(segmented_content, **get_component_props("", "Segmented")),
     ],
 )

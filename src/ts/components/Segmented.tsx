@@ -1,5 +1,5 @@
-import React from "react";
-import { DashComponentProps, StyledComponentProps } from "../../types";
+import React, { useCallback } from "react";
+import { DashComponentProps, StyledComponentProps } from "../types";
 import { Segmented as AntSegmented, SegmentedProps } from "antd";
 
 type Props = {
@@ -41,15 +41,18 @@ type Props = {
 const Segmented = (props: Props) => {
     const { setProps, class_name, ...otherProps } = props;
 
-    const handleClick: SegmentedProps["onClick"] = (value) => {
-        setProps({ value });
-    };
+    const handleClick: SegmentedProps["onChange"] = useCallback(
+        (value) => {
+            setProps({ value });
+        },
+        [setProps]
+    );
 
     return (
         // @ts-expect-error TODO why is this asking for all props?
         <AntSegmented
             className={class_name}
-            onClick={handleClick}
+            onChange={handleClick}
             {...otherProps}
         />
     );
