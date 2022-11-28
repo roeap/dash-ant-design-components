@@ -39,20 +39,23 @@ type Props = {
  * Segmented component
  */
 const Segmented = (props: Props) => {
-    const { setProps, class_name, ...otherProps } = props;
+    const { class_name, disabled, setProps, ...otherProps } = props;
 
-    const handleClick: SegmentedProps["onChange"] = useCallback(
+    const handleChange: SegmentedProps["onChange"] = useCallback(
         (value) => {
-            setProps({ value });
+            if (!disabled && setProps) {
+                setProps({ value });
+            }
         },
-        [setProps]
+        [setProps, disabled]
     );
 
     return (
         // @ts-expect-error TODO why is this asking for all props?
         <AntSegmented
             className={class_name}
-            onChange={handleClick}
+            onChange={handleChange}
+            disabled={disabled}
             {...otherProps}
         />
     );

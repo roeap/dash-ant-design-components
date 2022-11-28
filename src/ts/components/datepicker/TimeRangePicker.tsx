@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
-import { TimePicker, DatePickerProps } from "antd";
+import { TimePicker, TimeRangePickerProps } from "antd";
 import dayjs from "dayjs";
 
 const { RangePicker: AntRangePicker } = TimePicker;
@@ -64,21 +64,27 @@ const TimeRangePicker = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleOpenChange: DatePickerProps["onOpenChange"] = (open) => {
-        if (!disabled && setProps) {
-            setProps({ open });
-        }
-    };
+    const handleOpenChange: TimeRangePickerProps["onOpenChange"] = useCallback(
+        (open) => {
+            if (!disabled && setProps) {
+                setProps({ open });
+            }
+        },
+        [setProps, disabled]
+    );
 
-    const handleChange = (
-        _dates: [dayjs.Dayjs, dayjs.Dayjs],
-        dateStrings: [string, string]
-    ) => {
-        if (!disabled && setProps) {
-            const [startStr, endStr] = dateStrings;
-            setProps({ start: startStr, end: endStr });
-        }
-    };
+    const handleChange: TimeRangePickerProps["onChange"] = useCallback(
+        (dates) => {
+            if (!disabled && setProps) {
+                const [startDate, endDate] = dates;
+                setProps({
+                    start: startDate.toISOString(),
+                    end: endDate.toISOString(),
+                });
+            }
+        },
+        [setProps, disabled]
+    );
 
     return (
         <AntRangePicker

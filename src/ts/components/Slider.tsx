@@ -1,6 +1,6 @@
-import React from "react";
-import { DashComponentProps, StyledComponentProps } from "../../types";
-import { Slider as AntSlider } from "antd";
+import React, { useCallback } from "react";
+import { DashComponentProps, StyledComponentProps } from "../types";
+import { Slider as AntSlider, SliderSingleProps } from "antd";
 
 type Props = {
     /**
@@ -50,15 +50,25 @@ type Props = {
  * A Slider component for displaying current value and intervals in range.
  */
 const Slider = (props: Props) => {
-    const { class_name, setProps, ...otherProps } = props;
+    const { class_name, disabled, setProps, ...otherProps } = props;
 
-    const onChange = (value: number | [number, number]) => {
-        setProps({ value });
-    };
+    const handleChange: SliderSingleProps["onChange"] = useCallback(
+        (value: number | [number, number]) => {
+            if (!disabled && setProps) {
+                setProps({ value });
+            }
+        },
+        [setProps, disabled]
+    );
 
     return (
         // @ts-expect-error we use only boolean range prop.
-        <AntSlider className={class_name} onChange={onChange} {...otherProps} />
+        <AntSlider
+            className={class_name}
+            onChange={handleChange}
+            disabled={disabled}
+            {...otherProps}
+        />
     );
 };
 

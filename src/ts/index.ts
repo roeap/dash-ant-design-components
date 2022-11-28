@@ -33,10 +33,10 @@ import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup";
 import RadioButton from "./components/radio/RadioButton";
 import Segmented from "./components/Segmented";
-import Select from "./components/select/Select";
+import Select from "./components/Select";
 import Space from "./components/Space";
-import Slider from "./components/slider/Slider";
-import Switch from "./components/switch/Switch";
+import Slider from "./components/Slider";
+import Switch from "./components/Switch";
 import Timeline from "./components/timeline/Timeline";
 import TimelineItem from "./components/timeline/TimelineItem";
 

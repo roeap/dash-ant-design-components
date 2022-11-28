@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Select as AntSelect, SelectProps } from "antd";
 import { LabeledValue } from "antd/lib/select";
-import Icon from "../icon/Icon";
+import Icon from "./icon/Icon";
 import { omit } from "ramda";
 import {
     DashComponentProps,
     DashLoadingState,
     StyledComponentProps,
-} from "../../types";
+} from "../types";
 
 type Props = {
     /**
@@ -220,40 +220,50 @@ const Select = (props: Props) => {
         n_blur,
         n_submit,
         open,
+        disabled,
         setProps,
         ...otherProps
     } = props;
 
-    const handleBlur: SelectProps["onBlur"] = () => {
-        if (setProps) {
+    const handleBlur: SelectProps["onBlur"] = useCallback(() => {
+        if (!disabled && setProps) {
             setProps({
                 n_blur: n_blur + 1,
                 n_blur_timestamp: Date.now(),
             });
         }
-    };
+    }, [setProps, n_blur, disabled]);
 
     const handleDropdownVisibleChange: SelectProps["onDropdownVisibleChange"] =
-        (openProp) => {
-            if (setProps) {
-                setProps({ open: openProp });
+        useCallback(
+            (open) => {
+                if (!disabled && setProps) {
+                    setProps({ open });
+                }
+            },
+            [setProps, disabled]
+        );
+
+    const handleChange: SelectProps["onChange"] = useCallback(
+        (value) => {
+            if (!disabled && setProps) {
+                setProps({ value });
             }
-        };
+        },
+        [setProps, disabled]
+    );
 
-    const handleChange: SelectProps["onChange"] = (newValue) => {
-        if (setProps) {
-            setProps({ value: newValue });
-        }
-    };
-
-    const handleKeyPress: SelectProps["onInputKeyDown"] = (e) => {
-        if (setProps && e.key === "Enter") {
-            setProps({
-                n_submit: n_submit + 1,
-                n_submit_timestamp: Date.now(),
-            });
-        }
-    };
+    const handleKeyPress: SelectProps["onInputKeyDown"] = useCallback(
+        (e) => {
+            if (!disabled && setProps && e.key === "Enter") {
+                setProps({
+                    n_submit: n_submit + 1,
+                    n_submit_timestamp: Date.now(),
+                });
+            }
+        },
+        [setProps, n_submit, disabled]
+    );
 
     return (
         <AntSelect
@@ -288,6 +298,7 @@ const Select = (props: Props) => {
             onChange={handleChange}
             onDropdownVisibleChange={handleDropdownVisibleChange}
             onInputKeyDown={handleKeyPress}
+            disabled={disabled}
             {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}
         />
     );

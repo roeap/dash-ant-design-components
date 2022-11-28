@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { DatePicker as AntDatePicker, DatePickerProps } from "antd";
 import dayjs from "dayjs";
@@ -71,17 +71,23 @@ const DatePicker = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleOpenChange: DatePickerProps["onOpenChange"] = (open) => {
-        if (!disabled && setProps) {
-            setProps({ open });
-        }
-    };
+    const handleOpenChange: DatePickerProps["onOpenChange"] = useCallback(
+        (open) => {
+            if (!disabled && setProps) {
+                setProps({ open });
+            }
+        },
+        [setProps, disabled]
+    );
 
-    const handleChange: DatePickerProps["onChange"] = (_value, dateString) => {
-        if (!disabled && setProps) {
-            setProps({ value: dateString });
-        }
-    };
+    const handleChange: DatePickerProps["onChange"] = useCallback(
+        (date) => {
+            if (!disabled && setProps) {
+                setProps({ value: date.toISOString() });
+            }
+        },
+        [setProps, disabled]
+    );
 
     return (
         <AntDatePicker

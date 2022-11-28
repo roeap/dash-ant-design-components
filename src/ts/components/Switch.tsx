@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
     DashComponentProps,
     StyledComponentProps,
     DashLoadingState,
-} from "../../types";
-import { Switch as AntSwitch } from "antd";
+} from "../types";
+import { Switch as AntSwitch, SwitchProps } from "antd";
 
 type Props = {
     /**
@@ -30,16 +30,23 @@ type Props = {
  * Switching Selector.
  */
 const Switch = (props: Props) => {
-    const { class_name, loading_state, setProps, ...otherProps } = props;
+    const { class_name, loading_state, disabled, setProps, ...otherProps } =
+        props;
 
-    const onChange = (checked: boolean) => {
-        setProps({ checked });
-    };
+    const handleChange: SwitchProps["onChange"] = useCallback(
+        (checked: boolean) => {
+            if (!disabled && setProps) {
+                setProps({ checked });
+            }
+        },
+        [setProps, disabled]
+    );
 
     return (
         <AntSwitch
             className={class_name}
-            onChange={onChange}
+            onChange={handleChange}
+            disabled={disabled}
             loading={(loading_state && loading_state.is_loading) || undefined}
             {...otherProps}
             data-dash-is-loading={
