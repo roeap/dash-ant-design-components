@@ -12,9 +12,6 @@
 
 Ant Design components for Plotly Dash.
 
-> The `dash-ant-design-components` are build in pure TypeScript. Generating dash components
-> from typeSCript is currently only supported on the dev branch of Plotly Dash.
-
 ## Install
 
 The `dash-ant-design-components` are at a very early stage and not yet published to pip.

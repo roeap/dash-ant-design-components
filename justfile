@@ -31,7 +31,7 @@ install:
 lint:
     yarn lint
     poetry run black --check .
-    poetry run isort --check --diff .
+    poetry run ruff .
 
 # Run demo server
 demo:
@@ -45,7 +45,7 @@ run:
 format:
     yarn format
     poetry run black .
-    poetry run isort .
+    poetry run ruff --fix .
 
 # Run component tests
 test:

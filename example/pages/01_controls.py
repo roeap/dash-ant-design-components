@@ -7,7 +7,6 @@ dash.register_page(__name__, title="Controls", icon="ControlOutlined")
 
 
 button_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -26,7 +25,6 @@ button_content = [
 ]
 
 input_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -41,7 +39,6 @@ input_content = [
 ]
 
 input_number_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -54,7 +51,6 @@ input_number_content = [
 ]
 
 checkbox_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -69,7 +65,6 @@ checkbox_content = [
 select_options = [{"label": f"Option {i}", "value": f"option-{i}"} for i in range(10)]
 
 select_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -81,7 +76,6 @@ select_content = [
 ]
 
 date_picker_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -95,7 +89,6 @@ date_picker_content = [
 ]
 
 date_range_picker_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -109,7 +102,6 @@ date_range_picker_content = [
 ]
 
 time_picker_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -122,7 +114,6 @@ time_picker_content = [
 ]
 
 time_range_picker_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -135,7 +126,6 @@ time_range_picker_content = [
 ]
 
 radio_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -147,7 +137,6 @@ radio_content = [
 ]
 
 radio_button_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -166,7 +155,6 @@ radio_group_options = [
 ]
 
 radio_group_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -178,7 +166,6 @@ radio_group_content = [
 ]
 
 slider_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -190,7 +177,6 @@ slider_content = [
 ]
 
 switch_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -201,7 +187,6 @@ switch_content = [
 ]
 
 tag_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -214,7 +199,6 @@ tag_content = [
 ]
 
 checkable_tag_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -225,7 +209,6 @@ checkable_tag_content = [
 ]
 
 alert_content = [
-    dadc.Tag("Experimental", color="orange"),
     dadc.Space(
         style={"marginBottom": 25},
         children=[
@@ -241,7 +224,7 @@ alert_content = [
 
 def get_component_props(folder, name):
     metadata = get_component_metadata(f"src/ts/components/{folder}/{name}.tsx")
-    return {"title": metadata["displayName"]}
+    return {"title": metadata["displayName"], "extra": dadc.Tag("Experimental", color="orange")}
 
 
 layout = dadc.Space(
