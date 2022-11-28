@@ -5,12 +5,12 @@ import dash_antd as dadc
 dash.register_page(__name__, title="Cards", icon="ControlOutlined")
 
 actions = [
-    dadc.CardAction(dadc.Icon("StepBackwardOutlined", key="action-1")),
-    dadc.CardAction(dadc.Icon("StepBackwardOutlined", key="action-2")),
-    dadc.CardAction(dadc.Icon("StepBackwardOutlined", key="action-3")),
+    dadc.Icon("StepBackwardOutlined", key="action-1"),
+    dadc.Icon("StepBackwardOutlined", key="action-2"),
+    dadc.Icon("StepBackwardOutlined", key="action-3"),
 ]
 
-extras = [dadc.CardExtra(dadc.Button("Hello Extra"))]
+extras = [dadc.Button("Hello Extra")]
 
 
 layout = [
@@ -24,9 +24,21 @@ layout = [
     ),
     dadc.Row(
         [
-            dadc.Col(dadc.Card([dadc.Button("Hello World")] + actions, title="Card With Actions"), span=12),
             dadc.Col(
-                dadc.Card([dadc.Button("Hello World")] + actions + extras, title="Card With Actions and extras"),
+                dadc.Card(
+                    [dadc.Button("Hello World")],
+                    actions=actions,
+                    title="Card With Actions",
+                ),
+                span=12,
+            ),
+            dadc.Col(
+                dadc.Card(
+                    [dadc.Button("Hello World")],
+                    actions=actions,
+                    extra=extras[0],
+                    title="Card With Actions and extras",
+                ),
                 span=12,
             ),
         ],

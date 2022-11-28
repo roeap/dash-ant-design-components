@@ -1,17 +1,24 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { ReactNode } from "react";
 import {
     DashComponentProps,
     StyledComponentProps,
     DashLoadingState,
 } from "../../types";
 import { Card as AntCard, CardProps } from "antd";
-import { parseChildrenToArray, getComponentType } from "../../utilities";
 
 type Props = {
     /**
      * The children of this component.
      */
     children?: ReactNode;
+    /**
+     * The action list, shows at the bottom of the Card
+     */
+    actions?: ReactNode[];
+    /**
+     * Content to render in the top-right corner of the card
+     */
+    extra?: ReactNode;
     /**
      * Current TabPane's key
      */
@@ -47,8 +54,6 @@ type Props = {
 } & DashComponentProps &
     StyledComponentProps;
 
-const omittedClasses = ["CardAction", "CardExtra"];
-
 /**
  * Simple rectangular container.
  */
@@ -64,41 +69,15 @@ const Card = (props: Props) => {
         ...otherProps
     } = props;
 
-    const actionItems = useMemo(
-        () =>
-            parseChildrenToArray(children).filter(
-                (c) => getComponentType(c) === "CardAction"
-            ),
-        [children]
-    );
-
-    const extraItems = useMemo(
-        () =>
-            parseChildrenToArray(children).filter(
-                (c) => getComponentType(c) === "CardExtra"
-            ),
-        [children]
-    );
-
-    const filteredChildren = useMemo(
-        () =>
-            parseChildrenToArray(children).filter(
-                (c) => !omittedClasses.includes(getComponentType(c))
-            ),
-        [children]
-    );
-
     const onTabChange: CardProps["onTabChange"] = (key) => {
         setProps({ active_tab_key: key });
     };
 
     return (
         <AntCard
-            actions={actionItems}
             activeTabKey={active_tab_key}
             bodyStyle={body_style}
             className={class_name}
-            extra={extraItems}
             headStyle={head_style}
             loading={(loading_state && loading_state.is_loading) || undefined}
             onTabChange={onTabChange}
@@ -107,7 +86,7 @@ const Card = (props: Props) => {
                 (loading_state && loading_state.is_loading) || undefined
             }
         >
-            {filteredChildren}
+            {children}
         </AntCard>
     );
 };
