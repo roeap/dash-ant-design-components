@@ -18,12 +18,6 @@ layout = [
         [
             dadc.Col(dadc.Card(dadc.Button("Hello World"), title="Basic Card"), span=12),
             dadc.Col(dadc.Card(dadc.Button("Hello World"), hoverable=True, title="Hoverable Card"), span=12),
-        ],
-        gutter=[6, 6],
-        style={"height": "100%"},
-    ),
-    dadc.Row(
-        [
             dadc.Col(
                 dadc.Card(
                     [dadc.Button("Hello World")],
@@ -41,16 +35,10 @@ layout = [
                 ),
                 span=12,
             ),
-        ],
-        gutter=[6, 6],
-        style={"height": "100%"},
-    ),
-    dadc.Row(
-        [
             dadc.Col(dadc.Card(dadc.Button("Hello World")), span=12),
             dadc.Col(dadc.Card(dadc.Button("Hello World"), hoverable=True), span=12),
         ],
-        gutter=[6, 6],
-        style={"height": "100%"},
+        gutter=[24, 24],
+        style={"height": "100%", "padding": 24},
     ),
 ]

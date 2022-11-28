@@ -9,7 +9,7 @@ df = px.data.iris()  # iris is a pandas DataFrame
 
 
 layout = dadc.Layout(
-    style={"height": "100vh", "paddingLeft": 5},
+    style={"height": "100vh"},
     children=dadc.Content(
         dcc.Graph(id="full-page-plot", responsive=True, style={"height": "100%"}),
         style={"flex": "1)"},

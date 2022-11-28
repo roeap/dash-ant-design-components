@@ -11,7 +11,8 @@ _ROOT_STYLE = {
     "left": 0,
     "top": 0,
     "bottom": 0,
-    "borderRight": "1px solid rgba(0,0,0,.06)",
+    "borderInlineEnd": "1px solid rgba(253, 253, 253, 0.12)",
+    "overflowX": "hidden",
 }
 
 
@@ -39,7 +40,7 @@ def generate_sidebar_layout(primary_color: Optional[str] = None) -> dadc.ConfigP
                     style=_ROOT_STYLE,
                     theme="light",
                     children=[
-                        dadc.Menu(id="page-nav", items=nav_items, selected_keys=["page-1"]),
+                        dadc.Menu(id="page-nav", items=nav_items, selected_keys=["page-1"], style={"marginRight": -2}),
                         dadc.Divider("Controls"),
                     ],
                 ),

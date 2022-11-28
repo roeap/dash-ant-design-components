@@ -252,7 +252,8 @@ def get_component_props(folder: str, name):
 
 layout = dadc.Space(
     direction="vertical",
-    style={"width": "100%"},
+    style={"width": "100%", "paddingLeft": 24, "paddingRight": 24, "paddingBottom": 24},
+    size="large",
     children=[
         dadc.Card(button_content, **get_component_props("button", "Button")),
         dadc.Card(input_content, **get_component_props("input", "Input")),
