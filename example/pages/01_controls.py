@@ -3,7 +3,7 @@ import dash
 import dash_antd as dadc
 from example.metadata import get_component_metadata
 
-dash.register_page(path="/", title="Controls", icon="ControlOutlined")  # type: ignore
+dash.register_page(__name__, title="Controls", icon="ControlOutlined")
 
 
 button_content = [
@@ -241,29 +241,29 @@ alert_content = [
 
 def get_component_props(folder, name):
     metadata = get_component_metadata(f"src/ts/components/{folder}/{name}.tsx")
-    return {"title": metadata["displayName"], "sub_title": metadata["description"], "ghost": False}
+    return {"title": metadata["displayName"]}
 
 
 layout = dadc.Space(
     direction="vertical",
     style={"width": "100%"},
     children=[
-        dadc.PageHeader(button_content, **get_component_props("button", "Button")),
-        dadc.PageHeader(input_content, **get_component_props("input", "Input")),
-        dadc.PageHeader(input_number_content, **get_component_props("input", "InputNumber")),
-        dadc.PageHeader(select_content, **get_component_props("select", "Select")),
-        dadc.PageHeader(checkbox_content, **get_component_props("checkbox", "Checkbox")),
-        dadc.PageHeader(date_picker_content, **get_component_props("datepicker", "DatePicker")),
-        dadc.PageHeader(date_range_picker_content, **get_component_props("datepicker", "DateRangePicker")),
-        dadc.PageHeader(time_picker_content, **get_component_props("datepicker", "TimePicker")),
-        dadc.PageHeader(time_range_picker_content, **get_component_props("datepicker", "TimeRangePicker")),
-        dadc.PageHeader(radio_content, **get_component_props("radio", "Radio")),
-        dadc.PageHeader(radio_button_content, **get_component_props("radio", "RadioButton")),
-        dadc.PageHeader(radio_group_content, **get_component_props("radio", "RadioGroup")),
-        dadc.PageHeader(slider_content, **get_component_props("slider", "Slider")),
-        dadc.PageHeader(switch_content, **get_component_props("switch", "Switch")),
-        dadc.PageHeader(tag_content, **get_component_props("tag", "Tag")),
-        dadc.PageHeader(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
-        dadc.PageHeader(alert_content, **get_component_props("alert", "Alert")),
+        dadc.Card(button_content, **get_component_props("button", "Button")),
+        dadc.Card(input_content, **get_component_props("input", "Input")),
+        dadc.Card(input_number_content, **get_component_props("input", "InputNumber")),
+        dadc.Card(select_content, **get_component_props("select", "Select")),
+        dadc.Card(checkbox_content, **get_component_props("checkbox", "Checkbox")),
+        dadc.Card(date_picker_content, **get_component_props("datepicker", "DatePicker")),
+        dadc.Card(date_range_picker_content, **get_component_props("datepicker", "DateRangePicker")),
+        dadc.Card(time_picker_content, **get_component_props("datepicker", "TimePicker")),
+        dadc.Card(time_range_picker_content, **get_component_props("datepicker", "TimeRangePicker")),
+        dadc.Card(radio_content, **get_component_props("radio", "Radio")),
+        dadc.Card(radio_button_content, **get_component_props("radio", "RadioButton")),
+        dadc.Card(radio_group_content, **get_component_props("radio", "RadioGroup")),
+        dadc.Card(slider_content, **get_component_props("slider", "Slider")),
+        dadc.Card(switch_content, **get_component_props("switch", "Switch")),
+        dadc.Card(tag_content, **get_component_props("tag", "Tag")),
+        dadc.Card(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
+        dadc.Card(alert_content, **get_component_props("alert", "Alert")),
     ],
 )

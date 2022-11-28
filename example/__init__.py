@@ -1,9 +1,8 @@
 import dash
 
 import dash_antd as dadc
-from example.plugin import multi_page
 
-app = dash.Dash(__name__, plugins=[multi_page])
+app = dash.Dash(__name__, use_pages=True)
 
 
 def get_nav_item(page):
@@ -36,7 +35,7 @@ app.layout = dadc.Layout(
             children=[
                 dadc.Header(style={"borderBottom": "1px solid rgba(0,0,0,.06)", "background": "white"}),
                 dadc.Content(
-                    multi_page.page_container,
+                    dash.page_container,
                     id="page-content",
                     style={"margin": "24px 16px 0", "overflow": "auto"},
                 ),

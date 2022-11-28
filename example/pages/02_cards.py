@@ -2,7 +2,7 @@ import dash
 
 import dash_antd as dadc
 
-dash.register_page(path="/cards", title="Cards", icon="ControlOutlined")  # type: ignore
+dash.register_page(__name__, title="Cards", icon="ControlOutlined")
 
 actions = [
     dadc.CardAction(dadc.Icon("StepBackwardOutlined", key="action-1")),

@@ -46,6 +46,7 @@ const Segmented = (props: Props) => {
     };
 
     return (
+        // @ts-expect-error TODO why is this asking for all props?
         <AntSegmented
             className={class_name}
             onClick={handleClick}

@@ -57,10 +57,10 @@
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "antd": "^5",
+    "dayjs": "^1.11.6",
     "fast-isnumeric": "^1.1.4",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
-    "moment": "^2.29.4",
     "ramda": "^0.28.0"
   }
 }

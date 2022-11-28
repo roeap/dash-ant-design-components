@@ -24,6 +24,7 @@ dash = "^2.5"
 black = "^22.10.0"
 ruff = "^0.0.141"
 wheel = "^0.37.1"
+PyYAML = "^6.0"
 
 [tool.black]
 line-length = 120
@@ -73,4 +74,7 @@ known-first-party = ["argus"]
 "test_*" = [
     "S101", # assert staments allowed in tests
     "B008", # do not perform function calls in argument defaults
+]
+"dash_antd/*" = [
+    "E501", # line too long
 ]

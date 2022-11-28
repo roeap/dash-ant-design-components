@@ -26,14 +26,10 @@ import TimeRangePicker from "./components/datepicker/TimeRangePicker";
 import Divider from "./components/divider/Divider";
 import Tag from "./components/tag/Tag";
 import CheckableTag from "./components/tag/CheckableTag";
-import PageHeader from "./components/pageheader/PageHeader";
-import PageHeaderOperation from "./components/pageheader/PageHeaderOperation";
-import PageHeaderFooter from "./components/pageheader/PageHeaderFooter";
 import Icon from "./components/icon/Icon";
 import Tabs from "./components/tabs/Tabs";
 import TabPane from "./components/tabs/TabPane";
 import Steps from "./components/steps/Steps";
-import Step from "./components/steps/Step";
 import Radio from "./components/radio/Radio";
 import RadioGroup from "./components/radio/RadioGroup";
 import RadioButton from "./components/radio/RadioButton";
@@ -44,8 +40,6 @@ import Switch from "./components/switch/Switch";
 import Segmented from "./components/segmented/Segmented";
 import Timeline from "./components/timeline/Timeline";
 import TimelineItem from "./components/timeline/TimelineItem";
-
-import "../../styles/app.less";
 
 export {
     Alert,
@@ -73,16 +67,12 @@ export {
     Sidebar,
     Menu,
     MenuItem,
-    PageHeader,
-    PageHeaderFooter,
-    PageHeaderOperation,
     Radio,
     RadioButton,
     RadioGroup,
     Select,
     Space,
     Slider,
-    Step,
     Steps,
     Switch,
     TabPane,

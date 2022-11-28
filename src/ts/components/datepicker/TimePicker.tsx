@@ -1,7 +1,7 @@
 import React from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { TimePicker as AntTimePicker, DatePickerProps } from "antd";
-import moment from "moment";
+import dayjs from "dayjs";
 
 type Props = {
     /**
@@ -99,7 +99,7 @@ const TimePicker = (props: Props) => {
     return (
         <AntTimePicker
             allowClear={allow_clear}
-            value={moment(value)}
+            value={dayjs(value)}
             hourStep={hour_step}
             minuteStep={minute_step}
             secondStep={second_step}

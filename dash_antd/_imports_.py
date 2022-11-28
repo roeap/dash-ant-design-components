@@ -21,9 +21,6 @@ from .InputNumber import InputNumber
 from .Layout import Layout
 from .Menu import Menu
 from .MenuItem import MenuItem
-from .PageHeader import PageHeader
-from .PageHeaderFooter import PageHeaderFooter
-from .PageHeaderOperation import PageHeaderOperation
 from .Radio import Radio
 from .RadioButton import RadioButton
 from .RadioGroup import RadioGroup
@@ -33,7 +30,6 @@ from .Select import Select
 from .Sidebar import Sidebar
 from .Slider import Slider
 from .Space import Space
-from .Step import Step
 from .Steps import Steps
 from .Switch import Switch
 from .TabPane import TabPane
@@ -73,9 +69,6 @@ __all__ = [
     "Sidebar",
     "Menu",
     "MenuItem",
-    "PageHeader",
-    "PageHeaderFooter",
-    "PageHeaderOperation",
     "Radio",
     "RadioButton",
     "RadioGroup",
@@ -83,7 +76,6 @@ __all__ = [
     "Select",
     "Slider",
     "Space",
-    "Step",
     "Steps",
     "Switch",
     "TabPane",

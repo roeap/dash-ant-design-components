@@ -4,7 +4,7 @@ set dotenv-load := false
 build:
     poetry run yarn build
     poetry run black .
-    poetry run isort .
+    poetry run ruff --fix .
 
 # Build the webpack bundle
 build-js:

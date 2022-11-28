@@ -1,7 +1,7 @@
 import React from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { TimePicker, DatePickerProps } from "antd";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const { RangePicker: AntRangePicker } = TimePicker;
 
@@ -71,7 +71,7 @@ const TimeRangePicker = (props: Props) => {
     };
 
     const handleChange = (
-        _dates: [moment.Moment, moment.Moment],
+        _dates: [dayjs.Dayjs, dayjs.Dayjs],
         dateStrings: [string, string]
     ) => {
         if (!disabled && setProps) {
@@ -83,7 +83,7 @@ const TimeRangePicker = (props: Props) => {
     return (
         <AntRangePicker
             allowClear={allow_clear}
-            value={[moment(start), moment(end)]}
+            value={[dayjs(start), dayjs(end)]}
             showNow={show_now}
             onChange={handleChange}
             onOpenChange={handleOpenChange}

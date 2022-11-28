@@ -1,21 +1,40 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Steps as AntSteps } from "antd";
-import { Props as StepProps } from "./Step";
-import Icon from "../icon/Icon";
-import {
-    parseChildrenToArray,
-    getComponentType,
-    getComponentProps,
-} from "../../utilities";
 
-const { Step: AntStep } = AntSteps;
+type StepItem = {
+    /**
+     * Description of the step
+     */
+    description?: string;
+    /**
+     * Disable click
+     */
+    disabled?: boolean;
+    /**
+     * Icon of the step
+     */
+    icon: ReactNode;
+    /**
+     * To specify the status. It will be automatically set by current of Steps if not configured.
+     */
+    status?: "wait" | "process" | "finish" | "error";
+    /**
+     * Subtitle of the step
+     */
+    subTitle?: ReactNode;
+    /**
+     * Title of the step
+     */
+    title?: ReactNode;
+};
 
 type Props = {
+    children?: ReactNode;
     /**
      * The children of this component.
      */
-    children?: ReactNode;
+    items: StepItem[];
     /**
      * To set the current step, counting from 0. You can overwrite this state by using status of Step
      */
@@ -72,34 +91,6 @@ const Steps = (props: Props) => {
         }
     };
 
-    const steps = useMemo(
-        () =>
-            parseChildrenToArray(children)
-                .filter((c) => getComponentType(c) === "TabPane")
-                .map((c) => {
-                    const stepProps = getComponentProps(c) as StepProps;
-                    return (
-                        <AntStep
-                            className={stepProps.class_name}
-                            style={stepProps.style}
-                            key={stepProps.key}
-                            description={stepProps.description}
-                            disabled={stepProps.disabled}
-                            status={stepProps.status}
-                            subTitle={stepProps.sub_title}
-                            title={stepProps.title}
-                            icon={
-                                stepProps.icon &&
-                                Icon({ icon_name: stepProps.icon })
-                            }
-                        >
-                            {c}
-                        </AntStep>
-                    );
-                }),
-        [children]
-    );
-
     return (
         <AntSteps
             labelPlacement={label_placement}
@@ -107,7 +98,7 @@ const Steps = (props: Props) => {
             onChange={handleChange}
             {...otherProps}
         >
-            {steps}
+            {children}
         </AntSteps>
     );
 };
