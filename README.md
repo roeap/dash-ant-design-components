@@ -14,12 +14,16 @@ Ant Design components for Plotly Dash.
 
 ## Install
 
-The `dash-ant-design-components` are at a very early stage and not yet published to pip.
-To install, clone this repository, and run the build scripts. Then use the generated wheel
 to install in your python environment.
 
 ```shell
-just build
+poetry add dash-antd
+```
+
+or via pip.
+
+```shell
+pip install dash-antd
 ```
 
 ## Development

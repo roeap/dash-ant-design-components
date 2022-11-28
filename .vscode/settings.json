@@ -1,18 +1,3 @@
 {
-  "editor.formatOnSave": true,
-  "cSpell.ignoreWords": [
-    "Plotly",
-    "Sider",
-    "antd",
-    "codecov",
-    "dadc",
-    "dashprivate",
-    "hoverable",
-    "isnumeric",
-    "isort",
-    "packagejson",
-    "pageheader",
-    "venv",
-    "virtualenvs"
-  ]
+  "editor.formatOnSave": true
 }

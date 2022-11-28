@@ -1,0 +1,26 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [],
+  "ignoreWords": [
+    "Plotly",
+    "Sider",
+    "antd",
+    "basepath",
+    "codecov",
+    "dadc",
+    "dashprivate",
+    "docgen",
+    "hoverable",
+    "isnumeric",
+    "isort",
+    "justfile",
+    "packagejson",
+    "pageheader",
+    "venv",
+    "virtualenvs"
+  ],
+  "import": []
+}
