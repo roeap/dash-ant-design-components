@@ -1,7 +1,9 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { ReactNode, useMemo, useEffect } from "react";
 import { DashComponentProps } from "../types";
 import { ConfigProvider as AntConfigProvider, theme } from "antd";
 import { omit } from "ramda";
+
+const { useToken } = theme;
 
 type Size = "small" | "middle" | "large" | number;
 
@@ -34,6 +36,10 @@ type Props = {
      * Create a dark theming for all child components
      */
     use_compact?: boolean;
+    /**
+     * Set global design tokens
+     */
+    active_tokens?: { [token: string]: string };
 } & DashComponentProps;
 
 /**
@@ -46,6 +52,7 @@ const ConfigProvider = (props: Props) => {
         components,
         use_dark_theme: useDarkTheme,
         use_compact: useCompact,
+        setProps,
         ...otherProps
     } = props;
 
@@ -57,10 +64,15 @@ const ConfigProvider = (props: Props) => {
         return { algorithm, token, components };
     }, [token, components, useDarkTheme, useCompact]);
 
+    const { token: active_tokens } = useToken();
+    useEffect(() => {
+        setProps({ active_tokens });
+    }, [setProps, active_tokens]);
+
     return (
         <AntConfigProvider
             theme={themeConfig}
-            {...omit(["setProps"], otherProps)}
+            {...omit(["active_tokens"], otherProps)}
         >
             {children}
         </AntConfigProvider>

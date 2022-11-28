@@ -1,44 +1,54 @@
-import dash
+from dataclasses import fields
 
-import dash_antd as dadc
+from dash import Input, Output, callback, register_page
 
-dash.register_page(__name__, title="Cards", icon="ControlOutlined")
+import dash_antd as ant
+from dash_antd.ext import parse_tokens
+
+register_page(__name__, title="Cards", icon="ControlOutlined")
 
 actions = [
-    dadc.Icon("StepBackwardOutlined", key="action-1"),
-    dadc.Icon("StepBackwardOutlined", key="action-2"),
-    dadc.Icon("StepBackwardOutlined", key="action-3"),
+    ant.Icon("StepBackwardOutlined", key="action-1"),
+    ant.Icon("StepBackwardOutlined", key="action-2"),
+    ant.Icon("StepBackwardOutlined", key="action-3"),
 ]
 
-extra = dadc.Button("Hello Extra")
+extra = ant.Button("Hello Extra")
 
 
 layout = [
-    dadc.Row(
+    ant.Row(
         [
-            dadc.Col(dadc.Card(dadc.Button("Hello World"), title="Basic Card"), span=12),
-            dadc.Col(dadc.Card(dadc.Button("Hello World"), hoverable=True, title="Hoverable Card"), span=12),
-            dadc.Col(
-                dadc.Card(
-                    [dadc.Button("Hello World")],
+            ant.Col(ant.Card(id="card-tokens", title="Basic Card"), span=12),
+            ant.Col(ant.Card(ant.Button("Hello World"), hoverable=True, title="Hoverable Card"), span=12),
+            ant.Col(
+                ant.Card(
+                    [ant.Button("Hello World")],
                     actions=actions,
                     title="Card With Actions",
                 ),
                 span=12,
             ),
-            dadc.Col(
-                dadc.Card(
-                    [dadc.Button("Hello World")],
+            ant.Col(
+                ant.Card(
+                    [ant.Button("Hello World")],
                     actions=actions,
                     extra=extra,
                     title="Card With Actions and extras",
                 ),
                 span=12,
             ),
-            dadc.Col(dadc.Card(dadc.Button("Hello World")), span=12),
-            dadc.Col(dadc.Card(dadc.Button("Hello World"), hoverable=True), span=12),
+            ant.Col(ant.Card(ant.Button("Hello World")), span=12),
+            ant.Col(ant.Card(ant.Button("Hello World"), hoverable=True), span=12),
         ],
         gutter=[24, 24],
         style={"height": "100%", "padding": 24},
     ),
 ]
+
+
+@callback(Output("card-tokens", "children"), Input("app-config", "active_tokens"))
+def tokens(active_tokens: dict[str, str]):
+    parsed = parse_tokens(active_tokens)
+    tags = [ant.Tag(field.name, color=getattr(parsed, field.name)) for field in fields(parsed)]
+    return tags

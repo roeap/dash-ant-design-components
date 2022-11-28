@@ -2,7 +2,7 @@ from typing import Optional
 
 import dash
 
-import dash_antd as dadc
+import dash_antd as ant
 
 _ROOT_STYLE = {
     "overflow": "auto",
@@ -22,32 +22,32 @@ def get_nav_item(page):
     return {"label": page["title"], "key": page["path"], "path": page["path"]}
 
 
-def generate_sidebar_layout(primary_color: Optional[str] = None) -> dadc.ConfigProvider:
+def generate_sidebar_layout(primary_color: Optional[str] = None) -> ant.ConfigProvider:
     nav_items = [get_nav_item(page) for page in dash.page_registry.values()]
 
     token = {}
     if primary_color is not None:
         token["colorPrimary"] = primary_color
 
-    return dadc.ConfigProvider(
-        id="config-provider",
+    return ant.ConfigProvider(
+        id="app-config",
         use_dark_theme=True,
         token=token,
-        children=dadc.Layout(
+        children=ant.Layout(
             has_sidebar=True,
             children=[
-                dadc.Sidebar(
+                ant.Sidebar(
                     style=_ROOT_STYLE,
                     theme="light",
                     children=[
-                        dadc.Menu(id="page-nav", items=nav_items, selected_keys=["page-1"], style={"marginRight": -2}),
-                        dadc.Divider("Controls"),
+                        ant.Menu(id="page-nav", items=nav_items, selected_keys=["page-1"], style={"marginRight": -2}),
+                        ant.Divider("Controls"),
                     ],
                 ),
-                dadc.Layout(
+                ant.Layout(
                     style={"marginLeft": 200, "minHeight": "100vh"},
                     children=[
-                        dadc.Content(
+                        ant.Content(
                             dash.page_container,
                             id="page-content",
                             style={"margin": "0", "padding": 0},

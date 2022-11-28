@@ -41,6 +41,7 @@ from .TimePicker import TimePicker
 from .TimeRangePicker import TimeRangePicker
 
 __all__ = [
+    "Alert",
     "Button",
     "Card",
     "Checkbox",
@@ -75,7 +76,6 @@ __all__ = [
     "Tag",
     "Timeline",
     "TimelineItem",
-    "Alert",
     "ConfigProvider",
     "Segmented",
     "Select",
