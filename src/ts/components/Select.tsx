@@ -299,6 +299,7 @@ const Select = (props: Props) => {
             onDropdownVisibleChange={handleDropdownVisibleChange}
             onInputKeyDown={handleKeyPress}
             disabled={disabled}
+            // @ts-expect-error this is an object after all
             {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}
         />
     );

@@ -6,7 +6,7 @@
   "scripts": {
     "build:js::dev": "webpack --mode development --config=webpack/config.dist.js",
     "build:js": "webpack --mode production --config=webpack/config.dist.js",
-    "build:backends": "dash-generate-components ./src/ts/components dash_antd -p package-info.json --r-prefix 'dadc' --jl-prefix 'dadc' --ignore \\.test\\.",
+    "build:backends": "dash-generate-components ./src/ts/components dash_antd --ignore \\.test\\.",
     "build": "yarn build:js && yarn build:backends",
     "watch": "yarn build:js::dev -- --watch",
     "test": "jest",

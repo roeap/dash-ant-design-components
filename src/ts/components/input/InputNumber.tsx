@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { InputNumber as AntInputNumber, InputNumberProps } from "antd";
 import {
     DashComponentProps,
@@ -141,17 +141,37 @@ const InputNumber = (props: Props) => {
         }
     }, [value]);
 
-    const onStep: InputNumberProps["onStep"] = (newValue) => {
-        const valueAsNumber = convert(newValue);
-        inputRef.current.value = isNil(valueAsNumber)
-            ? valueAsNumber
-            : newValue;
-        if (!debounce) {
-            onEvent();
-        }
-    };
+    const onEvent = useCallback(
+        (payload: PayloadType = {}) => {
+            const inputValue = inputRef.current.value;
+            const inputValueAsNumber = inputRef.current.checkValidity()
+                ? convert(inputValue)
+                : NaN;
+            const valueAsNumber = convert(value);
 
-    const onBlur: InputNumberProps["onBlur"] = () => {
+            if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
+                setProps({ ...payload, value: inputValueAsNumber });
+            } else if (Object.keys(payload).length) {
+                setProps(payload);
+            }
+        },
+        [setProps, inputRef, value]
+    );
+
+    const onStep: InputNumberProps["onStep"] = useCallback(
+        (newValue) => {
+            const valueAsNumber = convert(newValue);
+            inputRef.current.value = isNil(valueAsNumber)
+                ? valueAsNumber
+                : newValue;
+            if (!debounce) {
+                onEvent();
+            }
+        },
+        [onEvent, debounce, inputRef]
+    );
+
+    const onBlur: InputNumberProps["onBlur"] = useCallback(() => {
         if (setProps) {
             const payload = {
                 n_blur: n_blur + 1,
@@ -163,9 +183,9 @@ const InputNumber = (props: Props) => {
                 setProps(payload);
             }
         }
-    };
+    }, [setProps, onEvent, n_blur, debounce]);
 
-    const onKeyPress: InputNumberProps["onPressEnter"] = () => {
+    const onKeyPress: InputNumberProps["onPressEnter"] = useCallback(() => {
         const payload = {
             n_submit: n_submit + 1,
             n_submit_timestamp: Date.now(),
@@ -175,21 +195,7 @@ const InputNumber = (props: Props) => {
         } else {
             setProps(payload);
         }
-    };
-
-    const onEvent = (payload: PayloadType = {}) => {
-        const inputValue = inputRef.current.value;
-        const inputValueAsNumber = inputRef.current.checkValidity()
-            ? convert(inputValue)
-            : NaN;
-        const valueAsNumber = convert(value);
-
-        if (!isEquivalent(valueAsNumber, inputValueAsNumber)) {
-            setProps({ ...payload, value: inputValueAsNumber });
-        } else if (Object.keys(payload).length) {
-            setProps(payload);
-        }
-    };
+    }, [setProps, onEvent, n_submit, debounce]);
 
     return (
         <AntInputNumber
@@ -200,6 +206,7 @@ const InputNumber = (props: Props) => {
             onStep={onStep}
             onBlur={onBlur}
             onPressEnter={onKeyPress}
+            // @ts-expect-error this is an object
             {...omit(
                 ["n_blur_timestamp", "n_submit_timestamp", "value"],
                 otherProps
