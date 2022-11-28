@@ -1,5 +1,8 @@
 set dotenv-load := false
 
+default:
+    @just --list
+
 # Generate components and build the bundle
 build:
     poetry run yarn build
@@ -22,7 +25,9 @@ watch:
 install:
     poetry install
     yarn install
+    poetry run pre-commit install --hook-type commit-msg --hook-type pre-commit
 
+# run linters on codebase
 lint:
     yarn lint
     poetry run black --check .
