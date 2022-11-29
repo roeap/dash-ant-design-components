@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useCallback } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
-import { Radio } from "antd";
+import { Radio, RadioChangeEvent } from "antd";
 import { omit } from "ramda";
 
 const { Group } = Radio;
@@ -33,6 +33,10 @@ type Props = {
      * The size of radio button
      */
     size?: "large" | "middle" | "small";
+    /**
+     * Used for setting the currently selected value
+     */
+    value?: string | number;
 } & DashComponentProps &
     StyledComponentProps;
 
@@ -40,11 +44,30 @@ type Props = {
  * RadioGroup
  */
 const RadioGroup = (props: Props) => {
-    const { children, button_style, option_type, ...otherProps } = props;
+    const {
+        children,
+        button_style,
+        disabled,
+        option_type,
+        setProps,
+        ...otherProps
+    } = props;
+
+    const handleChange = useCallback(
+        (e: RadioChangeEvent) => {
+            if (!disabled && setProps) {
+                setProps({ value: e.target.value });
+            }
+        },
+        [setProps, disabled]
+    );
+
     return (
         <Group
             buttonStyle={button_style}
             optionType={option_type}
+            disabled={disabled}
+            onChange={handleChange}
             {...omit(["setProps"], otherProps)}
         >
             {children}

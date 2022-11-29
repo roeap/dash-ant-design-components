@@ -1,6 +1,6 @@
 set dotenv-load := false
 
-default:
+_default:
     @just --list
 
 # Generate components and build the bundle

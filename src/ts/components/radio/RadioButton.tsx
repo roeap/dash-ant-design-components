@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useCallback } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Radio, RadioProps } from "antd";
 
@@ -23,15 +23,20 @@ type Props = {
  * RadioButton
  */
 const RadioButton = (props: Props) => {
-    const { children, checked, class_name, setProps, ...otherProps } = props;
+    const { children, checked, disabled, class_name, setProps, ...otherProps } =
+        props;
 
-    const handleClick: RadioProps["onClick"] = () =>
-        setProps({ checked: !checked });
+    const handleClick: RadioProps["onClick"] = useCallback(() => {
+        if (!disabled && setProps) {
+            setProps({ checked: !checked });
+        }
+    }, [setProps, checked, disabled]);
 
     return (
         <Button
             className={class_name}
             checked={checked}
+            disabled={disabled}
             onClick={handleClick}
             {...otherProps}
         >
