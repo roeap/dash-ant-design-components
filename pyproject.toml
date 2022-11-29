@@ -13,6 +13,7 @@ include = [
     "dash_antd/*.py",
     "dash_antd/metadata.json",
     "dash_antd/package-info.json",
+    "dash_antd/package.json",
     "dash_antd/dash_antd.min.js",
     "dash_antd/dash_antd.min.js.LICENSE.txt",
 ]
