@@ -39,6 +39,8 @@ import Slider from "./components/Slider";
 import Switch from "./components/Switch";
 import Timeline from "./components/timeline/Timeline";
 import TimelineItem from "./components/timeline/TimelineItem";
+import PagesWithSidebar from "./components/templates/PagesWithSidebar";
+import Page from "./components/templates/Page";
 
 export {
     Alert,
@@ -82,4 +84,6 @@ export {
     Segmented,
     Timeline,
     TimelineItem,
+    PagesWithSidebar,
+    Page,
 };

@@ -259,7 +259,7 @@ layout = ant.Space(
         ant.Card(button_content, **get_component_props("button", "Button")),
         ant.Card(input_content, **get_component_props("input", "Input")),
         ant.Card(input_number_content, **get_component_props("input", "InputNumber")),
-        ant.Card(select_content, **get_component_props("", "Select")),
+        ant.Card(select_content, **get_component_props("select", "Select")),
         ant.Card(checkbox_content, **get_component_props("checkbox", "Checkbox")),
         ant.Card(date_picker_content, **get_component_props("datepicker", "DatePicker")),
         ant.Card(date_range_picker_content, **get_component_props("datepicker", "DateRangePicker")),

@@ -20,6 +20,8 @@ from .InputNumber import InputNumber
 from .Layout import Layout
 from .Menu import Menu
 from .MenuItem import MenuItem
+from .Page import Page
+from .PagesWithSidebar import PagesWithSidebar
 from .Radio import Radio
 from .RadioButton import RadioButton
 from .RadioGroup import RadioGroup
@@ -69,16 +71,18 @@ __all__ = [
     "Radio",
     "RadioButton",
     "RadioGroup",
+    "Select",
     "Steps",
     "TabPane",
     "Tabs",
     "CheckableTag",
     "Tag",
+    "Page",
+    "PagesWithSidebar",
     "Timeline",
     "TimelineItem",
     "ConfigProvider",
     "Segmented",
-    "Select",
     "Slider",
     "Space",
     "Switch",
