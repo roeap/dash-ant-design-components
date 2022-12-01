@@ -30,4 +30,30 @@ describe("RadioButton", () => {
         expect(mockSetProps.mock.calls).toHaveLength(1);
         expect(mockSetProps.mock.calls[0][0].value).toBe("foo");
     });
+
+    test("does not update checked prop when disabled item is clicked", async () => {
+        const user = userEvent.setup();
+        const mockSetProps = jest.fn();
+
+        const checkbox = render(
+            <RadioGroup
+                setProps={mockSetProps}
+                options={[
+                    { label: "foo", value: "foo" },
+                    { label: "bar", value: "bar" },
+                    { label: "baz", value: "baz", disabled: true },
+                ]}
+            />
+        );
+
+        expect(mockSetProps.mock.calls).toHaveLength(0);
+
+        await user.click(checkbox.queryByText("foo"));
+
+        expect(mockSetProps.mock.calls).toHaveLength(1);
+
+        await user.click(checkbox.queryByText("baz"));
+
+        expect(mockSetProps.mock.calls).toHaveLength(1);
+    });
 });
