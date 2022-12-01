@@ -1,13 +1,13 @@
 import React, { useCallback } from "react";
 import { Select as AntSelect, SelectProps } from "antd";
 import { LabeledValue } from "antd/lib/select";
-import Icon from "./icon/Icon";
+import Icon from "../icon/Icon";
 import { omit } from "ramda";
 import {
     DashComponentProps,
     DashLoadingState,
     StyledComponentProps,
-} from "../types";
+} from "../../types";
 
 type Props = {
     /**

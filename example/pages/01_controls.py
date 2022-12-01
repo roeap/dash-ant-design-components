@@ -69,6 +69,7 @@ select_content = [
         style={"marginBottom": 25},
         children=[
             ant.Select(options=select_options, style={"width": 100}),
+            ant.Select(options=select_options, style={"width": 100}, placeholder="placeholder text"),
             ant.Select(options=select_options, style={"width": 250}, mode="multiple"),
             ant.Select(options=select_options, style={"width": 250}, mode="tags"),
         ],
