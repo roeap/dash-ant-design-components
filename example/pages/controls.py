@@ -1,9 +1,5 @@
-from dash import register_page
-
 import dash_antd as ant
 from example.metadata import get_component_metadata
-
-register_page(__name__, title="Controls", icon="ControlOutlined", path="/")
 
 
 button_content = [
@@ -251,29 +247,32 @@ def get_component_props(folder: str, name):
     return {"title": metadata["displayName"], "extra": ant.Tag("Experimental", color="orange")}
 
 
-layout = ant.Space(
-    direction="vertical",
-    style={"width": "100%", "paddingLeft": 24, "paddingRight": 24, "paddingBottom": 24},
-    size="large",
-    children=[
-        ant.Card(button_content, **get_component_props("button", "Button")),
-        ant.Card(input_content, **get_component_props("input", "Input")),
-        ant.Card(input_number_content, **get_component_props("input", "InputNumber")),
-        ant.Card(select_content, **get_component_props("select", "Select")),
-        ant.Card(checkbox_content, **get_component_props("checkbox", "Checkbox")),
-        ant.Card(date_picker_content, **get_component_props("datepicker", "DatePicker")),
-        ant.Card(date_range_picker_content, **get_component_props("datepicker", "DateRangePicker")),
-        ant.Card(time_picker_content, **get_component_props("datepicker", "TimePicker")),
-        ant.Card(time_range_picker_content, **get_component_props("datepicker", "TimeRangePicker")),
-        ant.Card(radio_content, **get_component_props("radio", "Radio")),
-        ant.Card(radio_button_content, **get_component_props("radio", "RadioButton")),
-        ant.Card(radio_group_content, **get_component_props("radio", "RadioGroup")),
-        ant.Card(slider_content, **get_component_props("", "Slider")),
-        ant.Card(switch_content, **get_component_props("", "Switch")),
-        ant.Card(tag_content, **get_component_props("tag", "Tag")),
-        ant.Card(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
-        ant.Card(alert_content, **get_component_props("alert", "Alert")),
-        ant.Card(config_provider_content, **get_component_props("", "ConfigProvider")),
-        ant.Card(segmented_content, **get_component_props("", "Segmented")),
-    ],
+controls_page = ant.Page(
+    page_key="controls",
+    children=ant.Space(
+        direction="vertical",
+        style={"width": "100%", "paddingLeft": 24, "paddingRight": 24, "paddingBottom": 24},
+        size="large",
+        children=[
+            ant.Card(button_content, **get_component_props("button", "Button")),
+            ant.Card(input_content, **get_component_props("input", "Input")),
+            ant.Card(input_number_content, **get_component_props("input", "InputNumber")),
+            ant.Card(select_content, **get_component_props("select", "Select")),
+            ant.Card(checkbox_content, **get_component_props("checkbox", "Checkbox")),
+            ant.Card(date_picker_content, **get_component_props("datepicker", "DatePicker")),
+            ant.Card(date_range_picker_content, **get_component_props("datepicker", "DateRangePicker")),
+            ant.Card(time_picker_content, **get_component_props("datepicker", "TimePicker")),
+            ant.Card(time_range_picker_content, **get_component_props("datepicker", "TimeRangePicker")),
+            ant.Card(radio_content, **get_component_props("radio", "Radio")),
+            ant.Card(radio_button_content, **get_component_props("radio", "RadioButton")),
+            ant.Card(radio_group_content, **get_component_props("radio", "RadioGroup")),
+            ant.Card(slider_content, **get_component_props("", "Slider")),
+            ant.Card(switch_content, **get_component_props("", "Switch")),
+            ant.Card(tag_content, **get_component_props("tag", "Tag")),
+            ant.Card(checkable_tag_content, **get_component_props("tag", "CheckableTag")),
+            ant.Card(alert_content, **get_component_props("alert", "Alert")),
+            ant.Card(config_provider_content, **get_component_props("", "ConfigProvider")),
+            ant.Card(segmented_content, **get_component_props("", "Segmented")),
+        ],
+    ),
 )

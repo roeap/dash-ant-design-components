@@ -1,11 +1,9 @@
 from dataclasses import fields
 
-from dash import Input, Output, callback, register_page
+from dash import Input, Output, callback
 
 import dash_antd as ant
 from dash_antd.ext import parse_tokens
-
-register_page(__name__, title="Cards", icon="ControlOutlined")
 
 actions = [
     ant.Icon("StepBackwardOutlined", key="action-1"),

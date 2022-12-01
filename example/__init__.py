@@ -2,13 +2,19 @@ from dash import Dash
 
 import dash_antd as ant
 
-app = Dash(__name__)
+from .pages import controls_page, graph_page
 
-app.layout = ant.PagesWithSidebar(
-    sidebar_width=200,
-    children=[
-        ant.Page(ant.Button("content"), controls=ant.Button("controls"), page_key="page-1"),
-        ant.Page(ant.Button("content-2"), controls=ant.Button("controls-2"), page_key="page-2"),
-    ],
-    selected_key="page-1",
+app = Dash(__name__, suppress_callback_exceptions=True)
+
+app.layout = ant.ConfigProvider(
+    id="app-config",
+    use_dark_theme=True,
+    # use_compact=True,
+    token={"colorPrimary": "green"},
+    children=ant.PagesWithSidebar(
+        sidebar_width=200,
+        menu_theme="dark",
+        children=[controls_page, graph_page],
+        selected_key="controls",
+    ),
 )

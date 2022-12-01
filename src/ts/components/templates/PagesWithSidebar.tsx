@@ -23,8 +23,17 @@ export const PagesContext = React.createContext<Context>({
     cbControls: undefined,
 });
 
-const default_sidebar_style = { height: "100vh" };
-const default_content_style = { minHeight: "100vh" };
+const default_sidebar_style = {
+    overflow: "auto",
+    height: "100vh",
+    position: "fixed",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    borderInlineEnd: "1px solid rgba(253, 253, 253, 0.12)",
+    overflowX: "hidden",
+};
+const default_content_style = { margin: 0, padding: 0, minHeight: "100vh" };
 
 type Props = {
     /**
@@ -88,7 +97,10 @@ const PagesWithSidebar = (props: Props) => {
     );
 
     const eff_content_style = useMemo(
-        () => ({ ...default_content_style, ...content_style }),
+        () => ({
+            ...default_content_style,
+            ...content_style,
+        }),
         [content_style]
     );
 
@@ -96,7 +108,8 @@ const PagesWithSidebar = (props: Props) => {
         <PagesContext.Provider
             value={{ selectedKey: selected_key, cbControls: setControls }}
         >
-            <Layout>
+            <Layout hasSider={true}>
+                {/* @ts-expect-error sure */}
                 <Sider style={eff_sidebar_style} width={sidebar_width || 200}>
                     {options.length > 1 && (
                         <Menu
@@ -111,7 +124,14 @@ const PagesWithSidebar = (props: Props) => {
                     {options.length > 1 && <Divider />}
                     {controls}
                 </Sider>
-                <Content style={eff_content_style}>{children}</Content>
+                <Layout
+                    style={{
+                        marginLeft: sidebar_width || 200,
+                        minHeight: "100vh",
+                    }}
+                >
+                    <Content style={eff_content_style}>{children}</Content>
+                </Layout>
             </Layout>
         </PagesContext.Provider>
     );
