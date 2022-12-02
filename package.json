@@ -59,6 +59,7 @@
     "antd": "^5",
     "dayjs": "^1.11.6",
     "fast-isnumeric": "^1.1.4",
+    "fuse.js": "^6.6.2",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "ramda": "^0.28.0"
