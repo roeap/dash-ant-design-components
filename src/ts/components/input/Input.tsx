@@ -149,7 +149,7 @@ const Input = (props: Props) => {
     } = props;
     const inputRef = useRef(null);
 
-    const handleChange: InputProps["onChange"] = () => {
+    const onChange: InputProps["onChange"] = () => {
         if (!debounce) {
             onEvent();
         }
@@ -235,7 +235,7 @@ const Input = (props: Props) => {
             maxLength={max_length}
             showCount={show_count}
             className={class_name}
-            onChange={handleChange}
+            onChange={onChange}
             onBlur={handleBlur}
             onKeyPress={handleKeyPress}
             {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}

@@ -69,7 +69,7 @@ const DateRangePicker = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleOpenChange: TimeRangePickerProps["onOpenChange"] = useCallback(
+    const onOpenChange: TimeRangePickerProps["onOpenChange"] = useCallback(
         (open) => {
             if (!disabled && setProps) {
                 setProps({ open });
@@ -78,7 +78,7 @@ const DateRangePicker = (props: Props) => {
         [setProps, disabled]
     );
 
-    const handleChange: TimeRangePickerProps["onChange"] = useCallback(
+    const onChange: TimeRangePickerProps["onChange"] = useCallback(
         (dates) => {
             if (!disabled && setProps) {
                 const [startDate, endDate] = dates;
@@ -97,8 +97,8 @@ const DateRangePicker = (props: Props) => {
             value={[dayjs(start), dayjs(end)]}
             showTime={show_time}
             showNow={show_now}
-            onChange={handleChange}
-            onOpenChange={handleOpenChange}
+            onChange={onChange}
+            onOpenChange={onOpenChange}
             {...otherProps}
         />
     );

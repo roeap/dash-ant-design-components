@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { DashComponentProps, StyledComponentProps } from "../../types";
 import { Alert as AntAlert } from "antd";
-import Icon from "../icon/Icon";
 import { omit } from "ramda";
 
 type Props = {

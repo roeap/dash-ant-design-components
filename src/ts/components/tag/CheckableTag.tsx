@@ -23,14 +23,14 @@ type Props = {
 const CheckableTag = (props: Props) => {
     const { children, class_name, checked, setProps, ...otherProps } = props;
 
-    const handleClick: CheckableTagProps["onClick"] = () =>
+    const onClick: CheckableTagProps["onClick"] = () =>
         setProps({ checked: !checked });
 
     return (
         <AntCheckableTag
             className={class_name}
             checked={checked}
-            onClick={handleClick}
+            onClick={onClick}
             {...otherProps}
         >
             {children}

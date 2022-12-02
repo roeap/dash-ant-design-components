@@ -225,7 +225,7 @@ const Select = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleBlur: SelectProps["onBlur"] = useCallback(() => {
+    const onBlur: SelectProps["onBlur"] = useCallback(() => {
         if (!disabled && setProps) {
             setProps({
                 n_blur: n_blur + 1,
@@ -234,7 +234,7 @@ const Select = (props: Props) => {
         }
     }, [setProps, n_blur, disabled]);
 
-    const handleDropdownVisibleChange: SelectProps["onDropdownVisibleChange"] =
+    const onDropdownVisibleChange: SelectProps["onDropdownVisibleChange"] =
         useCallback(
             (open) => {
                 if (!disabled && setProps) {
@@ -244,7 +244,7 @@ const Select = (props: Props) => {
             [setProps, disabled]
         );
 
-    const handleChange: SelectProps["onChange"] = useCallback(
+    const onChange: SelectProps["onChange"] = useCallback(
         (value) => {
             if (!disabled && setProps) {
                 setProps({ value });
@@ -253,7 +253,7 @@ const Select = (props: Props) => {
         [setProps, disabled]
     );
 
-    const handleKeyPress: SelectProps["onInputKeyDown"] = useCallback(
+    const onKeyPress: SelectProps["onInputKeyDown"] = useCallback(
         (e) => {
             if (!disabled && setProps && e.key === "Enter") {
                 setProps({
@@ -294,10 +294,10 @@ const Select = (props: Props) => {
             suffixIcon={suffix_icon && Icon({ icon_name: suffix_icon })}
             tokenSeparators={token_separators}
             open={open}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onDropdownVisibleChange={handleDropdownVisibleChange}
-            onInputKeyDown={handleKeyPress}
+            onBlur={onBlur}
+            onChange={onChange}
+            onDropdownVisibleChange={onDropdownVisibleChange}
+            onInputKeyDown={onKeyPress}
             disabled={disabled}
             // @ts-expect-error this is an object after all
             {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}

@@ -86,7 +86,7 @@ const Tabs = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleChange = (activeKey: string) => {
+    const onChange = (activeKey: string) => {
         if (setProps) {
             setProps({ value: activeKey });
         }
@@ -128,7 +128,7 @@ const Tabs = (props: Props) => {
             tabBarStyle={tab_bar_style}
             tabPosition={tab_position}
             destroyInactiveTabPane={destroy_inactive_tab_pane}
-            onChange={handleChange}
+            onChange={onChange}
             {...otherProps}
         >
             {tabItems}

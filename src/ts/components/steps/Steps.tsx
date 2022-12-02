@@ -85,7 +85,7 @@ const Steps = (props: Props) => {
     const { children, label_placement, progress_dot, setProps, ...otherProps } =
         props;
 
-    const handleChange = (current: number) => {
+    const onChange = (current: number) => {
         if (setProps) {
             setProps({ current });
         }
@@ -95,7 +95,7 @@ const Steps = (props: Props) => {
         <AntSteps
             labelPlacement={label_placement}
             progressDot={progress_dot}
-            onChange={handleChange}
+            onChange={onChange}
             {...otherProps}
         >
             {children}

@@ -52,7 +52,7 @@ type Props = {
 const Slider = (props: Props) => {
     const { class_name, disabled, setProps, ...otherProps } = props;
 
-    const handleChange: SliderSingleProps["onChange"] = useCallback(
+    const onChange: SliderSingleProps["onChange"] = useCallback(
         (value: number | [number, number]) => {
             if (!disabled && setProps) {
                 setProps({ value });
@@ -65,7 +65,7 @@ const Slider = (props: Props) => {
         // @ts-expect-error we use only boolean range prop.
         <AntSlider
             className={class_name}
-            onChange={handleChange}
+            onChange={onChange}
             disabled={disabled}
             {...otherProps}
         />

@@ -51,7 +51,7 @@ const DropdownButton = (props: Props) => {
 
     const overlay = <AntMenu items={items} />;
 
-    const handleClick = () => {
+    const onClick = () => {
         if (!disabled && setProps) {
             setProps({
                 n_clicks: n_clicks + 1,
@@ -64,7 +64,7 @@ const DropdownButton = (props: Props) => {
             className={class_name}
             overlay={overlay}
             disabled={disabled}
-            onClick={handleClick}
+            onClick={onClick}
             loading={loading_state && loading_state.is_loading}
             {...otherProps}
             data-dash-is-loading={

@@ -84,7 +84,7 @@ const TimePicker = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleOpenChange: TimePickerProps["onOpenChange"] = useCallback(
+    const onOpenChange: TimePickerProps["onOpenChange"] = useCallback(
         (open) => {
             if (!disabled && setProps) {
                 setProps({ open });
@@ -93,7 +93,7 @@ const TimePicker = (props: Props) => {
         [setProps, disabled]
     );
 
-    const handleChange: TimePickerProps["onChange"] = useCallback(
+    const onChange: TimePickerProps["onChange"] = useCallback(
         (value) => {
             if (!disabled && setProps) {
                 setProps({ value: value.toISOString() });
@@ -110,8 +110,8 @@ const TimePicker = (props: Props) => {
             minuteStep={minute_step}
             secondStep={second_step}
             showNow={show_now}
-            onChange={handleChange}
-            onOpenChange={handleOpenChange}
+            onChange={onChange}
+            onOpenChange={onOpenChange}
             {...otherProps}
         />
     );

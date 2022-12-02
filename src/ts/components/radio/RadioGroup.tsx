@@ -53,7 +53,7 @@ const RadioGroup = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleChange = useCallback(
+    const onChange = useCallback(
         (e: RadioChangeEvent) => {
             if (!disabled && setProps) {
                 setProps({ value: e.target.value });
@@ -67,7 +67,7 @@ const RadioGroup = (props: Props) => {
             buttonStyle={button_style}
             optionType={option_type}
             disabled={disabled}
-            onChange={handleChange}
+            onChange={onChange}
             {...omit(["setProps"], otherProps)}
         >
             {children}

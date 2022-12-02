@@ -66,7 +66,7 @@ const Button = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleClick = () => {
+    const onClick = () => {
         if (!disabled && setProps) {
             setProps({
                 n_clicks: n_clicks + 1,
@@ -77,7 +77,7 @@ const Button = (props: Props) => {
     return (
         <AntButton
             className={class_name}
-            onClick={handleClick}
+            onClick={onClick}
             href={disabled ? undefined : href}
             disabled={disabled}
             loading={loading_state && loading_state.is_loading}

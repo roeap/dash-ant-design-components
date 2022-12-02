@@ -25,7 +25,7 @@ const Radio = (props: Props) => {
     const { children, checked, disabled, class_name, setProps, ...otherProps } =
         props;
 
-    const handleClick: RadioProps["onClick"] = useCallback(() => {
+    const onClick: RadioProps["onClick"] = useCallback(() => {
         if (!disabled && setProps) {
             setProps({ checked: !checked });
         }
@@ -36,7 +36,7 @@ const Radio = (props: Props) => {
             className={class_name}
             checked={checked}
             disabled={disabled}
-            onClick={handleClick}
+            onClick={onClick}
             {...otherProps}
         >
             {children}

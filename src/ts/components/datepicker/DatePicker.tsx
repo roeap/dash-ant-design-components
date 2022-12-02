@@ -71,7 +71,7 @@ const DatePicker = (props: Props) => {
         ...otherProps
     } = props;
 
-    const handleOpenChange: DatePickerProps["onOpenChange"] = useCallback(
+    const onOpenChange: DatePickerProps["onOpenChange"] = useCallback(
         (open) => {
             if (!disabled && setProps) {
                 setProps({ open });
@@ -80,7 +80,7 @@ const DatePicker = (props: Props) => {
         [setProps, disabled]
     );
 
-    const handleChange: DatePickerProps["onChange"] = useCallback(
+    const onChange: DatePickerProps["onChange"] = useCallback(
         (date) => {
             if (!disabled && setProps) {
                 setProps({ value: date.toISOString() });
@@ -96,8 +96,8 @@ const DatePicker = (props: Props) => {
             picker={picker}
             showTime={show_time}
             showNow={show_now}
-            onChange={handleChange}
-            onOpenChange={handleOpenChange}
+            onChange={onChange}
+            onOpenChange={onOpenChange}
             {...otherProps}
         />
     );

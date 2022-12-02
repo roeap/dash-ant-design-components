@@ -33,7 +33,7 @@ const Switch = (props: Props) => {
     const { class_name, loading_state, disabled, setProps, ...otherProps } =
         props;
 
-    const handleChange: SwitchProps["onChange"] = useCallback(
+    const onChange: SwitchProps["onChange"] = useCallback(
         (checked: boolean) => {
             if (!disabled && setProps) {
                 setProps({ checked });
@@ -45,7 +45,7 @@ const Switch = (props: Props) => {
     return (
         <AntSwitch
             className={class_name}
-            onChange={handleChange}
+            onChange={onChange}
             disabled={disabled}
             loading={(loading_state && loading_state.is_loading) || undefined}
             {...otherProps}
