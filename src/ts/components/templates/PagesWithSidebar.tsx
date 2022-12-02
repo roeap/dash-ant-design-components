@@ -1,4 +1,10 @@
-import React, { ReactNode, useMemo, useState, useCallback } from "react";
+import React, {
+    ReactNode,
+    useMemo,
+    useState,
+    useCallback,
+    useEffect,
+} from "react";
 import { Layout, Menu, Divider, MenuProps } from "antd";
 import {
     DashComponentProps,
@@ -104,21 +110,31 @@ const PagesWithSidebar = (props: Props) => {
         [content_style]
     );
 
+    useEffect(() => {
+        if (!selected_key) {
+            setProps({ selected_key: options[0].key });
+        }
+    }, [selected_key, setProps, options]);
+
     return (
         <PagesContext.Provider
             value={{ selectedKey: selected_key, cbControls: setControls }}
         >
             <Layout hasSider={true}>
-                {/* @ts-expect-error sure */}
-                <Sider style={eff_sidebar_style} width={sidebar_width || 200}>
+                <Sider
+                    // @ts-expect-error sure
+                    style={eff_sidebar_style}
+                    width={sidebar_width || 200}
+                    theme={menu_theme}
+                >
                     {options.length > 1 && (
                         <Menu
                             onSelect={handleSelect}
                             theme={menu_theme}
                             mode="inline"
                             selectedKeys={[selected_key]}
-                            defaultSelectedKeys={[options[0].key]}
                             items={options}
+                            style={{ marginRight: -2 }}
                         />
                     )}
                     {options.length > 1 && <Divider />}
@@ -128,6 +144,8 @@ const PagesWithSidebar = (props: Props) => {
                     style={{
                         marginLeft: sidebar_width || 200,
                         minHeight: "100vh",
+                        top: 0,
+                        bottom: 0,
                     }}
                 >
                     <Content style={eff_content_style}>{children}</Content>
