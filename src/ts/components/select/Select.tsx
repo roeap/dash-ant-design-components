@@ -1,7 +1,13 @@
-import React, { useCallback } from "react";
+import React, {
+    useCallback,
+    useState,
+    useEffect,
+    useMemo,
+    ReactNode,
+} from "react";
 import { Select as AntSelect, SelectProps } from "antd";
 import { LabeledValue } from "antd/lib/select";
-import Icon from "../icon/Icon";
+import Fuse from "fuse.js";
 import { omit } from "ramda";
 import {
     DashComponentProps,
@@ -26,25 +32,7 @@ type Props = {
     /**
      * The custom clear icon
      */
-    clear_icon?: string;
-    /**
-     * Whether to activate first option by default
-     */
-    default_active_first_option?: boolean;
-    // /**
-    //  * Initial open state of dropdown
-    //  */
-    // defaultOpen?: boolean;
-    // /**
-    //  * Initial selected option
-    //  */
-    // defaultValue?:
-    //     | string
-    //     | string[]
-    //     | number
-    //     | number[]
-    //     | LabeledValue
-    //     | LabeledValue[];
+    clear_icon?: ReactNode;
     /**
      * Whether disabled select
      */
@@ -94,7 +82,7 @@ type Props = {
     /**
      * The custom menuItemSelected icon with multiple options
      */
-    menu_item_selected_icon?: string;
+    menu_item_selected_icon?: ReactNode;
     /**
      * Set mode of Select
      */
@@ -127,15 +115,24 @@ type Props = {
     /**
      * The custom remove icon
      */
-    remove_icon?: string;
+    remove_icon?: ReactNode;
     /**
      * Whether to show the drop-down arrow
      */
     show_arrow?: boolean;
     /**
-     * Whether show search input in single mode
+     * Whether show search input and filter options by text entered in field
      */
-    show_search?: boolean;
+    use_search?: boolean;
+    /**
+     * Fields to search in documents (options). Search is based on fuse.js, with
+     * corresponding field notations https://fusejs.io/examples.html
+     */
+    search_fields?: string[];
+    /**
+     * The maximum number of results to show in search
+     */
+    search_max_results?: number;
     /**
      * Size of Select input
      */
@@ -147,7 +144,7 @@ type Props = {
     /**
      * The custom suffix icon
      */
-    suffix_icon?: string;
+    suffix_icon?: ReactNode;
     /**
      * Separator used to tokenize, only applies when mode="tags"
      */
@@ -198,7 +195,6 @@ const Select = (props: Props) => {
         auto_clear_search_value,
         class_name,
         clear_icon,
-        default_active_first_option,
         dropdown_class_name,
         dropdown_match_select_width,
         dropdown_style,
@@ -214,16 +210,46 @@ const Select = (props: Props) => {
         option_label_prop,
         remove_icon,
         show_arrow,
-        show_search,
+        use_search,
         suffix_icon,
         token_separators,
         n_blur,
         n_submit,
         open,
         disabled,
+        options,
+        search_fields,
+        search_max_results,
         setProps,
         ...otherProps
     } = props;
+    const [currentOptions, setCurrentOptions] = useState([]);
+
+    const onSearch = useMemo(() => {
+        if (!use_search) return undefined;
+
+        const fuseOptions = {
+            includeScore: true,
+            keys: search_fields || ["value", "label"],
+        };
+        const fuse = new Fuse(options, fuseOptions);
+
+        return (value: string) => {
+            if (!value || value.length === 0) {
+                setCurrentOptions(options);
+            } else {
+                setCurrentOptions(
+                    fuse
+                        .search(value, { limit: search_max_results || 10 })
+                        .map((res) => res.item)
+                );
+            }
+        };
+    }, [options, use_search, search_fields, search_max_results]);
+
+    useEffect(() => {
+        setCurrentOptions(options);
+    }, [options]);
 
     const onBlur: SelectProps["onBlur"] = useCallback(() => {
         if (!disabled && setProps) {
@@ -248,9 +274,10 @@ const Select = (props: Props) => {
         (value) => {
             if (!disabled && setProps) {
                 setProps({ value });
+                setCurrentOptions(options);
             }
         },
-        [setProps, disabled]
+        [setProps, disabled, options]
     );
 
     const onKeyPress: SelectProps["onInputKeyDown"] = useCallback(
@@ -270,35 +297,32 @@ const Select = (props: Props) => {
             allowClear={allow_clear}
             autoClearSearchValue={auto_clear_search_value}
             className={class_name}
-            clearIcon={clear_icon && Icon({ icon_name: clear_icon })}
-            defaultActiveFirstOption={default_active_first_option}
+            clearIcon={clear_icon}
             dropdownClassName={dropdown_class_name}
             dropdownMatchSelectWidth={dropdown_match_select_width}
             dropdownStyle={dropdown_style}
-            /* fieldNames */
-            filterOption={filter_option}
+            filterOption={use_search ? false : filter_option}
             labelInValue={label_in_value}
             listHeight={list_height}
             loading={loading || (loading_state && loading_state.is_loading)}
             maxTagCount={max_tag_count}
             maxTagTextLength={max_tag_text_length}
-            menuItemSelectedIcon={
-                menu_item_selected_icon &&
-                Icon({ icon_name: menu_item_selected_icon })
-            }
+            menuItemSelectedIcon={menu_item_selected_icon}
             optionFilterProp={option_filter_prop}
             optionLabelProp={option_label_prop}
-            removeIcon={remove_icon && Icon({ icon_name: remove_icon })}
+            removeIcon={remove_icon}
             showArrow={show_arrow}
-            showSearch={show_search}
-            suffixIcon={suffix_icon && Icon({ icon_name: suffix_icon })}
+            showSearch={use_search}
+            suffixIcon={suffix_icon}
             tokenSeparators={token_separators}
             open={open}
             onBlur={onBlur}
             onChange={onChange}
+            onSearch={onSearch}
             onDropdownVisibleChange={onDropdownVisibleChange}
             onInputKeyDown={onKeyPress}
             disabled={disabled}
+            options={currentOptions}
             // @ts-expect-error this is an object after all
             {...omit(["n_blur_timestamp", "n_submit_timestamp"], otherProps)}
         />
