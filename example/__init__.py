@@ -13,7 +13,7 @@ app.layout = ant.ConfigProvider(
     token={"colorPrimary": "green"},
     children=ant.PagesWithSidebar(
         sidebar_width=200,
-        menu_theme="dark",
+        menu_theme="light",
         children=[controls_page, graph_page],
         selected_key="controls",
     ),

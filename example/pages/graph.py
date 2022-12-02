@@ -9,15 +9,7 @@ df = px.data.iris()
 
 graph_page = ant.Page(
     page_key="graph",
-    children=ant.Layout(
-        style={"height": "100vh"},
-        children=[
-            ts_plot := ant.Content(
-                dcc.Graph(responsive=True, style={"height": "100%"}),
-                style={"flex": "1)"},
-            )
-        ],
-    ),
+    children=[ts_plot := dcc.Graph(responsive=True, style={"height": "100%"})],
 )
 
 
