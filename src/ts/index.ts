@@ -1,4 +1,5 @@
 import Alert from "./components/alert/Alert";
+import AutoComplete from "./components/autocomplete/AutoComplete";
 import Button from "./components/button/Button";
 import Card from "./components/card/Card";
 import Checkbox from "./components/checkbox/Checkbox";
@@ -44,6 +45,7 @@ import Page from "./components/templates/Page";
 
 export {
     Alert,
+    AutoComplete,
     Button,
     Card,
     Checkbox,
