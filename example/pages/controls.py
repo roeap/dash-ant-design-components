@@ -1,6 +1,21 @@
 import dash_antd as ant
 from example.metadata import get_component_metadata
 
+autocomplete_content = [
+    ant.Space(
+        style={"marginBottom": 25},
+        children=[
+            ant.AutoComplete(
+                allowClear=True,
+                style={"width": 200},
+                options=[
+                    {"label": "val1", "value": "val1"},
+                    {"label": "val2", "value": "val2"},
+                ],
+            )
+        ],
+    ),
+]
 
 button_content = [
     ant.Space(
@@ -254,6 +269,7 @@ controls_page = ant.Page(
         style={"width": "100%", "paddingLeft": 24, "paddingRight": 24, "paddingBottom": 24},
         size="large",
         children=[
+            ant.Card(autocomplete_content, **get_component_props("autocomplete", "AutoComplete")),
             ant.Card(button_content, **get_component_props("button", "Button")),
             ant.Card(input_content, **get_component_props("input", "Input")),
             ant.Card(input_number_content, **get_component_props("input", "InputNumber")),
