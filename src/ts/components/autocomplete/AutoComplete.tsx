@@ -10,11 +10,11 @@ type Props = {
     /**
      * Show clear button
      */
-    allowClear: boolean;
+    allow_clear: boolean;
     /**
      * If get focus when component mounted
      */
-    autoFocus: boolean;
+    auto_focus: boolean;
     /**
      * If backfill selected item the input when using keyboard
      */
@@ -22,15 +22,15 @@ type Props = {
     /**
      * Whether active first option by default
      */
-    defaultActiveFirstOption?: boolean;
+    default_active_first_option?: boolean;
     /**
      * Initial open state of dropdown
      */
-    defaultOpen?: boolean;
+    default_open?: boolean;
     /**
      * Initial selected option
      */
-    defaultValue?: string;
+    default_value?: string;
     /**
      * Whether disabled select
      */
@@ -38,21 +38,21 @@ type Props = {
     /**
      * The className of dropdown menu
      */
-    popupClassName?: string;
+    popup_class_name?: string;
     /**
      * Determine whether the dropdown menu and the select input are the same width.
      * Default set min-width same as input. Will ignore when value less than select width. false will disable virtual scroll
      */
-    dropdownMatchSelectWidth: boolean | number;
+    dropdown_match_select_width: boolean | number;
     /**
      * If true, filter options by input, if function, filter options against it. The function will receive two arguments,
      * inputValue and option, if the function returns true, the option will be included in the filtered set; Otherwise, it will be excluded
      */
-    filterOption: boolean;
+    filter_option: boolean;
     /**
      * Specify content to show when no result matches
      */
-    notFoundContent: string;
+    not_found_content: string;
     /**
      * Controlled open state of dropdown
      */
@@ -79,31 +79,31 @@ type Props = {
     /**
      * Called when leaving the component
      */
-    n_onBlur: number;
+    n_blur: number;
     /**
      * Called when selecting an option or changing an input value
      */
-    n_onChange: number;
+    n_change: number;
     /**
      * Call when dropdown open
      */
-    n_onDropdownVisibleChange: number;
+    n_dropdown_visible_change: number;
     /**
      * Called when entering the component
      */
-    n_onFocus: number;
+    n_focus: number;
     /**
      * Called when searching items
      */
-    n_onSearch: number;
+    n_search: number;
     /**
      * Called when a option is selected. param is option's value and option instance
      */
-    n_onSelect: number;
+    n_select: number;
     /**
      * Called when a option is selected. param is option's value and option instance
      */
-    n_onClear: number;
+    n_clear: number;
 
 } & DashComponentProps &
     StyledComponentProps;
@@ -114,21 +114,30 @@ type Props = {
 const AutoComplete = (props: Props) => {
     const {
         children,
+        allow_clear,
+        auto_focus,
+        default_active_first_option,
+        default_open,
+        default_value,
+        popup_class_name,
+        dropdown_match_select_width,
+        filter_option,
+        not_found_content,
         setProps,
-        n_onBlur,
-        n_onChange,
-        n_onDropdownVisibleChange,
-        n_onFocus,
-        n_onSearch,
-        n_onSelect,
-        n_onClear,
+        n_blur,
+        n_change,
+        n_dropdown_visible_change,
+        n_focus,
+        n_search,
+        n_select,
+        n_clear,
         ...otherProps
     } = props;
 
     const onBlur = () => {
         if (setProps) {
             setProps({
-                n_onBlur: n_onBlur + 1,
+                n_onBlur: n_blur + 1,
             });
         }
     };
@@ -137,7 +146,7 @@ const AutoComplete = (props: Props) => {
         if (setProps) {
             setProps({
                 value: value,
-                n_onChange: n_onChange + 1,
+                n_onChange: n_change + 1,
             });
         }
     };
@@ -145,7 +154,7 @@ const AutoComplete = (props: Props) => {
     const onDropdownVisibleChange = () => {
         if (setProps) {
             setProps({
-                n_onDropdownVisibleChange: n_onDropdownVisibleChange + 1,
+                n_onDropdownVisibleChange: n_dropdown_visible_change + 1,
             });
         }
     };
@@ -153,7 +162,7 @@ const AutoComplete = (props: Props) => {
     const onFocus = () => {
         if (setProps) {
             setProps({
-                n_onFocus: n_onFocus + 1,
+                n_onFocus: n_focus + 1,
             });
         }
     };
@@ -162,7 +171,7 @@ const AutoComplete = (props: Props) => {
         if (setProps) {
             setProps({
                 value: value,
-                n_onSearch: n_onSearch + 1,
+                n_onSearch: n_search + 1,
             });
         }
     };
@@ -171,7 +180,7 @@ const AutoComplete = (props: Props) => {
         if (setProps) {
             setProps({
                 value: value,
-                n_onSelect: n_onSelect + 1,
+                n_onSelect: n_select + 1,
             });
         }
     };
@@ -180,7 +189,7 @@ const AutoComplete = (props: Props) => {
         if (setProps) {
             setProps({
                 value: '',
-                n_onClear: n_onClear + 1,
+                n_onClear: n_clear + 1,
             });
         }
     };
@@ -188,6 +197,15 @@ const AutoComplete = (props: Props) => {
     return (
 
         <AntAutoComplete
+            allowClear={allow_clear}
+            autoFocus={auto_focus}
+            defaultActiveFirstOption={default_active_first_option}
+            defaultOpen={default_open}
+            defaultValue={default_value}
+            popupClassName={popup_class_name}
+            dropdownMatchSelectWidth={dropdown_match_select_width}
+            filterOption={filter_option}
+            notFoundContent={not_found_content}
             onBlur={onBlur}
             onChange={onChange}
             onDropdownVisibleChange={onDropdownVisibleChange}
@@ -203,21 +221,21 @@ const AutoComplete = (props: Props) => {
 };
 
 AutoComplete.defaultProps = {
-    allowClear: false,
-    autoFocus: false,
+    allow_clear: false,
+    auto_focus: false,
     backfill: false,
-    defaultActiveFirstOption: true,
+    default_active_first_option: true,
     disabled: false,
-    dropdownMatchSelectWidth: true,
-    filterOption: true,
-    notFoundContent: 'Not Found',
-    n_onBlur: 0,
-    n_onChange: 0,
-    n_onDropdownVisibleChange: 0,
-    n_onFocus: 0,
-    n_onSearch: 0,
-    n_onSelect: 0,
-    n_onClear: 0,
+    dropdown_match_select_width: true,
+    filter_option: true,
+    not_found_content: 'Not Found',
+    n_blur: 0,
+    n_change: 0,
+    n_dropdown_visible_change: 0,
+    n_focus: 0,
+    n_search: 0,
+    n_select: 0,
+    n_clear: 0,
 };
 
 export default AutoComplete;

@@ -10,7 +10,7 @@ describe("AutoComplete", () => {
         const autocomplete = render(<AutoComplete
             id="autocomplete_test"
             options={[{ "label": "default", "value": "default" }]}
-            defaultValue="default"
+            default_value="default"
         />);
 
         expect(autocomplete.container.querySelector('#autocomplete_test')).toHaveValue("default");
@@ -24,7 +24,7 @@ describe("AutoComplete", () => {
         const autocomplete = render(<AutoComplete
             id="autocomplete_test"
             options={[{ "label": "opt_1", "value": "opt_1" }, { "label": "opt_2", "value": "opt_2" }]}
-            allowClear={true}
+            allow_clear={true}
             setProps={mockSetProps} />
         );
         let autocompleteElement = autocomplete.container.querySelector("#autocomplete_test");
