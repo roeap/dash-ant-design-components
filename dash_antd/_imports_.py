@@ -1,4 +1,5 @@
 from .Alert import Alert
+from .AutoComplete import AutoComplete
 from .Button import Button
 from .Card import Card
 from .CheckableTag import CheckableTag
@@ -44,6 +45,7 @@ from .TimeRangePicker import TimeRangePicker
 
 __all__ = [
     "Alert",
+    "AutoComplete",
     "Button",
     "Card",
     "Checkbox",
