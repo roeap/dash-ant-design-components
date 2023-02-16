@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "dash-antd"
-version = "0.1.5"
+version = "0.1.6"
 description = "Ant Design components for Plotly Dash"
 repository = "https://github.com/roeap/dash-ant-design-components"
 authors = ["Robert Pack <robstar.pack@gmail.com>"]
