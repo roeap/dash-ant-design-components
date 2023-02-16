@@ -104,7 +104,6 @@ type Props = {
      * Called when a option is selected. param is option's value and option instance
      */
     n_clear: number;
-
 } & DashComponentProps &
     StyledComponentProps;
 
@@ -188,14 +187,13 @@ const AutoComplete = (props: Props) => {
     const onClear = () => {
         if (setProps) {
             setProps({
-                value: '',
+                value: "",
                 n_onClear: n_clear + 1,
             });
         }
     };
 
     return (
-
         <AntAutoComplete
             allowClear={allow_clear}
             autoFocus={auto_focus}
@@ -228,7 +226,7 @@ AutoComplete.defaultProps = {
     disabled: false,
     dropdown_match_select_width: true,
     filter_option: true,
-    not_found_content: 'Not Found',
+    not_found_content: "Not Found",
     n_blur: 0,
     n_change: 0,
     n_dropdown_visible_change: 0,
